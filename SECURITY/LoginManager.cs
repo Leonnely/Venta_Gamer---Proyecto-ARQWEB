@@ -8,5 +8,7 @@ namespace SECURITY
 {
     public class LoginManager
     {
+
+        int a;
     }
 }
