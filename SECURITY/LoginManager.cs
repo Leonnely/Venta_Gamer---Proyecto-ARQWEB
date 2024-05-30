@@ -10,5 +10,6 @@ namespace SECURITY
     {
 
         int a;
+        public int b;
     }
 }
