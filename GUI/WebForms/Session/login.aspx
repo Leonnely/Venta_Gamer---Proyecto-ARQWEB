@@ -35,7 +35,7 @@
             background-color: #45a049;
         }
     </style>
-    <script src="Scripts/jquery-3.7.1.min.js"></script>
+    <%--<script src="Scripts/jquery-3.7.1.min.js"></script>--%>
 
 </head>
 <body>
