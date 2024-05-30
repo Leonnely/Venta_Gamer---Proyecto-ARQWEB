@@ -6,10 +6,34 @@ using System.Threading.Tasks;
 
 namespace SECURITY
 {
-    internal class SessionManager
+    public class SessionManager
     {
 
-        
-            
+        public string username;
+
+        public SessionManager currentSession;
+        public SessionManager CheckSession
+        {
+            get
+            {
+                return currentSession;
+            }
+
+        }
+
+        public void CreateSession(string username)
+        {
+            currentSession = new SessionManager();
+
+            currentSession.username = username;
+        }
+
+        public void DeleteSession()
+        {
+            currentSession=null;
+        }
+
+
+
     }
 }
