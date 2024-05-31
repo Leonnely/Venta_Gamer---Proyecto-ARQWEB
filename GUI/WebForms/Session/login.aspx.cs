@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SECURITY;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,14 +24,25 @@ namespace GUI.WebForms.Session
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            if (username == "admin" && password == "password")
+
+            LoginManager loginManager = new LoginManager();
+
+            if(loginManager.login(username, password))
             {
-                Response.Redirect("HomePage.Master");
+                Session["role"] = loginManager.role;
+                Session["user"]=txtUsername.Text;
+                Response.Redirect("~/WebForms/Pages/home.aspx");
             }
             else
             {
-                lblMessage.Text = "Nombre de usuario o contraseña incorrectos.";
+                lblMessage.Text = "Error al iniciar sesion";
             }
+
+
+
+
+
+          
         }
     }
 }

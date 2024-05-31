@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.AspMasterPage" MasterPageFile="~/WebForms/AspMasterPage.Master" %> 
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.Pages.home" %>
 
 <!DOCTYPE html>
 
@@ -7,11 +7,13 @@
     <title></title>
 </head>
 <body>
-    <p>ESTE ES EL HOME</p>
-
-    <%--<form id="form1" runat="server">
+    <form id="form1" runat="server">
         <div>
+            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         </div>
-    </form>--%>
+    </form>
 </body>
 </html>
