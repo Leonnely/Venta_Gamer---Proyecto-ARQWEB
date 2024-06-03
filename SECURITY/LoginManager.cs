@@ -1,4 +1,5 @@
 ﻿using BE;
+using BLL;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ namespace SECURITY
 
         
         SessionManager sessionManager = new SessionManager();
-
-        public int login(string username, string password)
+        public int role;
+        public bool login(string username, string password)
         {
 
             string HashedPassword= CryptoManager.HashPassword(password);
@@ -24,19 +25,23 @@ namespace SECURITY
             {
                 if (sessionManager.CheckSession == null)
                 {
+                   
                     sessionManager.CreateSession(username);
                     BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(username, "Inicio de sesion", "Login");
-                    return 1;
+                    BLL_Bitacora bitacora = new BLL_Bitacora();
+                    bitacora.BitacoraRegister(registroBitacora);
+                    role = user.role;
+                    return true;
                 }
                 else
                 {
 
-                    return 0;
+                    return false;
                 }
             }
             else
             {
-                return 0;
+                return false;
             }
             
 
