@@ -88,7 +88,7 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Styles\General.css" />
-    <Content Include="Web.config" />
+    <Content Include="web.config" />
     <Content Include="WebForms\Pages\home.aspx" />
     <Content Include="WebForms\Session\login.aspx" />
   </ItemGroup>
@@ -114,11 +114,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
