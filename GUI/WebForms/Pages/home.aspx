@@ -5,15 +5,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
+    <style>
+        .navbar {
+            width:100%;
+            overflow: hidden;
+            background-color: #333;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        .navbar--left a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar--left a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar--right{
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <br />
-            <br />
-            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-        </div>
+
+        <nav class="navbar">
+            <div class="navbar--left">
+                <asp:HyperLink ID="hlBitacora" runat="server" NavigateUrl="~/WebForms/Pages/bitacora.aspx" CssClass="nav-link">Bitacora</asp:HyperLink>
+                <asp:HyperLink ID="hlUFP" runat="server" NavigateUrl="~/UFP.aspx" CssClass="nav-link">UFP</asp:HyperLink>
+                <asp:HyperLink ID="hlEncriptacion" runat="server" NavigateUrl="~/Encriptacion.aspx" CssClass="nav-link">Encriptacion</asp:HyperLink>
+                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/Backup.aspx" CssClass="nav-link">Backup</asp:HyperLink>
+                <asp:HyperLink ID="hlRestore" runat="server" NavigateUrl="~/Restore.aspx" CssClass="nav-link">Restore</asp:HyperLink>
+            </div>
+            <div class="navbar--right">
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+            </div>
+        </nav>
     </form>
 </body>
 </html>

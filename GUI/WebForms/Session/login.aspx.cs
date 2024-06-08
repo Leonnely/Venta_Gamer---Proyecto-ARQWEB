@@ -17,25 +17,23 @@ namespace GUI.WebForms.Session
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //if (Page.IsValid)
-            //{
-            //}
-
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
-
-            LoginManager loginManager = new LoginManager();
-
-            if(loginManager.login(username, password))
+            if (Page.IsValid)
             {
-                Session["role"] = loginManager.role;
-                Session["user"]=txtUsername.Text;
-                Response.Redirect("~/WebForms/Pages/home.aspx");
-            }
-            else
-            {
-                lblMessage.Text = "Error al iniciar sesion";
+                string username = txtUsername.Text;
+                string password = txtPassword.Text;
+
+                LoginManager loginManager = new LoginManager();
+
+                if(loginManager.login(username, password))
+                {
+                    Session["role"] = loginManager.role;
+                    Session["user"]=  txtUsername.Text;
+                    Response.Redirect("~/WebForms/Pages/home.aspx");
+                }
+                else
+                {
+                    lblMessage.Text = "Error al iniciar sesion";
+                }
             }
 
 

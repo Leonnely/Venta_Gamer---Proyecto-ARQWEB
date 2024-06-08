@@ -89,6 +89,7 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Styles\General.css" />
     <Content Include="web.config" />
+    <Content Include="WebForms\Pages\bitacora.aspx" />
     <Content Include="WebForms\Pages\home.aspx" />
     <Content Include="WebForms\Session\login.aspx" />
   </ItemGroup>
@@ -97,6 +98,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\Pages\bitacora.aspx.cs">
+      <DependentUpon>bitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\bitacora.aspx.designer.cs">
+      <DependentUpon>bitacora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Pages\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
