@@ -64,7 +64,7 @@ namespace GUI.WebForms.Pages
             navbarRightDiv.Attributes["class"] = "navbar--right";
             navbarRightDiv.InnerText = "Bienvenido " + GetUserRole((int)Session["role"]);         
             navbarDiv.Controls.Add(navbarLeftDiv);
-            navbarDiv.Controls.Add(navbarRightDiv);
+            navbarDiv.Controls.Add(navbarRightDiv);   
             navbar.Controls.Add(navbarDiv);
         }
 
