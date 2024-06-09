@@ -13,11 +13,11 @@ namespace DAL
     public class DAL_Bitacora
     {
 
-        public List<BE_RegistroBitacora> Bitacora = new List<BE_RegistroBitacora>();
+        
 
         public void BitacoraRegister(BE_RegistroBitacora registroBitacora)
         {
-            Bitacora.Add(registroBitacora);
+            zDatos.Bitacora.Add(registroBitacora);
         }
 
 
