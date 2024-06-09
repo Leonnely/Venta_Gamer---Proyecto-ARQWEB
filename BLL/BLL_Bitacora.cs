@@ -19,6 +19,9 @@ namespace BLL
             bitacora.BitacoraRegister(registroBitacora);
         }
 
-
+        public List<BE_RegistroBitacora> getAll()
+        {
+            return bitacora.getAll();
+        }
     }
 }

@@ -88,6 +88,7 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Styles\General.css" />
+    <Content Include="Styles\nav.css" />
     <Content Include="web.config" />
     <Content Include="WebForms\Pages\bitacora.aspx" />
     <Content Include="WebForms\Pages\home.aspx" />

@@ -6,36 +6,10 @@
 <head runat="server">
     <title></title>
     <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
-    <style>
-        .navbar {
-            width:100%;
-            overflow: hidden;
-            background-color: #333;
-            display:flex;
-            justify-content:space-between;
-        }
-
-        .navbar--left a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .navbar--left a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .navbar--right{
-            color: white;
-        }
-    </style>
+    <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="frmHome" runat="server">
 
         <nav class="navbar">
             <div class="navbar--left">
