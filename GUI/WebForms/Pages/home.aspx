@@ -10,8 +10,9 @@
 </head>
 <body>
     <form id="frmHome" runat="server">
-
-        <nav class="navbar">
+        <div class="navbar" runat="server" id="navbar">
+        </div>
+        <%--<nav class="navbar">
             <div class="navbar--left">
                 <asp:HyperLink ID="hlBitacora" runat="server" NavigateUrl="~/WebForms/Pages/bitacora.aspx" CssClass="nav-link">Bitacora</asp:HyperLink>
                 <asp:HyperLink ID="hlUFP" runat="server" NavigateUrl="~/UFP.aspx" CssClass="nav-link">UFP</asp:HyperLink>
@@ -23,7 +24,7 @@
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                 <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
             </div>
-        </nav>
+        </nav>--%>
     </form>
 </body>
 </html>
