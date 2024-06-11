@@ -14,11 +14,13 @@
 
         .container-table{
             margin-top:10px;
-            width:100%;
             min-width:300px;
+            max-width:900px;
+            margin:10px 20px;
+            width:100%;
             display:flex;
             gap:20px;
-            justify-content:center;
+            justify-content:space-between;
         }
 
         .table-bitacora{
@@ -29,6 +31,7 @@
         .table-bitacora th, .table-bitacora td {
             border: 1px solid #ddd;
             padding: 8px;
+            width:200px;
         }
 
         .table-bitacora th {
@@ -84,17 +87,18 @@
                 </div>
                 <div>
                     <div class="input-group">
-                        <label for="txtAutor">Nombre del autor.</label>
-                        <input type="text" id="txtAutor" name="txtAutor"/>
-                    </div>
-                    <div class="input-group">
-                        <label for="txtFechaDesde">Periodo inicio.</label>
-                        <input type="date" id="dtFechaDesde" name="dtFechaDesde"/>
-                    </div>
-                    <div class="input-group">
-                        <label for="txtFechaHasta">Periodo fin.</label>
-                        <input type="date" id="dtFechaHasta" name="dtFechaHasta"/>
-                    </div>
+                    <label for="txtAutor">Nombre del usuario.</label>
+                    <input type="text" id="txtAutor" name="txtAutor" runat="server"/>
+                </div>
+                <div class="input-group">
+                    <label for="txtFechaDesde">Periodo inicio.</label>
+                    <input type="date" id="dtFechaDesde" name="dtFechaDesde" runat="server"/>
+                </div>
+                <div class="input-group">
+                    <label for="txtFechaHasta">Periodo fin.</label>
+                    <input type="date" id="dtFechaHasta" name="dtFechaHasta" runat="server"/>
+                </div>
+                    <asp:Button ID="btnAplicarFiltros" runat="server" Text="Aplicar filtros" OnClick="btnAplicarFiltros_Click" />
                 </div>
 
             </div>

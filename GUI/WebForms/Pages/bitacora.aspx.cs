@@ -10,19 +10,46 @@ namespace GUI.WebForms.Pages
 {
     public partial class bitacora : System.Web.UI.Page
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarDatosBitacora();
+            if (!IsPostBack)
+            {
+                CargarDatosBitacora();
+            }
         }
 
+        protected void btnAplicarFiltros_Click(object sender, EventArgs e)
+        {
+            string autor = txtAutor.Value;
+            DateTime? fechaDesde = string.IsNullOrEmpty(dtFechaDesde.Value) ? (DateTime?)null : DateTime.Parse(dtFechaDesde.Value);
+            DateTime? fechaHasta = string.IsNullOrEmpty(dtFechaHasta.Value) ? (DateTime?)null : DateTime.Parse(dtFechaHasta.Value);
 
-        private void CargarDatosBitacora()
+            CargarDatosBitacora(autor, fechaDesde, fechaHasta);
+        }
+
+        private void CargarDatosBitacora(string autor = null, DateTime? fechaDesde = null, DateTime? fechaHasta = null)
         {
             BLL_Bitacora bllBitacora = new BLL_Bitacora();
             var datos = bllBitacora.getAll();
-            
 
-            // Crear la fila de cabecera
+            if (!string.IsNullOrEmpty(autor))
+            {
+                datos = datos.Where(d => d.Autor.IndexOf(autor, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+
+            if (fechaDesde.HasValue)
+            {
+                datos = datos.Where(d => d.Fecha >= fechaDesde.Value).ToList();
+            }
+
+            if (fechaHasta.HasValue)
+            {
+                datos = datos.Where(d => d.Fecha <= fechaHasta.Value).ToList();
+            }
+
+            tbBitacora.Rows.Clear();
+
             TableHeaderRow encabezado = new TableHeaderRow();
             encabezado.Cells.Add(new TableHeaderCell { Text = "Evento" });
             encabezado.Cells.Add(new TableHeaderCell { Text = "Fecha" });
@@ -30,7 +57,6 @@ namespace GUI.WebForms.Pages
             encabezado.Cells.Add(new TableHeaderCell { Text = "Modulo" });
             tbBitacora.Rows.Add(encabezado);
 
-            // Crear las filas de datos
             foreach (var registro in datos)
             {
                 TableRow fila = new TableRow();

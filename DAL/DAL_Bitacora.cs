@@ -13,8 +13,6 @@ namespace DAL
     public class DAL_Bitacora
     {
 
-        
-
         public void BitacoraRegister(BE_RegistroBitacora registroBitacora)
         {
             zDatos.Bitacora.Add(registroBitacora);
