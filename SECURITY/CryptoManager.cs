@@ -9,7 +9,6 @@ namespace SECURITY
 {
     static public class CryptoManager
     {
-
         static public string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -23,8 +22,5 @@ namespace SECURITY
                 return builder.ToString();
             }
         }
-
-
-
     }
 }

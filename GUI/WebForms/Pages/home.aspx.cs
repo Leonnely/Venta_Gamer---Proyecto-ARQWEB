@@ -19,7 +19,6 @@ namespace GUI.WebForms.Pages
                     : RoleBasedNavbar.RoleNavItems["User"];
 
             GenerateNavbar(navbarItems);
-
         }
 
         public string GetUserRole(int rol)
@@ -71,13 +70,11 @@ namespace GUI.WebForms.Pages
 
     }
 
-
         public class NavbarItem
         {
             public string Name { get; set; }
             public string Url { get; set; }
         }
-
 
         public static class RoleBasedNavbar
         {
@@ -87,13 +84,14 @@ namespace GUI.WebForms.Pages
             {
                 new NavbarItem { Name = "Dashboard", Url = "/Admin/Dashboard" },
                 new NavbarItem { Name = "User Management", Url = "/Admin/Users" },
+                new NavbarItem { Name = "Gestion de productos", Url = "/Admin/Products" },
                 new NavbarItem { Name = "Settings", Url = "/Admin/Settings" }
             }
         },
         { "User", new List<NavbarItem>
             {
                 new NavbarItem { Name = "Home", Url = "/" },
-                new NavbarItem { Name = "Profile", Url = "/User/Profile" },
+                new NavbarItem { Name = "Carrito", Url = "/User/Profile" },
                 new NavbarItem { Name = "Settings", Url = "/User/Settings" }
             }
         },
@@ -108,6 +106,4 @@ namespace GUI.WebForms.Pages
         }
     };
         }
-
-
     }

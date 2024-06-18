@@ -35,11 +35,6 @@ namespace GUI.WebForms.Session
                     lblMessage.Text = "Error al iniciar sesion";
                 }
             }
-
-
-
-
-
           
         }
     }

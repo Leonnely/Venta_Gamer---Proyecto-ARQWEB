@@ -8,7 +8,6 @@ namespace SECURITY
 {
     public class SessionManager
     {
-
         public string username;
 
         public SessionManager currentSession;
@@ -18,22 +17,15 @@ namespace SECURITY
             {
                 return currentSession;
             }
-
         }
-
         public void CreateSession(string username)
         {
             currentSession = new SessionManager();
-
             currentSession.username = username;
         }
-
         public void DeleteSession()
         {
             currentSession=null;
         }
-
-
-
     }
 }

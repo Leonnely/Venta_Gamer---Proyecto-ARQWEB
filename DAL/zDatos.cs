@@ -9,15 +9,29 @@ namespace DAL
 {
     public static class zDatos
     {
+        static Random rnd = new Random();
+        public static DateTime generatedate()
+        {
+            DateTime startdate = new DateTime(2000, 1, 1); 
+            DateTime enddate = DateTime.Now;
+            int range = (enddate - startdate).Days;  
+            DateTime randomdate = startdate.AddDays(rnd.Next(range)).AddSeconds(rnd.Next(86400));
+            return randomdate;
+        }
 
-        
         public static List<BE_RegistroBitacora> Bitacora = new List<BE_RegistroBitacora>
         {
             new BE_RegistroBitacora("Admin", "Inicio de sesion", "Login"),
             new BE_RegistroBitacora("WebMaster", "Consulta de Bitacora", "Bitacora"),
-            new BE_RegistroBitacora("Admin", "Cierre de sesion", "Login")
+            new BE_RegistroBitacora("Admin", "Cierre de sesion", "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login")
         };
-
 
         public static List<BE_Usuario> users = new List<BE_Usuario>
         {
@@ -27,7 +41,5 @@ namespace DAL
                 new BE_Usuario("user4", "user4", 1),
                 new BE_Usuario("user5", "user5", 1)
         };
-
-
     }
 }

@@ -12,10 +12,6 @@
     <form id="form1" runat="server">
         <div class="navbar" runat="server" id="navbar">
         </div>
-        <%-- <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>--%>
-        
-
     </form>
 </body>
 </html>
