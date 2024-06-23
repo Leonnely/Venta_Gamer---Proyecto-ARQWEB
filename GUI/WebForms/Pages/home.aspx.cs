@@ -60,13 +60,28 @@ namespace GUI.WebForms.Pages
                 link.Attributes["class"] = "nav-link";
                 navbarLeftDiv.Controls.Add(link);
             }
-         
+
             var navbarRightDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             navbarRightDiv.Attributes["class"] = "navbar--right";
-            navbarRightDiv.InnerText = "Bienvenido " + GetUserRole((int)Session["role"]);         
-            navbarDiv.Controls.Add(navbarLeftDiv);
-            navbarDiv.Controls.Add(navbarRightDiv);   
-            navbar.Controls.Add(navbarDiv);
+            //navbarRightDiv.InnerText = "Bienvenido " + GetUserRole((int)Session["role"]);
+
+            var logoutButton = new System.Web.UI.WebControls.Button
+            {
+                Text = "Cerrar sesión",
+                CssClass = "logout-button"
+            };
+            logoutButton.Click += LogoutButton_Click;
+
+            navbarRightDiv.Controls.Add(logoutButton);
+
+            navbar.Controls.Add(navbarLeftDiv);
+            navbar.Controls.Add(navbarRightDiv);
+        }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/WebForms/Session/login.aspx"); 
         }
 
 
@@ -82,31 +97,31 @@ namespace GUI.WebForms.Pages
         {
             //CREACION DE ELEMENTOS DE NAVBAR POR USUARIO
             public static Dictionary<string, List<NavbarItem>> RoleNavItems = new Dictionary<string, List<NavbarItem>>()
-    {
-        { "Admin", new List<NavbarItem>
             {
-                new NavbarItem { Name = "Dashboard", Url = "/Admin/Dashboard" },
-                new NavbarItem { Name = "User Management", Url = "/Admin/Users" },
-                new NavbarItem { Name = "Gestion de productos", Url = "/Admin/Products" },
-                new NavbarItem { Name = "Settings", Url = "/Admin/Settings" }
-            }
-        },
-        { "User", new List<NavbarItem>
-            {
-                new NavbarItem { Name = "Home", Url = "/" },
-                new NavbarItem { Name = "Carrito", Url = "/User/Profile" },
-                new NavbarItem { Name = "Settings", Url = "/User/Settings" }
-            }
-        },
-        { "WebMaster", new List<NavbarItem>
-            {
-                new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
-                new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
-                new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },
-                new NavbarItem { Name = "Backup", Url = "~/Backup.aspx" },
-                new NavbarItem { Name = "Restore", Url = "~/Restore.aspx" }
-            }
-        }
-    };
+                { "Admin", new List<NavbarItem>
+                    {
+                        new NavbarItem { Name = "Dashboard", Url = "/Admin/Dashboard" },
+                        new NavbarItem { Name = "User Management", Url = "/Admin/Users" },
+                        new NavbarItem { Name = "Gestion de productos", Url = "/Admin/Products" },
+                        new NavbarItem { Name = "Settings", Url = "/Admin/Settings" }
+                    }
+                },
+                { "User", new List<NavbarItem>
+                    {
+                        new NavbarItem { Name = "Home", Url = "/" },
+                        new NavbarItem { Name = "Carrito", Url = "/User/Profile" },
+                        new NavbarItem { Name = "Settings", Url = "/User/Settings" }
+                    }
+                },
+                { "WebMaster", new List<NavbarItem>
+                    {
+                        new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
+                        new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
+                        new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },
+                        new NavbarItem { Name = "Backup", Url = "~/Backup.aspx" },
+                        new NavbarItem { Name = "Restore", Url = "~/Restore.aspx" }
+                    }
+                }
+            };
         }
     }
