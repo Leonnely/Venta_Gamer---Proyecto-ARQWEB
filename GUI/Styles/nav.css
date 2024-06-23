@@ -15,11 +15,25 @@
     text-decoration: none;
 }
 
-    .navbar--left a:hover {
-        background-color: #ddd;
-        color: black;
-    }
+.navbar--left a:hover {
+    background-color: #ddd;
+    color: black;
+}
 
 .navbar--right {
     color: white;
+}
+
+.logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #ff1a1a;
 }
