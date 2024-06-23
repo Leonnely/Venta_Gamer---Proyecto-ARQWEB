@@ -26,7 +26,6 @@
             padding: 10px;
             margin-top:15px;
         }
-       
         .login-container #btnLogin{
             margin-top:20px;
             width: 100%;
@@ -39,7 +38,6 @@
         .login-container button:hover {
             background-color: #45a049;
         }
-
         .validators{
             color:red;
             font-size:.8rem;

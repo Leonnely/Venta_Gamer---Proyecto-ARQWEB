@@ -15,6 +15,7 @@ namespace GUI.WebForms.Session
 
         }
 
+        //INICIO DE SESION
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -24,13 +25,13 @@ namespace GUI.WebForms.Session
 
                 LoginManager loginManager = new LoginManager();
 
-                if(loginManager.login(username, password))
+                if(loginManager.login(username, password))     //SI NO EXISTE SESION
                 {
                     Session["role"] = loginManager.role;
                     Session["user"]=  txtUsername.Text;
                     Response.Redirect("~/WebForms/Pages/home.aspx");
                 }
-                else
+                else                                          //SI EXISTE SESION O CONTRASEÑA INCORRECTA
                 {
                     lblMessage.Text = "Error al iniciar sesion";
                 }

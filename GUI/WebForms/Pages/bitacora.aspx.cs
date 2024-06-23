@@ -15,10 +15,11 @@ namespace GUI.WebForms.Pages
         {
             if (!IsPostBack)
             {
-                CargarDatosBitacora();
+                CargarDatosBitacora();        
             }
         }
 
+        //FILTRADO DE REGISTROS
         protected void btnAplicarFiltros_Click(object sender, EventArgs e)
         {
             string autor = txtAutor.Value;
@@ -28,6 +29,7 @@ namespace GUI.WebForms.Pages
             CargarDatosBitacora(autor, fechaDesde, fechaHasta);
         }
 
+        //LECTURA DE BITACORA
         private void CargarDatosBitacora(string autor = null, DateTime? fechaDesde = null, DateTime? fechaHasta = null)
         {
             BLL_Bitacora bllBitacora = new BLL_Bitacora();

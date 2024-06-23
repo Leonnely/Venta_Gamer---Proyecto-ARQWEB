@@ -13,6 +13,8 @@ namespace SECURITY
     {
         SessionManager sessionManager = new SessionManager();
         public int role;
+
+        //INICIO DE SESION
         public bool login(string username, string password)
         {
             string HashedPassword= CryptoManager.HashPassword(password);

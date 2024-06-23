@@ -21,6 +21,7 @@ namespace GUI.WebForms.Pages
             GenerateNavbar(navbarItems);
         }
 
+        //OBTENER EL ROL DE USUARIO
         public string GetUserRole(int rol)
         {
             switch (rol)
@@ -40,6 +41,7 @@ namespace GUI.WebForms.Pages
             }
         }
 
+        //GENERACION DE NAVBAR
         private void GenerateNavbar(List<NavbarItem> navbarItems)
         {
             var navbarDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -78,6 +80,7 @@ namespace GUI.WebForms.Pages
 
         public static class RoleBasedNavbar
         {
+            //CREACION DE ELEMENTOS DE NAVBAR POR USUARIO
             public static Dictionary<string, List<NavbarItem>> RoleNavItems = new Dictionary<string, List<NavbarItem>>()
     {
         { "Admin", new List<NavbarItem>

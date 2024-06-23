@@ -11,6 +11,8 @@ namespace SECURITY
         public string username;
 
         public SessionManager currentSession;
+
+        //VERIFICAR SI EXISTE SESION
         public SessionManager CheckSession
         {
             get
@@ -18,11 +20,15 @@ namespace SECURITY
                 return currentSession;
             }
         }
+
+        //CREAR SESION
         public void CreateSession(string username)
         {
             currentSession = new SessionManager();
             currentSession.username = username;
         }
+
+        //ELIMINAR SESION
         public void DeleteSession()
         {
             currentSession=null;

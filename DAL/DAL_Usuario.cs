@@ -13,6 +13,8 @@ namespace DAL
         
 
         public int role;
+
+        //INICIO DE SESION
         public bool Login(string username, string password)
         {
             BE_Usuario user = new BE_Usuario(username, password,0);
