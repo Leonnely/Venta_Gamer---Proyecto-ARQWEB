@@ -13,7 +13,7 @@ namespace SECURITY
     {
         SessionManager sessionManager = new SessionManager();
         public int role;
-
+        public int id;
         //INICIO DE SESION
         public bool login(string username, string password)
         {
@@ -25,10 +25,11 @@ namespace SECURITY
                 if (sessionManager.CheckSession == null)
                 {
                     sessionManager.CreateSession(username);
-                    BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(username, "Inicio de sesion", "Login");
+                    BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(user.id, "Inicio de sesion", "Login");
                     BLL_Bitacora bitacora = new BLL_Bitacora();
                     bitacora.BitacoraRegister(registroBitacora);
                     role = user.role;
+                    id = user.id;
                     return true;
                 }
                 else

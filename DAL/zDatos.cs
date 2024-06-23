@@ -9,37 +9,38 @@ namespace DAL
 {
     public static class zDatos
     {
-        static Random rnd = new Random();
-        public static DateTime generatedate()
-        {
-            DateTime startdate = new DateTime(2000, 1, 1); 
-            DateTime enddate = DateTime.Now;
-            int range = (enddate - startdate).Days;  
-            DateTime randomdate = startdate.AddDays(rnd.Next(range)).AddSeconds(rnd.Next(86400));
-            return randomdate;
-        }
+        //    static Random rnd = new Random();
+        //    public static DateTime generatedate()
+        //    {
+        //        DateTime startdate = new DateTime(2000, 1, 1); 
+        //        DateTime enddate = DateTime.Now;
+        //        int range = (enddate - startdate).Days;  
+        //        DateTime randomdate = startdate.AddDays(rnd.Next(range)).AddSeconds(rnd.Next(86400));
+        //        return randomdate;
+        //    }
 
-        public static List<BE_RegistroBitacora> Bitacora = new List<BE_RegistroBitacora>
-        {
-            new BE_RegistroBitacora("Admin", "Inicio de sesion", "Login"),
-            new BE_RegistroBitacora("WebMaster", "Consulta de Bitacora", "Bitacora"),
-            new BE_RegistroBitacora("Admin", "Cierre de sesion", "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
-            new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login")
-        };
+        //    public static List<BE_RegistroBitacora> Bitacora = new List<BE_RegistroBitacora>
+        //    {
+        //        new BE_RegistroBitacora("Admin", "Inicio de sesion", "Login"),
+        //        new BE_RegistroBitacora("WebMaster", "Consulta de Bitacora", "Bitacora"),
+        //        new BE_RegistroBitacora("Admin", "Cierre de sesion", "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login"),
+        //        new BE_RegistroBitacora("inicio de sesion", generatedate(), "Login")
+        //    };
 
-        public static List<BE_Usuario> users = new List<BE_Usuario>
-        {
-                new BE_Usuario("Admin", "c1c224b03cd9bc7b6a86d77f5dace40191766c485cd55dc48caf9ac873335d6f", 0),
-                new BE_Usuario("WebMaster", "9345f46722d90fb745060f5725ae0f1b20c5ec60a25532bde04e76b9f651db60", 2),
-                new BE_Usuario("user3", "user3", 1),
-                new BE_Usuario("user4", "user4", 1),
-                new BE_Usuario("user5", "user5", 1)
-        };
+        //    public static List<BE_Usuario> users = new List<BE_Usuario>
+        //    {
+        //            new BE_Usuario("Admin", "c1c224b03cd9bc7b6a86d77f5dace40191766c485cd55dc48caf9ac873335d6f", 0),
+        //            new BE_Usuario("WebMaster", "9345f46722d90fb745060f5725ae0f1b20c5ec60a25532bde04e76b9f651db60", 2),
+        //            new BE_Usuario("user3", "user3", 1),
+        //            new BE_Usuario("user4", "user4", 1),
+        //            new BE_Usuario("user5", "user5", 1)
+        //    };
+        //}
     }
 }

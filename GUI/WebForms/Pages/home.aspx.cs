@@ -30,10 +30,10 @@ namespace GUI.WebForms.Pages
                     return "Administrador";
 
                 case 1:
-                    return "User";
+                    return "WebMaster";
 
                 case 2:
-                    return "WebMaster";
+                    return "User";
 
                 default:
                     return "A";

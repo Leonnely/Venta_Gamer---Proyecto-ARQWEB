@@ -37,7 +37,7 @@ namespace GUI.WebForms.Pages
 
             if (!string.IsNullOrEmpty(autor))
             {
-                datos = datos.Where(d => d.Autor.IndexOf(autor, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                datos = datos.Where(d => d.user.IndexOf(autor, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
             }
 
             if (fechaDesde.HasValue)
@@ -64,7 +64,7 @@ namespace GUI.WebForms.Pages
                 TableRow fila = new TableRow();
                 fila.Cells.Add(new TableCell { Text = registro.Mensaje });
                 fila.Cells.Add(new TableCell { Text = registro.Fecha.ToString() });
-                fila.Cells.Add(new TableCell { Text = registro.Autor });
+                fila.Cells.Add(new TableCell { Text = registro.user.ToString() });
                 fila.Cells.Add(new TableCell { Text = registro.Modulo });
                 tbBitacora.Rows.Add(fila);
             }
