@@ -16,6 +16,7 @@ namespace BE
 
         public int id { get; set; }
 
+        public bool block {  get; set; }
 
         public BE_Usuario(string username, string password, int role)
         {
