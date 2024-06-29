@@ -13,9 +13,24 @@ namespace GUI.WebForms.Pages
        
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+            if (Session["role"] != null)
             {
-                CargarDatosBitacora();        
+                if ((int)Session["role"] != 1)
+                {
+                    Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
+                }
+                else
+                {
+                    if (!IsPostBack)
+                    {
+                        CargarDatosBitacora();
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
             }
         }
 

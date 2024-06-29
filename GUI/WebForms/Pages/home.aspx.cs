@@ -12,13 +12,29 @@ namespace GUI.WebForms.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string role = GetUserRole((int)Session["role"]);
+            if (Session["role"] != null)
+            {
+                string role = GetUserRole((int)Session["role"]);
 
-            var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
-                    ? RoleBasedNavbar.RoleNavItems[role]
-                    : RoleBasedNavbar.RoleNavItems["User"];
+                if (role == "A")
+                {
+                    Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
+                }
+                else
+                {
 
-            GenerateNavbar(navbarItems);
+
+                    var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
+                            ? RoleBasedNavbar.RoleNavItems[role]
+                            : RoleBasedNavbar.RoleNavItems["User"];
+
+                    GenerateNavbar(navbarItems);
+                }
+            }
+            else
+            {
+                Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
+            }
         }
 
         //OBTENER EL ROL DE USUARIO

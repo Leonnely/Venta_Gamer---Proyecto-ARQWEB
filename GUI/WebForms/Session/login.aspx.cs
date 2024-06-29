@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebGrease;
+using System.Web.Security;
 
 namespace GUI.WebForms.Session
 {
@@ -84,8 +85,9 @@ namespace GUI.WebForms.Session
                           {
                               Session["role"] = loginManager.role;
                               Session["user"] = txtUsername.Text;
-                              Response.Redirect("~/WebForms/Pages/home.aspx");
-                          }
+                            Response.Redirect("~/WebForms/Pages/home.aspx");
+                            //FormsAuthentication.RedirectFromLoginPage(Session["user"].ToString(), true);
+                        }
                           else
                           {
                               lblMessage.Text=("Usuario bloqueado, contacte con un administrador");

@@ -110,6 +110,7 @@
     <Content Include="Styles\nav.css" />
     <Content Include="web.config" />
     <Content Include="WebForms\Pages\bitacora.aspx" />
+    <Content Include="WebForms\Pages\ErrorPage.aspx" />
     <Content Include="WebForms\Pages\home.aspx" />
     <Content Include="WebForms\Session\login.aspx" />
   </ItemGroup>
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="WebForms\Pages\bitacora.aspx.designer.cs">
       <DependentUpon>bitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Pages\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Pages\home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
