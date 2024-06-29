@@ -12,7 +12,6 @@
             <asp:Button ID="btnCreateBackup" runat="server" Text="Crear Backup" OnClick="btnCreateBackup_Click" />
         </div>
         <div>
-            <asp:FileUpload ID="fileUpload" runat="server" />
             <asp:Button ID="btnRestoreBackup" runat="server" Text="Restaurar Backup" OnClick="btnRestoreBackup_Click" />
         </div>
         <div>

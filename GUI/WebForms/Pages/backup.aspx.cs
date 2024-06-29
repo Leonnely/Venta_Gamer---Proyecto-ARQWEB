@@ -33,25 +33,17 @@ namespace GUI.WebForms.Pages
 
         protected void btnRestoreBackup_Click(object sender, EventArgs e)
         {
-            if (fileUpload.HasFile)
+            string restoreLocation = Server.MapPath("~/App_Data/backup.bak");
+
+            bool isSuccess = gestionDB.RestoreDatabase(restoreLocation);
+
+            if (isSuccess)
             {
-                string restoreLocation = Server.MapPath("~/App_Data/") + fileUpload.FileName;
-                fileUpload.SaveAs(restoreLocation);
-
-                bool isSuccess = gestionDB.RestoreDatabase(restoreLocation);
-
-                if (isSuccess)
-                {
-                    lblMessage.Text = "Base de datos restaurada exitosamente.";
-                }
-                else
-                {
-                    lblMessage.Text = "Error al restaurar la base de datos.";
-                }
+                lblMessage.Text = "Base de datos restaurada exitosamente.";
             }
             else
             {
-                lblMessage.Text = "Por favor seleccione un archivo para restaurar.";
+                lblMessage.Text = "Error al restaurar la base de datos.";
             }
         }
     }
