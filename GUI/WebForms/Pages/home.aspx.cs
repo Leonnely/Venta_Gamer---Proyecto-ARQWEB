@@ -132,10 +132,10 @@ namespace GUI.WebForms.Pages
                 { "WebMaster", new List<NavbarItem>
                     {
                         new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
-                        new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
-                        new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },
-                        new NavbarItem { Name = "Backup", Url = "~/Backup.aspx" },
-                        new NavbarItem { Name = "Restore", Url = "~/Restore.aspx" }
+                        //new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
+                        //new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },
+                        new NavbarItem { Name = "Gestion DB", Url = "~/WebForms/Pages/backup.aspx" },
+                        //new NavbarItem { Name = "Restore", Url = "~/Restore.aspx" }
                     }
                 }
             };

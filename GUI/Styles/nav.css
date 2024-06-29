@@ -22,6 +22,8 @@
 
 .navbar--right {
     color: white;
+    display:flex;
+    align-items:center;
 }
 
 .logout-button {
@@ -32,6 +34,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right:10px;
+    height:35px;
 }
 
 .logout-button:hover {
