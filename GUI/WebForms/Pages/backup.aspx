@@ -12,14 +12,6 @@
         .main-content{
 
         }
-        /*.create_backup, .container_grid, .message_container {
-            margin: 20px;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }*/
 
         .create_backup {
             text-align: center;

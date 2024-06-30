@@ -1,4 +1,5 @@
-﻿using BLL;
+﻿using BE;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -93,11 +94,6 @@ namespace GUI.WebForms.Pages
 
     }
 
-    public class BackupFileInfo
-    {
-        public string FileName { get; set; }
-        public string FilePath { get; set; }
-        public DateTime CreationDate { get; set; }
-    }
+    
 }
 
