@@ -44,9 +44,9 @@ namespace DAL
                 SqlCommand command2 = new SqlCommand(Query2, sqlConnection);
                 command2.ExecuteNonQuery();
 
-                string Query3 = string.Format("ALTER DATABASE [VentaGamer] SET MULTI_USER");
+                string Query3 = string.Format("ALTER DATABASE [VentaGamer] SET MULTI_USER ");
                 SqlCommand command3 = new SqlCommand(Query3, sqlConnection);
-                command.ExecuteNonQuery();
+                command3.ExecuteNonQuery();
                 sqlConnection.Close();
                 return true;
             }
