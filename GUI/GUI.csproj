@@ -114,6 +114,7 @@
     <Content Include="WebForms\Pages\ErrorPage.aspx" />
     <Content Include="WebForms\Pages\home.aspx" />
     <Content Include="WebForms\Session\login.aspx" />
+    <Content Include="WebForms\Session\PasswordReset.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -154,6 +155,13 @@
     </Compile>
     <Compile Include="WebForms\Session\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Session\PasswordReset.aspx.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Session\PasswordReset.aspx.designer.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

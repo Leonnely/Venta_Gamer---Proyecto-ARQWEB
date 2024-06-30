@@ -86,5 +86,16 @@ namespace DAL
         }
 
 
+
+        public void updatePassword(string Username, string Password)
+        {
+            sqlConnection.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE USUARIOS SET PASSWORD=@Password WHERE USERNAME=@Username", sqlConnection);
+            cmd.Parameters.AddWithValue("@Username", Username);
+            cmd.Parameters.AddWithValue("@Password", Password);
+            cmd.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
     }
 }

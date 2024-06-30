@@ -106,6 +106,14 @@ namespace GUI.WebForms.Session
                   }
              }
         }
-          
+
+
+
+
+
+        protected void HyperLink1_DataBinding(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -57,5 +57,13 @@ namespace SECURITY
             DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
             return complete;
         }
+
+
+        public void updatePassword(string username, string password)
+        {
+            string hashedpass = CryptoManager.HashPassword(password);
+            user.updatePassword(username, hashedpass);
+            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
+        }
     }
 }

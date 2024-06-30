@@ -73,9 +73,12 @@
                 <asp:RequiredFieldValidator ID="rfvUsername" Class="validators" runat="server" ControlToValidate="txtUsername" ErrorMessage="Nombre de usuario es un campo obligatorio."></asp:RequiredFieldValidator>
             
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Contraseña"></asp:TextBox>
+                <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/WebForms/Session/PasswordReset.aspx">Olvide mi contraseña</asp:HyperLink>
                 <asp:RequiredFieldValidator ID="rfvPassword" Class="validators" runat="server" ControlToValidate="txtPassword" ErrorMessage="Contraseña es un campo obligatorio."></asp:RequiredFieldValidator>
-            
+                
+
                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
+                
             </div>
         </div>
     </form>
