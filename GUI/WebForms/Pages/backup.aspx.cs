@@ -1,6 +1,7 @@
 ﻿using BLL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,27 +14,49 @@ namespace GUI.WebForms.Pages
         BLL_GestionDb gestionDB = new BLL_GestionDb();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                LoadBackupFiles();
+            }
         }
 
-        protected void btnCreateBackup_Click(object sender, EventArgs e)
+        private void LoadBackupFiles()
         {
-            string backupLocation = Server.MapPath("~/App_Data/") + "backup.bak";
-            bool isSuccess = gestionDB.CreateBackup(backupLocation);
+            string backupFolder = Server.MapPath("~/App_Data/");
+            List<BackupFileInfo> backupFiles = new List<BackupFileInfo>();
 
-            if (isSuccess)
+            if (Directory.Exists(backupFolder))
             {
-                lblMessage.Text = "Backup creado exitosamente.";
+                string[] files = Directory.GetFiles(backupFolder, "*.bak");
+
+                foreach (string file in files)
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    backupFiles.Add(new BackupFileInfo
+                    {
+                        FileName = fileInfo.Name,
+                        FilePath = fileInfo.FullName,
+                        CreationDate = fileInfo.CreationTime
+                    });
+                }
+                backupFiles = backupFiles.OrderByDescending(b => b.CreationDate).ToList();
+
             }
             else
             {
-                lblMessage.Text = "Error al crear el backup.";
+                lblMessage.Text = "La carpeta de backups no existe.";
             }
+
+            gvBackups.DataSource = backupFiles;
+            gvBackups.DataBind();
         }
 
-        protected void btnRestoreBackup_Click(object sender, EventArgs e)
+        protected void btnRestore_Click(object sender, EventArgs e)
         {
-            string restoreLocation = Server.MapPath("~/App_Data/backup.bak");
+            Button btnRestore = (Button)sender;
+            string filePath = btnRestore.CommandArgument;
+
+            string restoreLocation = filePath;
 
             bool isSuccess = gestionDB.RestoreDatabase(restoreLocation);
 
@@ -45,6 +68,36 @@ namespace GUI.WebForms.Pages
             {
                 lblMessage.Text = "Error al restaurar la base de datos.";
             }
+
+            lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
+
+        protected void btnCreateBackup_Click(object sender, EventArgs e)
+        {
+            string formattedDateTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string nameBackup = "BK" + formattedDateTime + ".bak";
+            string backupLocation = Server.MapPath("~/App_Data/") + nameBackup;
+            bool isSuccess = gestionDB.CreateBackup(backupLocation);
+
+            if (isSuccess)
+            {
+                lblMessage.Text = "Backup creado exitosamente.";
+            }
+            else
+            {
+                lblMessage.Text = "Error al crear el backup.";
+            }
+
+            LoadBackupFiles(); // Recargar la lista de backups después de crear uno nuevo
+        }
+
+    }
+
+    public class BackupFileInfo
+    {
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 }
+

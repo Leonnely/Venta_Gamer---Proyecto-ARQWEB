@@ -67,11 +67,9 @@
     <form id="frmBitacora" runat="server">
         <nav class="navbar">
             <div class="navbar--left">
+                <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/WebForms/Pages/home.aspx" CssClass="nav-link">Home</asp:HyperLink>
                 <asp:HyperLink ID="hlBitacora" runat="server" NavigateUrl="~/WebForms/Pages/bitacora.aspx" CssClass="nav-link">Bitacora</asp:HyperLink>
-                <asp:HyperLink ID="hlUFP" runat="server" NavigateUrl="~/UFP.aspx" CssClass="nav-link">UFP</asp:HyperLink>
-                <asp:HyperLink ID="hlEncriptacion" runat="server" NavigateUrl="~/Encriptacion.aspx" CssClass="nav-link">Encriptacion</asp:HyperLink>
-                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/Backup.aspx" CssClass="nav-link">Backup</asp:HyperLink>
-                <asp:HyperLink ID="hlRestore" runat="server" NavigateUrl="~/Restore.aspx" CssClass="nav-link">Restore</asp:HyperLink>
+                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/WebForms/Pages/Backup.aspx" CssClass="nav-link">GestionDB</asp:HyperLink>
             </div>
             <div class="navbar--right">
                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
