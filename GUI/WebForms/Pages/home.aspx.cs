@@ -116,21 +116,23 @@ namespace GUI.WebForms.Pages
             {
                 { "Admin", new List<NavbarItem>
                     {
-                        new NavbarItem { Name = "Dashboard", Url = "/Admin/Dashboard" },
-                        new NavbarItem { Name = "User Management", Url = "/Admin/Users" },
-                        new NavbarItem { Name = "Gestion de productos", Url = "/Admin/Products" },
-                        new NavbarItem { Name = "Settings", Url = "/Admin/Settings" }
+                        new NavbarItem { Name = "Home", Url = "/" },
+                        new NavbarItem { Name = "Dashboard", Url = "/" },
+                        new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
+                        new NavbarItem { Name = "Gestion de productos", Url = "/" },
+                        new NavbarItem { Name = "Settings", Url = "/" }
                     }
                 },
                 { "User", new List<NavbarItem>
                     {
                         new NavbarItem { Name = "Home", Url = "/" },
-                        new NavbarItem { Name = "Carrito", Url = "/User/Profile" },
-                        new NavbarItem { Name = "Settings", Url = "/User/Settings" }
+                        new NavbarItem { Name = "Carrito", Url = "/" },
+                        new NavbarItem { Name = "Settings", Url = "/" }
                     }
                 },
                 { "WebMaster", new List<NavbarItem>
                     {
+                        new NavbarItem { Name = "Home", Url = "/" },
                         new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
                         //new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
                         //new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },

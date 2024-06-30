@@ -64,7 +64,12 @@ namespace GUI.WebForms.Pages
             if (isSuccess)
             {
                 lblMessage.Text = "Base de datos restaurada exitosamente.";
-                string script = "alert('Base de datos restaurada exitosamente!,redirigiendo al login');";
+                string script = @"
+                    alert('Base de datos restaurada exitosamente!, redirigiendo al login');
+                    setTimeout(function() {
+                        window.location.href = '~/WebForms/Session/login.aspx';
+                    }, 5000);
+                ";
                 ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
                 Session.Abandon();
                 Response.Redirect("~/WebForms/Session/login.aspx");

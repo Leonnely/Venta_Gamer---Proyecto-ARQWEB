@@ -69,7 +69,7 @@
             <div class="navbar--left">
                 <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/WebForms/Pages/home.aspx" CssClass="nav-link">Home</asp:HyperLink>
                 <asp:HyperLink ID="hlBitacora" runat="server" NavigateUrl="~/WebForms/Pages/bitacora.aspx" CssClass="nav-link">Bitacora</asp:HyperLink>
-                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/WebForms/Pages/Backup.aspx" CssClass="nav-link">GestionDB</asp:HyperLink>
+                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/WebForms/Pages/backup.aspx" CssClass="nav-link">Gestion DB</asp:HyperLink>
             </div>
             <div class="navbar--right">
                 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>

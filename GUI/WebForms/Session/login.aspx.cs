@@ -77,7 +77,7 @@ namespace GUI.WebForms.Session
                     if (!IntegridadBBDD)
                     {
                         //obtener la sesion y meter en el if
-                        if (true)
+                        if (username=="WebMaster")
                         {
                             //webmaster
                             Response.Redirect("~/WebForms/Pages/backupDV.aspx");
