@@ -24,7 +24,6 @@
             width: max-content;
             padding: 20px;
             margin: auto;
-            border-radius: 50px;
             box-shadow:  20px 20px 60px #bebebe,
                             -20px -20px 60px #ffffff;
         }

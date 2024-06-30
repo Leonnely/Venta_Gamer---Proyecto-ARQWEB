@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="backup.aspx.cs" Inherits="GUI.WebForms.Pages.backup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="backupDV.aspx.cs" Inherits="GUI.WebForms.Pages.backupDV" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Backup and Restore</title>
-    <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
+    <title></title>    <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
     <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
     <style>
 
@@ -89,22 +88,7 @@
     
 <body>
     <form id="frmBackup" runat="server">
-        <nav class="navbar">
-            <div class="navbar--left">
-                <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/WebForms/Pages/home.aspx" CssClass="nav-link">Home</asp:HyperLink>
-                <asp:HyperLink ID="hlBitacora" runat="server" NavigateUrl="~/WebForms/Pages/bitacora.aspx" CssClass="nav-link">Bitacora</asp:HyperLink>
-                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/WebForms/Pages/backup.aspx" CssClass="nav-link">GestionDB</asp:HyperLink>
-            </div>
-            <div class="navbar--right">
-                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
-            </div>
-        </nav>
         <section class="main-content">
-            <div>
-                <asp:Button ID="btnCreateBackup" runat="server"  Text="Crear Backup" OnClick="btnCreateBackup_Click" CssClass="create_backup" />
-            </div>
-        
             <div styles="margin-left:5px;">
                 <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
             </div>

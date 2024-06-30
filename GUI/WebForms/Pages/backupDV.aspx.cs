@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace GUI.WebForms.Pages
 {
-    public partial class backup : System.Web.UI.Page
+    public partial class backupDV : System.Web.UI.Page
     {
         BLL_GestionDb gestionDB = new BLL_GestionDb();
         protected void Page_Load(object sender, EventArgs e)
@@ -64,6 +64,10 @@ namespace GUI.WebForms.Pages
             if (isSuccess)
             {
                 lblMessage.Text = "Base de datos restaurada exitosamente.";
+                string script = "alert('Base de datos restaurada exitosamente!,redirigiendo al login');";
+                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
+                Session.Abandon();
+                Response.Redirect("~/WebForms/Session/login.aspx");
             }
             else
             {
@@ -72,28 +76,5 @@ namespace GUI.WebForms.Pages
 
             lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
-
-        protected void btnCreateBackup_Click(object sender, EventArgs e)
-        {
-            string formattedDateTime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string nameBackup = "BK" + formattedDateTime + ".bak";
-            string backupLocation = Server.MapPath("~/App_Data/") + nameBackup;
-            bool isSuccess = gestionDB.CreateBackup(backupLocation);
-
-            if (isSuccess)
-            {
-                lblMessage.Text = "Backup creado exitosamente.";
-            }
-            else
-            {
-                lblMessage.Text = "Error al crear el backup.";
-            }
-
-            LoadBackupFiles(); // Recargar la lista de backups después de crear uno nuevo
-        }
-
     }
-
-    
 }
-

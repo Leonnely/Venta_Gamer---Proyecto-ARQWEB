@@ -110,6 +110,7 @@
     <Content Include="Styles\nav.css" />
     <Content Include="web.config" />
     <Content Include="WebForms\Pages\backup.aspx" />
+    <Content Include="WebForms\Pages\backupDV.aspx" />
     <Content Include="WebForms\Pages\bitacora.aspx" />
     <Content Include="WebForms\Pages\ErrorPage.aspx" />
     <Content Include="WebForms\Pages\home.aspx" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="WebForms\Pages\backup.aspx.designer.cs">
       <DependentUpon>backup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Pages\backupDV.aspx.cs">
+      <DependentUpon>backupDV.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\backupDV.aspx.designer.cs">
+      <DependentUpon>backupDV.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Pages\bitacora.aspx.cs">
       <DependentUpon>bitacora.aspx</DependentUpon>
