@@ -7,8 +7,8 @@
 </head>
 <body>
     <div>
-        <h1>Access Denied</h1>
-        <p>You do not have permission to view this page.</p>
+        <h1>Acceso Denegado</h1>
+        <p>No tienes permisos para acceder a los recursos solicitados.</p>
     </div>
 </body>
 </html>
