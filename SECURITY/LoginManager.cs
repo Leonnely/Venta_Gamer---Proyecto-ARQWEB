@@ -12,21 +12,32 @@ namespace SECURITY
     public class LoginManager
     {
         SessionManager sessionManager = new SessionManager();
+        DAL_Usuario user = new DAL_Usuario();
         public int role;
+        public int id;
+        public bool block;
+        
+        //INICIO DE SESION
         public bool login(string username, string password)
         {
             string HashedPassword= CryptoManager.HashPassword(password);
-            DAL_Usuario user = new DAL_Usuario();
+            
             bool sesion = user.Login(username, HashedPassword);
             if( sesion )
             {
                 if (sessionManager.CheckSession == null)
                 {
                     sessionManager.CreateSession(username);
-                    BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(username, "Inicio de sesion", "Login");
+                    BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(user.id, "Inicio de sesion", "Login");
+                    
                     BLL_Bitacora bitacora = new BLL_Bitacora();
                     bitacora.BitacoraRegister(registroBitacora);
+                    //DVManager managerSecurity = new DVManager();
+                    //managerSecurity.guardarTable(managerSecurity.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
+                    DVManager.guardarTable(DVManager.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
                     role = user.role;
+                    id = user.id;
+                    block = user.block;
                     return true;
                 }
                 else
@@ -38,6 +49,21 @@ namespace SECURITY
             {
                 return false;
             }
+        }
+
+        public bool blockUser(string username)
+        {
+            bool complete = user.userBlock(username);
+            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
+            return complete;
+        }
+
+
+        public void updatePassword(string username, string password)
+        {
+            string hashedpass = CryptoManager.HashPassword(password);
+            user.updatePassword(username, hashedpass);
+            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
         }
     }
 }

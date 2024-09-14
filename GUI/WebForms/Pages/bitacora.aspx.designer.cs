@@ -24,6 +24,15 @@ namespace GUI.WebForms.Pages
         protected global::System.Web.UI.HtmlControls.HtmlForm frmBitacora;
 
         /// <summary>
+        /// hlHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlHome;
+
+        /// <summary>
         /// hlBitacora control.
         /// </summary>
         /// <remarks>
@@ -33,24 +42,6 @@ namespace GUI.WebForms.Pages
         protected global::System.Web.UI.WebControls.HyperLink hlBitacora;
 
         /// <summary>
-        /// hlUFP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlUFP;
-
-        /// <summary>
-        /// hlEncriptacion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlEncriptacion;
-
-        /// <summary>
         /// hlBackup control.
         /// </summary>
         /// <remarks>
@@ -58,15 +49,6 @@ namespace GUI.WebForms.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlBackup;
-
-        /// <summary>
-        /// hlRestore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlRestore;
 
         /// <summary>
         /// Label1 control.

@@ -24,7 +24,6 @@
             width: max-content;
             padding: 20px;
             margin: auto;
-            border-radius: 50px;
             box-shadow:  20px 20px 60px #bebebe,
                             -20px -20px 60px #ffffff;
         }
@@ -41,7 +40,6 @@
             padding: 10px;
             margin-top:15px;
         }
-       
         .login-container #btnLogin{
             margin-top:20px;
             width: 100%;
@@ -54,7 +52,6 @@
         .login-container button:hover {
             background-color: #45a049;
         }
-
         .validators{
             color:red;
             font-size:.8rem;
@@ -75,9 +72,12 @@
                 <asp:RequiredFieldValidator ID="rfvUsername" Class="validators" runat="server" ControlToValidate="txtUsername" ErrorMessage="Nombre de usuario es un campo obligatorio."></asp:RequiredFieldValidator>
             
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Placeholder="Contraseña"></asp:TextBox>
+                <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/WebForms/Session/PasswordReset.aspx">Olvide mi contraseña</asp:HyperLink>
                 <asp:RequiredFieldValidator ID="rfvPassword" Class="validators" runat="server" ControlToValidate="txtPassword" ErrorMessage="Contraseña es un campo obligatorio."></asp:RequiredFieldValidator>
-            
+                
+
                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
+                
             </div>
         </div>
     </form>

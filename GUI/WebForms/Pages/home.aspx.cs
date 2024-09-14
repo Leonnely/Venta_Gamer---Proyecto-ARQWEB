@@ -13,15 +13,32 @@ namespace GUI.WebForms.Pages
         //prueba de rama leo
         protected void Page_Load(object sender, EventArgs e)
         {
-            string role = GetUserRole((int)Session["role"]);
+            if (Session["role"] != null)
+            {
+                string role = GetUserRole((int)Session["role"]);
 
-            var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
-                    ? RoleBasedNavbar.RoleNavItems[role]
-                    : RoleBasedNavbar.RoleNavItems["User"];
+                if (role == "A")
+                {
+                    Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
+                }
+                else
+                {
 
-            GenerateNavbar(navbarItems);
+
+                    var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
+                            ? RoleBasedNavbar.RoleNavItems[role]
+                            : RoleBasedNavbar.RoleNavItems["User"];
+
+                    GenerateNavbar(navbarItems);
+                }
+            }
+            else
+            {
+                Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
+            }
         }
 
+        //OBTENER EL ROL DE USUARIO
         public string GetUserRole(int rol)
         {
             switch (rol)
@@ -30,10 +47,10 @@ namespace GUI.WebForms.Pages
                     return "Administrador";
 
                 case 1:
-                    return "User";
+                    return "WebMaster";
 
                 case 2:
-                    return "WebMaster";
+                    return "User";
 
                 default:
                     return "A";
@@ -41,6 +58,7 @@ namespace GUI.WebForms.Pages
             }
         }
 
+        //GENERACION DE NAVBAR
         private void GenerateNavbar(List<NavbarItem> navbarItems)
         {
             var navbarDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
@@ -94,30 +112,33 @@ namespace GUI.WebForms.Pages
 
         public static class RoleBasedNavbar
         {
+            //CREACION DE ELEMENTOS DE NAVBAR POR USUARIO
             public static Dictionary<string, List<NavbarItem>> RoleNavItems = new Dictionary<string, List<NavbarItem>>()
             {
                 { "Admin", new List<NavbarItem>
                     {
-                        new NavbarItem { Name = "Dashboard", Url = "/Admin/Dashboard" },
-                        new NavbarItem { Name = "User Management", Url = "/Admin/Users" },
-                        new NavbarItem { Name = "Gestion de productos", Url = "/Admin/Products" },
-                        new NavbarItem { Name = "Settings", Url = "/Admin/Settings" }
+                        new NavbarItem { Name = "Home", Url = "/" },
+                        new NavbarItem { Name = "Dashboard", Url = "/" },
+                        new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
+                        new NavbarItem { Name = "Gestion de productos", Url = "/" },
+                        new NavbarItem { Name = "Settings", Url = "/" }
                     }
                 },
                 { "User", new List<NavbarItem>
                     {
                         new NavbarItem { Name = "Home", Url = "/" },
-                        new NavbarItem { Name = "Carrito", Url = "/User/Profile" },
-                        new NavbarItem { Name = "Settings", Url = "/User/Settings" }
+                        new NavbarItem { Name = "Carrito", Url = "/" },
+                        new NavbarItem { Name = "Settings", Url = "/" }
                     }
                 },
                 { "WebMaster", new List<NavbarItem>
                     {
+                        new NavbarItem { Name = "Home", Url = "/" },
                         new NavbarItem { Name = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
-                        new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
-                        new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },
-                        new NavbarItem { Name = "Backup", Url = "~/Backup.aspx" },
-                        new NavbarItem { Name = "Restore", Url = "~/Restore.aspx" }
+                        //new NavbarItem { Name = "UFP", Url = "~/UFP.aspx" },
+                        //new NavbarItem { Name = "Encriptacion", Url = "~/Encriptacion.aspx" },
+                        new NavbarItem { Name = "Gestion DB", Url = "~/WebForms/Pages/backup.aspx" },
+                        //new NavbarItem { Name = "Restore", Url = "~/Restore.aspx" }
                     }
                 }
             };
