@@ -10,6 +10,7 @@ namespace GUI.WebForms.Pages
 {
     public partial class home : System.Web.UI.Page
     {
+        //prueba de rama leo
         protected void Page_Load(object sender, EventArgs e)
         {
             string role = GetUserRole((int)Session["role"]);
