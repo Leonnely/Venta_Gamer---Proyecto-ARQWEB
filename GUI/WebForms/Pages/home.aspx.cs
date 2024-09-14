@@ -65,7 +65,7 @@ namespace GUI.WebForms.Pages
 
             var navbarLeftDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             navbarLeftDiv.Attributes["class"] = "navbar--left";
-
+            //lean estuvo aca
             foreach (var item in navbarItems)
             {
                 var link = new System.Web.UI.HtmlControls.HtmlAnchor
