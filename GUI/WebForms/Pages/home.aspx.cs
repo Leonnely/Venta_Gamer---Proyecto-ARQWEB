@@ -11,6 +11,7 @@ namespace GUI.WebForms.Pages
     public partial class home : System.Web.UI.Page
     {
         //prueba de rama leo
+        //otra prueba
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["role"] != null)
