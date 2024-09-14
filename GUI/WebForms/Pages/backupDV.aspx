@@ -93,7 +93,7 @@
                 <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
             </div>
             <div class="container_grid">
-                <asp:GridView ID="gvBackups" runat="server" AutoGenerateColumns="false" CssClass="gridview-backups">
+                <asp:GridView ID="gvBackups" runat="server" AutoGenerateColumns="false" CssClass="gridview-backups" OnSelectedIndexChanged="gvBackups_SelectedIndexChanged">
                     <Columns>
                         <asp:BoundField DataField="FileName" HeaderText="Nombre del archivo" />
                         <asp:BoundField DataField="CreationDate" HeaderText="Fecha de creación" DataFormatString="{0:dd/MM/yyyy HH:mm}" />

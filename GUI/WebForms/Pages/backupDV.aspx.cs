@@ -81,5 +81,10 @@ namespace GUI.WebForms.Pages
 
             lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
+
+        protected void gvBackups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
