@@ -10,8 +10,6 @@ namespace DAL
     public class DAL_GestionDB
     {
 
-        SqlConnection sqlConnection = new SqlConnection("Data Source=localhost;Initial Catalog=VentaGamer;Integrated Security=True");
-
         public bool CreateDatabase(string myString)
         {
             try
@@ -19,10 +17,10 @@ namespace DAL
                 string cmd = $"BACKUP DATABASE VentaGamer TO DISK = '{myString}'";
 
 
-                sqlConnection.Open();
-                SqlCommand command = new SqlCommand(cmd, sqlConnection);
+                _connection.GetConnection().Open();
+                SqlCommand command = new SqlCommand(cmd, _connection.GetConnection());
                 command.ExecuteNonQuery();
-                sqlConnection.Close();
+                _connection.GetConnection().Close();
                 return true;
             }
             catch (Exception)
@@ -36,23 +34,23 @@ namespace DAL
         {
             try
             {
-                sqlConnection.Open();
+                _connection.GetConnection().Open();
                 string Query = string.Format("ALTER DATABASE [VentaGamer] SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-                SqlCommand command = new SqlCommand(Query, sqlConnection);
+                SqlCommand command = new SqlCommand(Query, _connection.GetConnection());
                 command.ExecuteNonQuery();
                 string Query2 = $"USE MASTER RESTORE DATABASE [VentaGamer] FROM  DISK='{location}' WITH REPLACE;";
-                SqlCommand command2 = new SqlCommand(Query2, sqlConnection);
+                SqlCommand command2 = new SqlCommand(Query2, _connection.GetConnection());
                 command2.ExecuteNonQuery();
 
                 string Query3 = string.Format("ALTER DATABASE [VentaGamer] SET MULTI_USER ");
-                SqlCommand command3 = new SqlCommand(Query3, sqlConnection);
+                SqlCommand command3 = new SqlCommand(Query3, _connection.GetConnection());
                 command3.ExecuteNonQuery();
-                sqlConnection.Close();
+                _connection.GetConnection().Close();
                 return true;
             }
             catch (Exception)
             {
-                sqlConnection.Close();
+                _connection.GetConnection().Close();
                 return false;
             }
         }

@@ -7,25 +7,23 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebGrease;
 using System.Web.Security;
+using System.Data;
 
 namespace GUI.WebForms.Session
 {
     public partial class login : System.Web.UI.Page
     {
+        private readonly DVManager _digitoManager;
+        public login() 
+        {
+            _digitoManager = new DVManager();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //dv();
 
         }
 
-
-
-        void dv()
-        {
-            //DVManager managerSecurity = new DVManager();
-            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
-            DVManager.guardarTable(DVManager.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
-        }
+               
 
         int counter;
 
@@ -63,15 +61,11 @@ namespace GUI.WebForms.Session
                 {
                     //DVManager managerSecurity = new DVManager();
                     bool IntegridadBBDD = true;
-                    Dictionary<string, bool> tablas = DVManager.HashAndCompare();
+                    List<DataTable> listTables = _digitoManager.CheckIntegrity();
 
-                    foreach (var item in tablas)
+                    if (listTables.Count > 0)
                     {
-                        if (item.Value != true)
-                        {
-                            IntegridadBBDD = false;
-                            break;
-                        }
+                        IntegridadBBDD = false;
                     }
 
                     if (!IntegridadBBDD)
