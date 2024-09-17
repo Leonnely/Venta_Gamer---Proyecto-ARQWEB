@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Services;
 
 namespace GUI.WebForms.Pages
 {
@@ -21,8 +23,12 @@ namespace GUI.WebForms.Pages
                     Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
                 }
                 else
-                {
+                { 
+                    int idiomaSeleccionado = Session["language"] != null ? (int)Session["language"] : 1;
 
+                    // Cambia el idioma a través de la instancia de IdiomaSubject
+                    var idiomaSubject = new Services.IdiomaSubject();
+                    idiomaSubject.CambiarIdiomaDesdeDB(idiomaSeleccionado);
 
                     var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
                             ? RoleBasedNavbar.RoleNavItems[role]
@@ -66,11 +72,12 @@ namespace GUI.WebForms.Pages
             var navbarLeftDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             navbarLeftDiv.Attributes["class"] = "navbar--left";
 
+            // Iterar a través de los elementos del navbar y agregar textos traducidos
             foreach (var item in navbarItems)
             {
                 var link = new System.Web.UI.HtmlControls.HtmlAnchor
                 {
-                    InnerText = item.Name,
+                    InnerText = Services.IdiomaSubject.GetTexto(item.Name), // Obtiene el texto traducido usando el Observer
                     HRef = item.Url
                 };
                 link.Attributes["class"] = "nav-link";
@@ -79,20 +86,64 @@ namespace GUI.WebForms.Pages
 
             var navbarRightDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             navbarRightDiv.Attributes["class"] = "navbar--right";
-            //navbarRightDiv.InnerText = "Bienvenido " + GetUserRole((int)Session["role"]);
 
+            // Botón de Cerrar sesión
             var logoutButton = new System.Web.UI.WebControls.Button
             {
                 Text = "Cerrar sesión",
                 CssClass = "logout-button"
             };
             logoutButton.Click += LogoutButton_Click;
-
             navbarRightDiv.Controls.Add(logoutButton);
+
+            // Crear el control DropDownList para seleccionar el idioma
+            var languageDropDown = new System.Web.UI.WebControls.DropDownList
+            {
+                ID = "ddlLanguages",
+                AutoPostBack = true,
+                CssClass = "language-dropdown"
+            };
+            languageDropDown.SelectedIndexChanged += LanguageDropDown_SelectedIndexChanged; // Asocia el evento de selección
+
+            FillLanguageDropDown(languageDropDown);
 
             navbar.Controls.Add(navbarLeftDiv);
             navbar.Controls.Add(navbarRightDiv);
         }
+
+        private void FillLanguageDropDown(System.Web.UI.WebControls.DropDownList dropDown)
+        {
+            using (var connection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False"))
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT LanguageCode, LanguageName FROM Lenguajes", connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // Agregar cada idioma al DropDownList
+                        dropDown.Items.Add(new ListItem(reader["LanguageName"].ToString(), reader["LanguageCode"].ToString()));
+                    }
+                }
+            }
+        }
+
+        protected void LanguageDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var dropDown = (System.Web.UI.WebControls.DropDownList)sender;
+            string nuevoIdioma = dropDown.SelectedValue; // Obtiene el código de idioma seleccionado
+
+            // Cambiar idioma usando el código seleccionado
+            var idiomaSubject = new Services.IdiomaSubject();
+            idiomaSubject.CambiarIdiomaDesdeDB(nuevoIdioma);
+
+            // Guarda el nuevo idioma en la sesión
+            Session["language"] = nuevoIdioma;
+
+            // Recarga la página para aplicar el cambio de idioma
+            Response.Redirect(Request.RawUrl);
+        }
+
 
         protected void LogoutButton_Click(object sender, EventArgs e)
         {

@@ -41,3 +41,11 @@
 .logout-button:hover {
     background-color: #ff1a1a;
 }
+
+.language-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+

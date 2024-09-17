@@ -18,14 +18,15 @@ namespace DAL
         public int role;
         public int id;
         public bool block;
+        public int language;
 
-        SqlConnection sqlConnection = new SqlConnection("Data Source=localhost;Initial Catalog=VentaGamer;Integrated Security=True");
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False");
 
 
         //INICIO DE SESION
         public bool Login(string username, string password)
         {
-            BE_Usuario user = new BE_Usuario(username, password, 0);
+            BE_Usuario user = new BE_Usuario(username, password, 0, 0);
             sqlConnection.Open();
             SqlCommand cmd = new SqlCommand("SELECT * FROM USUARIOS WHERE USERNAME=@username AND PASSWORD=@password",sqlConnection);
             cmd.Parameters.AddWithValue("@username", username);
@@ -39,9 +40,11 @@ namespace DAL
                 user.Role = int.Parse(dt.Rows[0]["ROL"].ToString()); 
                 user.id= int.Parse(dt.Rows[0]["ID"].ToString());
                 user.block = bool.Parse(dt.Rows[0]["IsBlock"].ToString());
+                user.LanguageID = int.Parse(dt.Rows[0]["LanguageID"].ToString());
                 role =user.Role;
                 id = user.id;
                 block = user.block;
+                language = user.LanguageID;
 
                 return true;
             }

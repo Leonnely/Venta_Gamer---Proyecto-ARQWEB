@@ -16,6 +16,7 @@ namespace SECURITY
         public int role;
         public int id;
         public bool block;
+        public int languageID;
         
         //INICIO DE SESION
         public bool login(string username, string password)
@@ -38,6 +39,7 @@ namespace SECURITY
                     role = user.role;
                     id = user.id;
                     block = user.block;
+                    languageID = user.language;
                     return true;
                 }
                 else

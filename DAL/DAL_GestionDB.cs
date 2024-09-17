@@ -10,7 +10,7 @@ namespace DAL
     public class DAL_GestionDB
     {
 
-        SqlConnection sqlConnection = new SqlConnection("Data Source=localhost;Initial Catalog=VentaGamer;Integrated Security=True");
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False");
 
         public bool CreateDatabase(string myString)
         {

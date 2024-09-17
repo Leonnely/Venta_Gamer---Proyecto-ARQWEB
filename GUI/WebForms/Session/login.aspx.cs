@@ -14,7 +14,7 @@ namespace GUI.WebForms.Session
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //dv();
+            dv();
 
         }
 
@@ -95,6 +95,7 @@ namespace GUI.WebForms.Session
                         {
                             Session["role"] = loginManager.role;
                             Session["user"] = txtUsername.Text;
+                            Session["language"] = loginManager.languageID;
                             Response.Redirect("~/WebForms/Pages/home.aspx");
                             //FormsAuthentication.RedirectFromLoginPage(Session["user"].ToString(), true);
                         }
