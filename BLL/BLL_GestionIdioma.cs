@@ -15,20 +15,20 @@ namespace BLL
             _idiomaRepository = new DAL.DAL_GestionIdioma();
         }
 
-        public Dictionary<string, string> ObtenerTextosPorIdioma(string languageCode)
+        public Dictionary<string, string> ObtenerTextosPorIdioma(string codigoIdioma)
         {
-            return _idiomaRepository.GetTextsByLanguage(languageCode);
+            return _idiomaRepository.GetTextsByLanguage(codigoIdioma);
         }
 
 
-        public Dictionary<string, string> ObtenerTextosPorId(int languageId)
+        public Dictionary<string, string> ObtenerTextosPorId(int idiomaId)
         {
-            return _idiomaRepository.GetTextsByLanguageId(languageId);
+            return _idiomaRepository.GetTextsByLanguageId(idiomaId);
         }
 
-        public int ObtenerIdDesdeIdioma(string idioma)
+        public int ObtenerIdDesdeIdioma(string codigoIdioma)
         {
-            return _idiomaRepository.ObtenerIdDesdeIdioma(idioma);
+            return _idiomaRepository.ObtenerIdDesdeIdioma(codigoIdioma);
         }
     }
 }

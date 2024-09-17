@@ -12,6 +12,8 @@ namespace GUI.WebForms.Pages
 {
     public partial class home : System.Web.UI.Page
     {
+        //prueba de rama leo
+        //otra prueba
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["role"] != null)
@@ -23,12 +25,12 @@ namespace GUI.WebForms.Pages
                     Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
                 }
                 else
-                { 
-                    int idiomaSeleccionado = Session["language"] != null ? (int)Session["language"] : 1;
+                {
+                    string idiomaCodigo = Session["language"] != null ? Session["language"].ToString() : "es-ES"; ;
 
                     // Cambia el idioma a través de la instancia de IdiomaSubject
                     var idiomaSubject = new Services.IdiomaSubject();
-                    idiomaSubject.CambiarIdiomaDesdeDB(idiomaSeleccionado);
+                    idiomaSubject.CambiarIdiomaDesdeDB(idiomaCodigo);
 
                     var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
                             ? RoleBasedNavbar.RoleNavItems[role]
@@ -71,8 +73,9 @@ namespace GUI.WebForms.Pages
 
             var navbarLeftDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             navbarLeftDiv.Attributes["class"] = "navbar--left";
+            //lean estuvo aca
 
-            // Iterar a través de los elementos del navbar y agregar textos traducidos
+            // acá itero a través de los elementos del navbar y agrego textos traducidos
             foreach (var item in navbarItems)
             {
                 var link = new System.Web.UI.HtmlControls.HtmlAnchor
@@ -87,25 +90,28 @@ namespace GUI.WebForms.Pages
             var navbarRightDiv = new System.Web.UI.HtmlControls.HtmlGenericControl("div");
             navbarRightDiv.Attributes["class"] = "navbar--right";
 
-            // Botón de Cerrar sesión
-            var logoutButton = new System.Web.UI.WebControls.Button
-            {
-                Text = "Cerrar sesión",
-                CssClass = "logout-button"
-            };
-            logoutButton.Click += LogoutButton_Click;
-            navbarRightDiv.Controls.Add(logoutButton);
-
-            // Crear el control DropDownList para seleccionar el idioma
+            // creo el control DropDownList para seleccionar el idioma
             var languageDropDown = new System.Web.UI.WebControls.DropDownList
             {
                 ID = "ddlLanguages",
                 AutoPostBack = true,
                 CssClass = "language-dropdown"
             };
-            languageDropDown.SelectedIndexChanged += LanguageDropDown_SelectedIndexChanged; // Asocia el evento de selección
+            languageDropDown.SelectedIndexChanged += LanguageDropDown_SelectedIndexChanged; 
 
             FillLanguageDropDown(languageDropDown);
+
+            navbarRightDiv.Controls.Add(languageDropDown);
+
+            // Boton de Cerrar sesión
+            var logoutButton = new System.Web.UI.WebControls.Button
+            {
+                Text = Services.IdiomaSubject.GetTexto("CerrarSesion"), 
+                CssClass = "logout-button"
+            };
+            logoutButton.Click += LogoutButton_Click;
+
+            navbarRightDiv.Controls.Add(logoutButton);
 
             navbar.Controls.Add(navbarLeftDiv);
             navbar.Controls.Add(navbarRightDiv);
@@ -116,7 +122,7 @@ namespace GUI.WebForms.Pages
             using (var connection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False"))
             {
                 connection.Open();
-                var command = new SqlCommand("SELECT LanguageCode, LanguageName FROM Lenguajes", connection);
+                var command = new SqlCommand("SELECT LanguageCode, LanguageName FROM IDIOMA", connection);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())

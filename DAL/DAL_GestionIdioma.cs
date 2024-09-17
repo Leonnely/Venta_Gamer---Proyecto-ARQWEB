@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,79 +10,87 @@ namespace DAL
 {
     public class DAL_GestionIdioma
     {
-        public Dictionary<string, string> GetTextsByLanguage(string languageCode)
+        public Dictionary<string, string> GetTextsByLanguage(string codigoIdioma)
         {
             var textos = new Dictionary<string, string>();
-            using (var connection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False"))
-            {
-                connection.Open();
-              
-                var command = new SqlCommand(
-                    "SELECT t.TextKey, t.Value " +
-                    "FROM TextoLenguajes t " +
-                    "INNER JOIN Lenguajes l ON t.LanguageID = l.LanguageID " +
-                    "WHERE l.LanguageCode = @idioma", connection);
 
-               
-                command.Parameters.AddWithValue("@idioma", languageCode);
-
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        // Llena el diccionario con las claves y valores obtenidos de la consulta
-                        textos[reader["TextKey"].ToString()] = reader["Value"].ToString();
-                    }
-                }
-            }
-            return textos;
-        }
-
-        public Dictionary<string, string> GetTextsByLanguageId(int languageId)
-        {
-            var textos = new Dictionary<string, string>();
-            using (var connection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False"))
+            
+            using (SqlConnection connection = _connection.GetConnection())
             {
                 connection.Open();
 
-                var command = new SqlCommand(
+                
+                using (SqlCommand command = new SqlCommand(
                     "SELECT t.TextKey, t.Value " +
-                    "FROM TextoLenguajes t " +
-                    "INNER JOIN Lenguajes l ON t.LanguageID = l.LanguageID " +
-                    "WHERE l.LanguageID = @idiomaID", connection);
-
-
-                command.Parameters.AddWithValue("@idiomaID", languageId);
-
-                using (var reader = command.ExecuteReader())
+                    "FROM TEXTOIDIOMA t " +
+                    "INNER JOIN IDIOMA l ON t.LanguageID = l.LanguageID " +
+                    "WHERE l.LanguageCode = @idioma", connection))
                 {
-                    while (reader.Read())
+                    command.Parameters.AddWithValue("@idioma", codigoIdioma);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        // Llena el diccionario con las claves y valores obtenidos de la consulta
-                        textos[reader["TextKey"].ToString()] = reader["Value"].ToString();
+                        while (reader.Read())
+                        {
+                            // Llena el diccionario con las claves y valores obtenidos de la consulta
+                            textos[reader["TextKey"].ToString()] = reader["Value"].ToString();
+                        }
                     }
                 }
             }
+
             return textos;
         }
 
-        public int ObtenerIdDesdeIdioma(string idioma)
+        public Dictionary<string, string> GetTextsByLanguageId(int idiomaId)
+        {
+            var textos = new Dictionary<string, string>();
+
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(
+                    "SELECT t.TextKey, t.Value " +
+                    "FROM TEXTOIDIOMA t " +
+                    "INNER JOIN IDIOMA l ON t.LanguageID = l.LanguageID " +
+                    "WHERE l.LanguageID = @idiomaID", connection))
+                {
+                    command.Parameters.AddWithValue("@idiomaID", idiomaId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Llena el diccionario con las claves y valores obtenidos de la consulta
+                            textos[reader["TextKey"].ToString()] = reader["Value"].ToString();
+                        }
+                    }
+                }
+            }
+
+            // Retorna el diccionario de textos
+            return textos;
+        }
+
+
+        public int ObtenerIdDesdeIdioma(string codigoIdioma)
         {
             int id = -1; // Valor predeterminado en caso de que no se encuentre el idioma.
 
-            using (var connection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False"))
+            using (SqlConnection connection = _connection.GetConnection())
             {
                 connection.Open();
 
-                using (var command = new SqlCommand("SELECT LanguageID FROM Lenguajes WHERE LanguageCode = @idioma;", connection))
+                using (var command = new SqlCommand("SELECT LanguageID FROM IDIOMA WHERE LanguageCode = @idioma;", connection))
                 {
-                    command.Parameters.AddWithValue("@idioma", idioma);
+                    command.Parameters.AddWithValue("@idioma", codigoIdioma);
 
                     using (var reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            id = reader.GetInt32(0); 
+                            id = reader.GetInt32(0);
                         }
                     }
                 }
@@ -89,5 +98,6 @@ namespace DAL
 
             return id;
         }
+
     }
 }

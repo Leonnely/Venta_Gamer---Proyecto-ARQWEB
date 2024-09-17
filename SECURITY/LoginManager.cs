@@ -11,6 +11,12 @@ namespace SECURITY
 {
     public class LoginManager
     {
+        private readonly DVManager _digitoManager;
+        public LoginManager() 
+        {
+            _digitoManager = new DVManager();
+        }
+
         SessionManager sessionManager = new SessionManager();
         DAL_Usuario user = new DAL_Usuario();
         public int role;
@@ -33,13 +39,15 @@ namespace SECURITY
                     
                     BLL_Bitacora bitacora = new BLL_Bitacora();
                     bitacora.BitacoraRegister(registroBitacora);
-                    //DVManager managerSecurity = new DVManager();
-                    //managerSecurity.guardarTable(managerSecurity.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
-                    DVManager.guardarTable(DVManager.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
                     role = user.role;
                     id = user.id;
                     block = user.block;
                     languageID = user.language;
+
+
+                    //Actualizacion del DV en base de datos
+                    _digitoManager.ActualizarTablaDVH("BITACORA_REGISTROS");
+
                     return true;
                 }
                 else
@@ -56,7 +64,7 @@ namespace SECURITY
         public bool blockUser(string username)
         {
             bool complete = user.userBlock(username);
-            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
+            _digitoManager.ActualizarTablaDVH("USUARIOS");
             return complete;
         }
 
@@ -65,7 +73,8 @@ namespace SECURITY
         {
             string hashedpass = CryptoManager.HashPassword(password);
             user.updatePassword(username, hashedpass);
-            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
+         
+            _digitoManager.ActualizarTablaDVH("USUARIOS");
         }
     }
 }
