@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using WebGrease;
 using System.Web.Security;
 using System.Data;
+using BLL;
 
 namespace GUI.WebForms.Session
 {
@@ -55,6 +56,8 @@ namespace GUI.WebForms.Session
                 string password = txtPassword.Text;
 
                 LoginManager loginManager = new LoginManager();
+                BLL_GestionIdioma idioma = new BLL_GestionIdioma();
+
 
                 if (loginManager.login(username, password))     //SI NO EXISTE SESION
                 {
@@ -86,9 +89,10 @@ namespace GUI.WebForms.Session
                     {
                         if (!loginManager.block)
                         {
+                            Session["id"] = loginManager.id;
                             Session["role"] = loginManager.role;
                             Session["user"] = txtUsername.Text;
-                            Session["language"] = loginManager.languageID;
+                            Session["language"] = idioma.ObtenerCodigoDesdeId(loginManager.languageID);
                             Response.Redirect("~/WebForms/Pages/home.aspx");
                             //FormsAuthentication.RedirectFromLoginPage(Session["user"].ToString(), true);
                         }

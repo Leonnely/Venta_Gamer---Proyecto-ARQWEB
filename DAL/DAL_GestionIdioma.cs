@@ -73,6 +73,31 @@ namespace DAL
             return textos;
         }
 
+        public string ObtenerCodigoDesdeId(int id)
+        {
+            string respuesta = null; // predeterminado en caso de que no se encuentre el idioma.
+
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("SELECT LanguageCode FROM IDIOMA WHERE LanguageID = @id;", connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            
+                            respuesta = reader.GetString(0); // 0 es el índice de la columna LanguageCode
+                        }
+                    }
+                }
+            }
+
+            return respuesta ?? "es-ES";
+        }
 
         public int ObtenerIdDesdeIdioma(string codigoIdioma)
         {
@@ -98,6 +123,5 @@ namespace DAL
 
             return id;
         }
-
     }
 }

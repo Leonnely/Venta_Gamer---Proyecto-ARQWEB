@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BLL;
+using SECURITY;
 using Services;
 
 namespace GUI.WebForms.Pages
@@ -37,6 +39,8 @@ namespace GUI.WebForms.Pages
                             : RoleBasedNavbar.RoleNavItems["User"];
 
                     GenerateNavbar(navbarItems);
+                    
+
                 }
             }
             else
@@ -115,6 +119,8 @@ namespace GUI.WebForms.Pages
 
             navbar.Controls.Add(navbarLeftDiv);
             navbar.Controls.Add(navbarRightDiv);
+
+
         }
 
         private void FillLanguageDropDown(System.Web.UI.WebControls.DropDownList dropDown)
@@ -132,19 +138,34 @@ namespace GUI.WebForms.Pages
                     }
                 }
             }
+
+            // Verificar si hay un idioma guardado en la sesión
+            if (Session["language"] != null)
+            {
+                // Seleccionar el valor guardado en la sesión
+                dropDown.SelectedValue = Session["language"].ToString();
+            }
+            else
+            {
+                // Establecer el valor predeterminado si no hay un idioma en la sesión
+                dropDown.SelectedValue = "es-ES"; // Ajusta esto al idioma predeterminado que desees
+            }
         }
 
         protected void LanguageDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             var dropDown = (System.Web.UI.WebControls.DropDownList)sender;
-            string nuevoIdioma = dropDown.SelectedValue; // Obtiene el código de idioma seleccionado
+            string nuevoIdioma = dropDown.SelectedValue;
+            int userId = (int)Session["id"];
 
-            // Cambiar idioma usando el código seleccionado
+            LoginManager loginManager = new LoginManager();
+
             var idiomaSubject = new Services.IdiomaSubject();
             idiomaSubject.CambiarIdiomaDesdeDB(nuevoIdioma);
 
-            // Guarda el nuevo idioma en la sesión
             Session["language"] = nuevoIdioma;
+            
+            loginManager.updateLanguaje(userId, idiomaSubject.ObtenerIdDesdeIdioma(nuevoIdioma));
 
             // Recarga la página para aplicar el cambio de idioma
             Response.Redirect(Request.RawUrl);

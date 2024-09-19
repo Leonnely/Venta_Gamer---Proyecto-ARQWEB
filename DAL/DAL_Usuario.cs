@@ -70,8 +70,7 @@ namespace DAL
 
                 return false ;
             }
-            
-            
+           
         }
 
         public int GetUserID(string username)
@@ -98,5 +97,25 @@ namespace DAL
             _connection.GetConnection().Close();
         }
 
+        public void updateLanguage(int languageId, int userId)
+        {
+
+            int userID = userId;
+
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("UPDATE USUARIOS SET LanguageID=@LanguageID WHERE ID=@userID;", connection))
+                {
+                    command.Parameters.AddWithValue("@LanguageID", languageId);
+                    command.Parameters.AddWithValue("@userID", userID);
+
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
     }
 }

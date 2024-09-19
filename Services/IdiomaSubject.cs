@@ -12,9 +12,9 @@ namespace Services
 {
     public class IdiomaSubject
     {
-            private static List<IIdiomaObserver> _observers = new List<IIdiomaObserver>();
-            private readonly BLL_GestionIdioma _idiomaManager;
-            private static Dictionary<string, string> _textosActuales = new Dictionary<string, string>();
+        private static List<IIdiomaObserver> _observers = new List<IIdiomaObserver>();
+        private readonly BLL_GestionIdioma _idiomaManager;
+        private static Dictionary<string, string> _textosActuales = new Dictionary<string, string>();
 
             public IdiomaSubject()
             {
@@ -47,15 +47,21 @@ namespace Services
                 Notify();
             }
 
-            public void CambiarIdiomaDesdeDB(int id)
-            {
-                _textosActuales = _idiomaManager.ObtenerTextosPorId(id);
-                Notify();
-            }
+        public void CambiarIdiomaDesdeDB(int id)
+        {
+            _textosActuales = _idiomaManager.ObtenerTextosPorId(id);
+            Notify();
+        }
 
-            public int ObtenerIdDesdeIdioma(string idioma)
-            {
-                return _idiomaManager.ObtenerIdDesdeIdioma(idioma);
+        public int ObtenerIdDesdeIdioma(string idioma)
+        {
+            return _idiomaManager.ObtenerIdDesdeIdioma(idioma);
+        }
+            
+
+            public string ObtenerCodigoDesdeId(int id)
+        {
+            return _idiomaManager.ObtenerCodigoDesdeId(id);
         }
 
         // Método estático para obtener texto traducido

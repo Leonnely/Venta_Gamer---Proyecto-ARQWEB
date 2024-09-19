@@ -12,7 +12,7 @@ namespace SECURITY
     public class LoginManager
     {
         private readonly DVManager _digitoManager;
-        public LoginManager() 
+        public LoginManager()
         {
             _digitoManager = new DVManager();
         }
@@ -23,20 +23,20 @@ namespace SECURITY
         public int id;
         public bool block;
         public int languageID;
-        
+
         //INICIO DE SESION
         public bool login(string username, string password)
         {
-            string HashedPassword= CryptoManager.HashPassword(password);
-            
+            string HashedPassword = CryptoManager.HashPassword(password);
+
             bool sesion = user.Login(username, HashedPassword);
-            if( sesion )
+            if (sesion)
             {
                 if (sessionManager.CheckSession == null)
                 {
                     sessionManager.CreateSession(username);
                     BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(user.id, "Inicio de sesion", "Login");
-                    
+
                     BLL_Bitacora bitacora = new BLL_Bitacora();
                     bitacora.BitacoraRegister(registroBitacora);
                     role = user.role;
@@ -73,8 +73,15 @@ namespace SECURITY
         {
             string hashedpass = CryptoManager.HashPassword(password);
             user.updatePassword(username, hashedpass);
-         
+
             _digitoManager.ActualizarTablaDVH("USUARIOS");
+        }
+
+        public void updateLanguaje(int userId, int languageId) 
+        {
+            user.updateLanguage(languageId, userId);
+            _digitoManager.ActualizarTablaDVH("USUARIOS");
+
         }
     }
 }
