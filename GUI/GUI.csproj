@@ -200,9 +200,9 @@
       <Project>{d19b4340-262d-4fc2-aea2-30ef32a9a7fa}</Project>
       <Name>SECURITY</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\SERVICES.csproj">
       <Project>{180f93d8-1e32-4e7e-af1f-b5fabea74312}</Project>
-      <Name>Services</Name>
+      <Name>SERVICES</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

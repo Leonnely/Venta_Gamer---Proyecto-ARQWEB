@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using BLL;
 
 
-namespace Services
+namespace SERVICES
 {
     public class IdiomaSubject
     {

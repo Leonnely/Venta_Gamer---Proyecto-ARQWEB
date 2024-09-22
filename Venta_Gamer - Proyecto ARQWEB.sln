@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SECURITY", "SECURITY\SECURITY.csproj", "{D19B4340-262D-4FC2-AEA2-30EF32A9A7FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SERVICES", "Services\SERVICES.csproj", "{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
