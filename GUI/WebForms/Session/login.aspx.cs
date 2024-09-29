@@ -7,25 +7,23 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebGrease;
 using System.Web.Security;
+using System.Data;
+using BLL;
 
 namespace GUI.WebForms.Session
 {
     public partial class login : System.Web.UI.Page
     {
+        private readonly DVManager _digitoManager;
+        public login() 
+        {
+            _digitoManager = new DVManager();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //dv();
-
         }
 
-
-
-        void dv()
-        {
-            //DVManager managerSecurity = new DVManager();
-            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
-            DVManager.guardarTable(DVManager.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
-        }
+               
 
         int counter;
 
@@ -58,20 +56,18 @@ namespace GUI.WebForms.Session
                 string password = txtPassword.Text;
 
                 LoginManager loginManager = new LoginManager();
+                BLL_GestionIdioma idioma = new BLL_GestionIdioma();
+
 
                 if (loginManager.login(username, password))     //SI NO EXISTE SESION
                 {
                     //DVManager managerSecurity = new DVManager();
                     bool IntegridadBBDD = true;
-                    Dictionary<string, bool> tablas = DVManager.HashAndCompare();
+                    List<DataTable> listTables = _digitoManager.CheckIntegrity();
 
-                    foreach (var item in tablas)
+                    if (listTables.Count > 0)
                     {
-                        if (item.Value != true)
-                        {
-                            IntegridadBBDD = false;
-                            break;
-                        }
+                        IntegridadBBDD = false;
                     }
 
                     if (!IntegridadBBDD)
@@ -93,8 +89,10 @@ namespace GUI.WebForms.Session
                     {
                         if (!loginManager.block)
                         {
+                            Session["id"] = loginManager.id;
                             Session["role"] = loginManager.role;
                             Session["user"] = txtUsername.Text;
+                            Session["language"] = idioma.ObtenerCodigoDesdeId(loginManager.languageID);
                             Response.Redirect("~/WebForms/Pages/home.aspx");
                             //FormsAuthentication.RedirectFromLoginPage(Session["user"].ToString(), true);
                         }
