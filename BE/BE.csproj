@@ -44,7 +44,15 @@
     <Compile Include="BackupFileInfo.cs" />
     <Compile Include="BE_RegistroBitacora.cs" />
     <Compile Include="BE_Usuario.cs" />
+    <Compile Include="Permission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{7bca935a-a6a5-4b89-8e0b-9576a33419b2}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
