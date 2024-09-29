@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BLL_Bitacora.cs" />
     <Compile Include="BLL_GestionDb.cs" />
+    <Compile Include="BLL_GestionIdioma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

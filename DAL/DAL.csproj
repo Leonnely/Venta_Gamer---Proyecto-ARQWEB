@@ -44,8 +44,13 @@
     <Compile Include="DALDVManager.cs" />
     <Compile Include="DAL_Bitacora.cs" />
     <Compile Include="DAL_GestionDB.cs" />
+    <Compile Include="DAL_GestionIdioma.cs" />
     <Compile Include="DAL_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="_connection.cs" />
+>>>>>>> a4ab31443e4417c9830c09cfb6360799a31c874c
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

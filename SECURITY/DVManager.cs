@@ -9,87 +9,46 @@ using DAL;
 
 namespace SECURITY
 {
-    static public  class DVManager
+    public  class DVManager
     {
-       static DVManager() { }
+        static DVManager() { }
 
-       static DALDVManager dVManager = new DALDVManager();
+        private readonly DALDVManager DAL_DVManager = new DALDVManager();
 
-
-
-        static public bool CompareTables(DataTable table1, DataTable table2)
+        public DataTable ValidarDVH(string nombreTabla)
         {
-            if (table1.Rows.Count != table2.Rows.Count)
-            {
-                return false; // Diferente número de filas
-            }
+            return DAL_DVManager.ValidarDVH(nombreTabla);
+        }
 
-            for (int i = 0; i < table1.Rows.Count; i++)
+        public bool ActualizarTablaDVH(string nombreTabla)
+        {
+            return DAL_DVManager.ActualizarTablaDVH(nombreTabla);
+        }
+
+        public List<DataTable> CheckIntegrity()
+        {
+            List<DataTable> dataTables = new List<DataTable>();
+
+            // Lista de nombres de tablas a validar
+            string[] tablesToCheck = { "USUARIOS", "BITACORA_REGISTROS" };
+
+            foreach (string tableName in tablesToCheck)
             {
-                for (int j = 0; j < table1.Columns.Count; j++)
+                // Ejecuta ValidarDVH y obtiene el DataTable
+                DataTable dt = this.ValidarDVH(tableName);
+
+                // Solo agrega el DataTable a la lista si contiene discrepancias
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    if (!table1.Rows[i][j].Equals(table2.Rows[i][j]))
-                    {
-                        return false; // Los datos en la celda no son iguales
-                    }
+                    dataTables.Add(dt);
                 }
             }
 
-            return true;
+            return dataTables;
         }
+<<<<<<< HEAD
+=======
 
-        static public DataTable HashTable(string tabla_A_Concatenar)
-        {
-
-            DataTable TableToHash = dVManager.ObtenerDatatableConcatenada(tabla_A_Concatenar);
-
-            if (TableToHash.Rows.Count > 0 && TableToHash.Columns.Contains("COLUMNA"))
-            {
-                TableToHash.Columns["COLUMNA"].ColumnName = "HashValue";
-
-                using (SHA256 sha256 = SHA256.Create())
-                {
-                    foreach (DataRow row in TableToHash.Rows)
-                    {
-                        string hashValue = row["HashValue"].ToString();
-
-                        byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(hashValue));
-
-                        string hashString = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-
-                        row["HashValue"] = hashString;
-                    }
-                }
-            }
-            return TableToHash;
-        }
-
-
-       static public void guardarTable(DataTable table, string tablaDigitoVerificador)
-        {
-
-
-            dVManager.GuardarTable(table, tablaDigitoVerificador);
-        }
-
-
-        static public Dictionary<string, bool> HashAndCompare()
-        {
-            List<Tuple<string, string>> TablaBBDD = new List<Tuple<string, string>>();
-
-            //TODO: Se agregan tablas segun existan en la BBDD
-            TablaBBDD.Add(new Tuple<string, string>("USUARIOS", "DV_USUARIOS"));
-            TablaBBDD.Add(new Tuple<string, string>("BITACORA_REGISTROS", "DV_BITACORA"));
-
-            Dictionary<string, bool> tablas = new Dictionary<string, bool>();
-            foreach (var tupla in TablaBBDD)
-            {
-
-                tablas.Add(tupla.Item1, CompareTables(HashTable(tupla.Item1), dVManager.ObtenerDatatable(tupla.Item2)));
-
-            }
-            return tablas;
-
-        }
+>>>>>>> a4ab31443e4417c9830c09cfb6360799a31c874c
     }
 }

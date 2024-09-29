@@ -82,8 +82,35 @@ namespace GUI.WebForms.Pages
             lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
 
+<<<<<<< HEAD
         protected void gvBackups_SelectedIndexChanged(object sender, EventArgs e)
         {
+=======
+        protected void btnDownload_Click(object sender, EventArgs e)
+        {
+            Button btnDownload = (Button)sender;
+            string filePath = btnDownload.CommandArgument;
+
+            string BackupLocation = filePath;
+
+            if (System.IO.File.Exists(BackupLocation))
+            {
+                // Obtener el nombre del archivo
+                string fileName = System.IO.Path.GetFileName(BackupLocation);
+
+                // Limpiar cualquier respuesta anterior
+                Response.Clear();
+                Response.ContentType = "application/octet-stream"; // Tipo de contenido para archivos binarios
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+                Response.TransmitFile(BackupLocation); // Transmitir el archivo al cliente
+                Response.End(); // Finalizar la respuesta
+            }
+            else
+            {
+                // Manejar el caso donde el archivo no existe
+                Response.Write("<script>alert('El archivo no existe.');</script>");
+            }
+>>>>>>> a4ab31443e4417c9830c09cfb6360799a31c874c
 
         }
     }

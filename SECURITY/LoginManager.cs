@@ -11,33 +11,43 @@ namespace SECURITY
 {
     public class LoginManager
     {
+        private readonly DVManager _digitoManager;
+        public LoginManager()
+        {
+            _digitoManager = new DVManager();
+        }
+
         SessionManager sessionManager = new SessionManager();
         DAL_Usuario user = new DAL_Usuario();
         public int role;
         public int id;
         public bool block;
-        
+        public int languageID;
+
         //INICIO DE SESION
         public bool login(string username, string password)
         {
-            string HashedPassword= CryptoManager.HashPassword(password);
-            
+            string HashedPassword = CryptoManager.HashPassword(password);
+
             bool sesion = user.Login(username, HashedPassword);
-            if( sesion )
+            if (sesion)
             {
                 if (sessionManager.CheckSession == null)
                 {
                     sessionManager.CreateSession(username);
                     BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora(user.id, "Inicio de sesion", "Login");
-                    
+
                     BLL_Bitacora bitacora = new BLL_Bitacora();
                     bitacora.BitacoraRegister(registroBitacora);
-                    //DVManager managerSecurity = new DVManager();
-                    //managerSecurity.guardarTable(managerSecurity.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
-                    DVManager.guardarTable(DVManager.HashTable("BITACORA_REGISTROS"), "DV_BITACORA");
                     role = user.role;
                     id = user.id;
                     block = user.block;
+                    languageID = user.language;
+
+
+                    //Actualizacion del DV en base de datos
+                    _digitoManager.ActualizarTablaDVH("BITACORA_REGISTROS");
+
                     return true;
                 }
                 else
@@ -54,7 +64,7 @@ namespace SECURITY
         public bool blockUser(string username)
         {
             bool complete = user.userBlock(username);
-            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
+            _digitoManager.ActualizarTablaDVH("USUARIOS");
             return complete;
         }
 
@@ -63,7 +73,15 @@ namespace SECURITY
         {
             string hashedpass = CryptoManager.HashPassword(password);
             user.updatePassword(username, hashedpass);
-            DVManager.guardarTable(DVManager.HashTable("USUARIOS"), "DV_USUARIOS");
+
+            _digitoManager.ActualizarTablaDVH("USUARIOS");
+        }
+
+        public void updateLanguaje(int userId, int languageId) 
+        {
+            user.updateLanguage(languageId, userId);
+            _digitoManager.ActualizarTablaDVH("USUARIOS");
+
         }
     }
 }

@@ -18,11 +18,14 @@ namespace BE
 
         public bool block {  get; set; }
 
-        public BE_Usuario(string username, string password, int role)
+        public int LanguageID { get; set; }
+
+        public BE_Usuario(string username, string password, int role, int language)
         {
             Username = username;
             Password = password;
             Role = role;
+            LanguageID = language;
         }
 
        
