@@ -31,7 +31,7 @@ namespace GUI.WebForms.Pages
                     string idiomaCodigo = Session["language"] != null ? Session["language"].ToString() : "es-ES"; ;
 
                     // Cambia el idioma a través de la instancia de IdiomaSubject
-                    var idiomaSubject = new Services.IdiomaSubject();
+                    var idiomaSubject = new SERVICES.IdiomaSubject();
                     idiomaSubject.CambiarIdiomaDesdeDB(idiomaCodigo);
 
                     var navbarItems = RoleBasedNavbar.RoleNavItems.ContainsKey(role)
@@ -84,7 +84,7 @@ namespace GUI.WebForms.Pages
             {
                 var link = new System.Web.UI.HtmlControls.HtmlAnchor
                 {
-                    InnerText = Services.IdiomaSubject.GetTexto(item.Name), // Obtiene el texto traducido usando el Observer
+                    InnerText = SERVICES.IdiomaSubject.GetTexto(item.Name), // Obtiene el texto traducido usando el Observer
                     HRef = item.Url
                 };
                 link.Attributes["class"] = "nav-link";
@@ -110,7 +110,7 @@ namespace GUI.WebForms.Pages
             // Boton de Cerrar sesión
             var logoutButton = new System.Web.UI.WebControls.Button
             {
-                Text = Services.IdiomaSubject.GetTexto("CerrarSesion"), 
+                Text = SERVICES.IdiomaSubject.GetTexto("CerrarSesion"), 
                 CssClass = "logout-button"
             };
             logoutButton.Click += LogoutButton_Click;
@@ -139,7 +139,6 @@ namespace GUI.WebForms.Pages
                 }
             }
 
-            // Verificar si hay un idioma guardado en la sesión
             if (Session["language"] != null)
             {
                 // Seleccionar el valor guardado en la sesión
@@ -160,7 +159,7 @@ namespace GUI.WebForms.Pages
 
             LoginManager loginManager = new LoginManager();
 
-            var idiomaSubject = new Services.IdiomaSubject();
+            var idiomaSubject = new SERVICES.IdiomaSubject();
             idiomaSubject.CambiarIdiomaDesdeDB(nuevoIdioma);
 
             Session["language"] = nuevoIdioma;
