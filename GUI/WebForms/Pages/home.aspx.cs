@@ -125,29 +125,20 @@ namespace GUI.WebForms.Pages
 
         private void FillLanguageDropDown(System.Web.UI.WebControls.DropDownList dropDown)
         {
-            using (var connection = new SqlConnection(@"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False"))
+            var bllGestionIdioma = new BLL_GestionIdioma();
+            var idiomas = bllGestionIdioma.ObtenerIdiomas(); 
+            foreach (var idioma in idiomas)
             {
-                connection.Open();
-                var command = new SqlCommand("SELECT LanguageCode, LanguageName FROM IDIOMA", connection);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        // Agregar cada idioma al DropDownList
-                        dropDown.Items.Add(new ListItem(reader["LanguageName"].ToString(), reader["LanguageCode"].ToString()));
-                    }
-                }
+                dropDown.Items.Add(new ListItem(idioma.Nombre, idioma.Codigo));
             }
 
             if (Session["language"] != null)
             {
-                // Seleccionar el valor guardado en la sesión
                 dropDown.SelectedValue = Session["language"].ToString();
             }
             else
             {
-                // Establecer el valor predeterminado si no hay un idioma en la sesión
-                dropDown.SelectedValue = "es-ES"; // Ajusta esto al idioma predeterminado que desees
+                dropDown.SelectedValue = "es-ES"; // Idioma por defecto
             }
         }
 

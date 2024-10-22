@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,11 @@ namespace BLL
         public string ObtenerCodigoDesdeId(int id)
         {
             return _idiomaRepository.ObtenerCodigoDesdeId(id);
+        }
+
+        public List<Idioma> ObtenerIdiomas()
+        {
+            return _idiomaRepository.ObtenerIdiomas();
         }
     }
 }
