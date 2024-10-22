@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using BLL;
 using SECURITY;
 using SERVICES;
+using BE;
 
 namespace GUI.WebForms.Pages
 {
@@ -39,7 +40,8 @@ namespace GUI.WebForms.Pages
                             : RoleBasedNavbar.RoleNavItems["User"];
 
                     GenerateNavbar(navbarItems);
-                    
+
+                    LoadProducts();
 
                 }
             }
@@ -48,6 +50,17 @@ namespace GUI.WebForms.Pages
                 Response.Redirect("~/WebForms/Pages/ErrorPage.aspx");
             }
         }
+
+
+        private void LoadProducts()
+        {
+            ProductsService service = new ProductsService();
+            List<Productos> products = service.GetProducts();
+            ProductRepeater.DataSource = products;
+            ProductRepeater.DataBind();
+        }
+
+
 
         //OBTENER EL ROL DE USUARIO
         public string GetUserRole(int rol)

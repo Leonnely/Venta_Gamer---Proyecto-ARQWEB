@@ -10,15 +10,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="navbar" runat="server" id="navbar">
-
+        <div class="navbar" runat="server" id="navbar"></div>
+        
+        <!-- Espacio para mostrar los productos -->
+        <div id="productList" class="product-list">
+            <asp:Repeater ID="ProductRepeater" runat="server">
+                <ItemTemplate>
+                    <div class="product-item">
+                        <div class="product-category">Categoría: <%# Eval("Category") %></div>
+                        <div class="product-title">Producto: <%# Eval("Title") %></div>
+                        <div class="product-price">Precio: $<%# Eval("Price") %></div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </form>
 </body>
 </html>
-
-
-
 
 
 <%--<nav class="navbar">

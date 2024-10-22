@@ -45,6 +45,7 @@
     <Compile Include="DAL_Bitacora.cs" />
     <Compile Include="DAL_GestionDB.cs" />
     <Compile Include="DAL_GestionIdioma.cs" />
+    <Compile Include="DAL_Productos.cs" />
     <Compile Include="DAL_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_connection.cs" />
