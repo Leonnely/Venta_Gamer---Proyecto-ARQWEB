@@ -8,58 +8,8 @@
     <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
     <title></title>
     <style>
-        .h2{
-            margin:10px 0px;
-        }
+        
 
-        .container-table{
-            margin-top:10px;
-            min-width:300px;
-            max-width:900px;
-            margin:10px 20px;
-            width:100%;
-            display:flex;
-            gap:20px;
-            justify-content:space-between;
-        }
-
-        .table-bitacora{
-            width:100%;
-            border-collapse:collapse;
-        }
-
-        .table-bitacora th, .table-bitacora td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            width:200px;
-        }
-
-        .table-bitacora th {
-            background-color: #f2f2f2;
-            text-align: left;
-        }
-
-        .table-bitacora tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .table-bitacora tr:hover {
-            background-color: #ddd;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1em;
-        }
-        label {
-            margin-bottom: 0.5em;
-        }
-        input[type="text"],
-        input[type="date"] {
-            padding: 0.5em;
-            font-size: 1em;
-        }
     </style>
 </head>
    

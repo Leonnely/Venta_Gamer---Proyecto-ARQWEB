@@ -75,6 +75,8 @@ namespace GUI.WebForms.Session
                         //obtener la sesion y meter en el if
                         if (username=="WebMaster")
                         {
+                            HttpContext.Current.Session["ListTables"] = listTables;
+
                             //webmaster
                             Response.Redirect("~/WebForms/Pages/backupDV.aspx");
                         }

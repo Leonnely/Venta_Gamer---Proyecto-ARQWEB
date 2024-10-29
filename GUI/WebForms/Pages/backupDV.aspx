@@ -89,6 +89,17 @@
 <body>
     <form id="frmBackup" runat="server">
         <section class="main-content">
+            <div>
+                <h2>SE HA ENCONTRADO UNA INCONGRUENCIA EN LA BASE DE DATOS.</h2>
+                <p>Tablas afectadas:</p>
+                <ul id="listTablas" runat="server" style="padding:10px;">
+                    
+                </ul>
+            </div>
+
+            <asp:Button ID="btnRecalcularDV" runat="server" Text="Recalcular Digito Verificador" OnClick="btnRecalcularDV_Click" CssClass="btn-restore" />
+            <asp:Button ID="btnLogin" runat="server" Text="Volver al Login" OnClick="btnLogin_Click" CssClass="btn-restore" />
+
             <div styles="margin-left:5px;">
                 <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
             </div>
