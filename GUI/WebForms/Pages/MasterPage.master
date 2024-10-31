@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="GUI.WebForms.Pages.MasterPage" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/nav.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/home.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/carrito.css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Navbar -->
+        <div id="navbar" runat="server" class="navbar">
+            <!-- Sección izquierda del navbar -->
+            <div class="navbar--left" runat="server" id="navbarLeft">
+                <!-- Los enlaces se generarán acá dinámicamente -->
+            </div>
+
+            <!-- Sección derecha del navbar -->
+            <div class="navbar--right" runat="server">
+                <!-- Dropdown para cambiar el idioma -->
+                <asp:DropDownList ID="ddlLanguages" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlLanguages_SelectedIndexChanged" CssClass="language-dropdown" />
+                <!-- Botón de logout que aparece al loguearse -->
+                <asp:Button ID="btnLogout" runat="server" Text="Cerrar sesión" OnClick="btnLogout_Click" CssClass="logout-button" Visible="false" />
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+    </form>
+</body>
+
+</html>
