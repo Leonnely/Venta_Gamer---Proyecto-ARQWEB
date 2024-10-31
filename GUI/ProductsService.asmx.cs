@@ -14,7 +14,7 @@ namespace GUI
     public class ProductsService : System.Web.Services.WebService
     {
         [WebMethod]
-        public List<Productos> GetProducts()
+        public List<BEProductos> GetProducts()
         {
             BLL_Productos productService = new BLL_Productos();
             return productService.GetProducts();

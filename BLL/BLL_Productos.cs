@@ -19,9 +19,16 @@ namespace BLL
             productos = new DAL_Productos(); 
         }
 
-        public List<Productos> GetProducts()
+        public List<BEProductos> GetProducts()
         {
             return productos.GetAllProducts();
         }
+
+        public void AddProduct(BEProductos product)
+        {
+            productos.AddProduct(product);
+        }
+
     }
+
 }

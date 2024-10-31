@@ -11,9 +11,9 @@ namespace DAL
     public class DAL_Productos
     {
 
-        public List<Productos> GetAllProducts()
+        public List<BEProductos> GetAllProducts()
         {
-            List<Productos> products = new List<Productos>();
+            List<BEProductos> products = new List<BEProductos>();
 
 
             // Abre la conexión utilizando la instrucción using para asegurar que se cierra automáticamente
@@ -28,7 +28,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            Productos product = new Productos
+                            BEProductos product = new BEProductos
                             {
                                 Category = reader["Category"].ToString(),
                                 Title = reader["Title"].ToString(),
@@ -41,6 +41,23 @@ namespace DAL
             }
             return products;
 
+        }
+
+        public void AddProduct(BEProductos product)
+        {
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO Products (Category, Title, Price) VALUES (@Category, @Title, @Price)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Category", product.Category);
+                    command.Parameters.AddWithValue("@Title", product.Title);
+                    command.Parameters.AddWithValue("@Price", product.Price);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
     }

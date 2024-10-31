@@ -35,7 +35,7 @@ namespace GUI.WebForms.Pages
         private void LoadProducts()
         {
             ProductsService service = new ProductsService();
-            List<Productos> products = service.GetProducts();
+            List<BEProductos> products = service.GetProducts();
             ProductRepeater.DataSource = products;
             ProductRepeater.DataBind();
         }

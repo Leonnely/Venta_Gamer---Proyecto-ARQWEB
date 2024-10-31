@@ -62,6 +62,7 @@ namespace GUI.WebForms.Session
                 if (loginManager.login(username, password))     //SI NO EXISTE SESION
                 {
                     //DVManager managerSecurity = new DVManager();
+
                     bool IntegridadBBDD = true;
                     List<DataTable> listTables = _digitoManager.CheckIntegrity();
 
@@ -73,7 +74,7 @@ namespace GUI.WebForms.Session
                     if (!IntegridadBBDD)
                     {
                         //obtener la sesion y meter en el if
-                        if (username=="WebMaster")
+                        if (username == "WebMaster")
                         {
                             HttpContext.Current.Session["ListTables"] = listTables;
 
