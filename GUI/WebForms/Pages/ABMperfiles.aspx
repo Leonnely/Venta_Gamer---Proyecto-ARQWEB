@@ -14,7 +14,7 @@
             <br />
             <asp:Label ID="lblFamilia" runat="server" Text="Familia"></asp:Label>
             <br />
-            <asp:DropDownList ID="DDLFamilia" runat="server" Height="16px" Width="140px">
+            <asp:DropDownList ID="DDLFamilia" runat="server" Height="16px" Width="140px" OnSelectedIndexChanged="DDLFamilia_SelectedIndexChanged">
             </asp:DropDownList>
             <br />
             <br />
@@ -36,17 +36,17 @@
             <asp:Label ID="LblMensaje" runat="server" Text="Label"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="BtnAñadirPerfil" runat="server" Text="Añadir Perfil" />
-            <asp:Button ID="BtnModificarPerfil" runat="server" Text="Modificar Perfil" />
-            <asp:Button ID="BtnEliminarPerfil" runat="server" Text="Eliminar Perfil" />
+            <asp:Button ID="BtnAñadirPerfil" runat="server" Text="Añadir Perfil" OnClick="BtnAñadirPerfil_Click" />
+            <asp:Button ID="BtnModificarPerfil" runat="server" Text="Modificar Perfil" OnClick="BtnModificarPerfil_Click" />
+            <asp:Button ID="BtnEliminarPerfil" runat="server" Text="Eliminar Perfil" OnClick="BtnEliminarPerfil_Click" />
             <br />
             <br />
-            <asp:Button ID="BtnAñadirPermiso" runat="server" Text="Añadir Permiso" />
-            <asp:Button ID="BtnEliminarPermiso" runat="server" Text="Eliminar Permiso" />
+            <asp:Button ID="BtnAñadirPermiso" runat="server" Text="Añadir Permiso" OnClick="BtnAñadirPermiso_Click" />
+            <asp:Button ID="BtnEliminarPermiso" runat="server" Text="Eliminar Permiso" OnClick="BtnEliminarPermiso_Click" />
             <br />
             <br />
-            <asp:Button ID="BtnAplicar" runat="server" Text="Aplicar" />
-            <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" />
+            <asp:Button ID="BtnAplicar" runat="server" Text="Aplicar" OnClick="BtnAplicar_Click" />
+            <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
         </div>
     </form>
 </body>

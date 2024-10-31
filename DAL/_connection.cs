@@ -15,7 +15,7 @@ namespace DAL
         static _connection()
         {
             //DESCOMENTAR LA LINEA DE ABAJO PARA Q LES ANDE Y COMENTAR LA DEL EXPRESS
-            _connectionString = @"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False";
+            _connectionString = @"Data Source=localhost;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False";
 
 
             //COMENTEN LA LINEA DE ABAJO, XQ EN EL SQL EXPRESS ME ANDA CON ESTO NOMAS - LEO

@@ -43,11 +43,11 @@
   <ItemGroup>
     <Compile Include="BLL_Bitacora.cs" />
     <Compile Include="BLL_GestionDb.cs" />
-<<<<<<< HEAD
+
     <Compile Include="BLL_Perfil.cs" />
-=======
+
     <Compile Include="BLL_GestionIdioma.cs" />
->>>>>>> master
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
