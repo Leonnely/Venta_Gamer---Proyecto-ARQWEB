@@ -1,0 +1,46 @@
+﻿/* Estilos generales para el carrito */
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+    td input[type="text"] {
+        width: 50px;
+        text-align: center;
+    }
+
+    td input[type="button"], td input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+        td input[type="button"]:hover, td input[type="submit"]:hover {
+            background-color: #2980b9;
+        }

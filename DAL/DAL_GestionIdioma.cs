@@ -70,7 +70,7 @@ namespace DAL
                 }
             }
 
-            // Retorna el diccionario de textos
+            // Devuelve el diccionario de textos
             return textos;
         }
 
