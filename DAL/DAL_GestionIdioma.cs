@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -69,7 +70,7 @@ namespace DAL
                 }
             }
 
-            // Retorna el diccionario de textos
+            // Devuelve el diccionario de textos
             return textos;
         }
 
@@ -122,6 +123,35 @@ namespace DAL
             }
 
             return id;
+        }
+
+        public List<Idioma> ObtenerIdiomas()
+        {
+            var idiomas = new List<Idioma>();
+
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand("SELECT LanguageCode, LanguageName FROM IDIOMA", connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var idioma = new Idioma
+                            {
+                                Codigo = reader["LanguageCode"].ToString(),
+                                Nombre = reader["LanguageName"].ToString()
+                            };
+
+                            idiomas.Add(idioma);
+                        }
+                    }
+                }
+            }
+
+            return idiomas;
         }
     }
 }

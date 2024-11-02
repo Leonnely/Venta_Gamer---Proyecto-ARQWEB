@@ -1,22 +1,22 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.Pages.home" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/WebForms/Pages/MasterPage.master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.Pages.home" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
-    <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="navbar" runat="server" id="navbar">
-
-        </div>
-    </form>
-</body>
-</html>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="products-container">
+        <asp:Repeater ID="ProductRepeater" runat="server">
+            <ItemTemplate>
+                <div class="product-card">
+                    <p class="product-category"><%# Eval("Category") %></p>
+                    <h3><%# Eval("Title") %></h3>
+                    <p>Precio: $<%# Eval("Price") %></p>
+                    <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" 
+                                CommandArgument='<%# Eval("Title") %>' 
+                                OnClick="btnAgregarCarrito_Click" 
+                                CssClass="btn-agregar-carrito" />
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+</asp:Content>
 
 
 

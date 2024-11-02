@@ -13,11 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SECURITY", "SECURITY\SECURITY.csproj", "{D19B4340-262D-4FC2-AEA2-30EF32A9A7FA}"
 EndProject
-<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{7BCA935A-A6A5-4B89-8E0B-9576A33419B2}"
-=======
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}"
->>>>>>> master
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SERVICES", "Services\SERVICES.csproj", "{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,17 +43,14 @@ Global
 		{D19B4340-262D-4FC2-AEA2-30EF32A9A7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19B4340-262D-4FC2-AEA2-30EF32A9A7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D19B4340-262D-4FC2-AEA2-30EF32A9A7FA}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{7BCA935A-A6A5-4B89-8E0B-9576A33419B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BCA935A-A6A5-4B89-8E0B-9576A33419B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BCA935A-A6A5-4B89-8E0B-9576A33419B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BCA935A-A6A5-4B89-8E0B-9576A33419B2}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{180F93D8-1E32-4E7E-AF1F-B5FABEA74312}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> master
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

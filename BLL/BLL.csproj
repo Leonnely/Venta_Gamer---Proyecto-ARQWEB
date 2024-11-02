@@ -48,6 +48,7 @@
 
     <Compile Include="BLL_GestionIdioma.cs" />
 
+    <Compile Include="BLL_Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

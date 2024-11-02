@@ -11,47 +11,61 @@ namespace DAL
     {
         public bool CreateDatabase(string myString)
         {
+            string cmdText = $"BACKUP DATABASE VentaGamer TO DISK = '{myString}'";
+
             try
             {
-                string cmd = $"BACKUP DATABASE VentaGamer TO DISK = '{myString}'";
+                using (SqlConnection connection = _connection.GetConnection())
+                {
+                    connection.Open();
 
+                    using (SqlCommand command = new SqlCommand(cmdText, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                }
 
-                _connection.GetConnection().Open();
-                SqlCommand command = new SqlCommand(cmd, _connection.GetConnection());
-                command.ExecuteNonQuery();
-                _connection.GetConnection().Close();
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
-
         }
+
 
         public bool RestoreDatabase(string location)
         {
             try
             {
-                _connection.GetConnection().Open();
-                string Query = string.Format("ALTER DATABASE [VentaGamer] SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-                SqlCommand command = new SqlCommand(Query, _connection.GetConnection());
-                command.ExecuteNonQuery();
-                string Query2 = $"USE MASTER RESTORE DATABASE [VentaGamer] FROM  DISK='{location}' WITH REPLACE;";
-                SqlCommand command2 = new SqlCommand(Query2, _connection.GetConnection());
-                command2.ExecuteNonQuery();
+                using (var connection = _connection.GetConnection())
+                {
+                    connection.Open();
 
-                string Query3 = string.Format("ALTER DATABASE [VentaGamer] SET MULTI_USER ");
-                SqlCommand command3 = new SqlCommand(Query3, _connection.GetConnection());
-                command3.ExecuteNonQuery();
-                _connection.GetConnection().Close();
+                    using (var command = new SqlCommand("ALTER DATABASE [VentaGamer] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
+
+                    using (var command2 = new SqlCommand($"USE MASTER; RESTORE DATABASE [VentaGamer] FROM DISK='{location}' WITH REPLACE;", connection))
+                    {
+                        command2.ExecuteNonQuery();
+                    }
+
+                    using (var command3 = new SqlCommand("ALTER DATABASE [VentaGamer] SET MULTI_USER;", connection))
+                    {
+                        command3.ExecuteNonQuery();
+                    }
+                }
+
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _connection.GetConnection().Close();
+                Console.WriteLine($"Error: {ex.Message}");
                 return false;
             }
         }
+
     }
 }

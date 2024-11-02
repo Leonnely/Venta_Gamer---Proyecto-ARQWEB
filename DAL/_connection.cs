@@ -20,6 +20,7 @@ namespace DAL
 
             //COMENTEN LA LINEA DE ABAJO, XQ EN EL SQL EXPRESS ME ANDA CON ESTO NOMAS - LEO
             //_connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=VentaGamer;Integrated Security=True";
+            //_connectionString = @"Data Source=localhost;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False";
         }
 
         public static SqlConnection GetConnection()
