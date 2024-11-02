@@ -12,6 +12,7 @@
             height: 100dvh;
             display: flex;
             align-items: center;
+            background-color: #2c3e50;
         }
         div img {
             width: 300px;
@@ -24,8 +25,8 @@
             width: max-content;
             padding: 20px;
             margin: auto;
-            box-shadow:  20px 20px 60px #bebebe,
-                            -20px -20px 60px #ffffff;
+            background-color: white;
+            box-shadow: 10px 10px 0px #ff29b3, -10px -10px 0px #1a0064;
         }
         .login-container {
             width: 100%;
@@ -60,6 +61,9 @@
 </head>
 <body>
     <form id="wfrmLogin" runat="server">
+        <%@ Register Src="../Models/ModalGeneral.ascx" TagName="MiModal" TagPrefix="uc" %>
+        <uc:MiModal runat="server" />
+
         <div class="main_container">
             <div>
                 <img  src="../../Assets/logo.jpeg"/>
@@ -77,9 +81,11 @@
                 
 
                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
-                
+                <button type="button" onclick="abrirModal('Confirmación', '¿Está seguro que desea continuar?')">Abrir Modal</button>
+
             </div>
         </div>
     </form>
+
 </body>
 </html>

@@ -117,6 +117,7 @@
     <Content Include="Styles\home.css" />
     <Content Include="Styles\nav.css" />
     <Content Include="web.config" />
+    <Content Include="WebForms\Models\ModalGeneral.ascx" />
     <Content Include="WebForms\Pages\backup.aspx" />
     <Content Include="WebForms\Pages\backupDV.aspx" />
     <Content Include="WebForms\Pages\bitacora.aspx" />
@@ -132,6 +133,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\Models\ModalGeneral.ascx.cs">
+      <DependentUpon>ModalGeneral.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Models\ModalGeneral.ascx.designer.cs">
+      <DependentUpon>ModalGeneral.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Models\NavbarItem.cs" />
     <Compile Include="WebForms\Models\RoleBasedNavbar.cs" />
     <Compile Include="WebForms\Pages\backup.aspx.cs">

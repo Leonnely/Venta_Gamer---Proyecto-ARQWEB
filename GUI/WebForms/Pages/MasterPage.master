@@ -5,6 +5,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/General.css" />
     <link rel="stylesheet" type="text/css" href="~/Styles/nav.css" />
     <link rel="stylesheet" type="text/css" href="~/Styles/home.css" />
     <link rel="stylesheet" type="text/css" href="~/Styles/carrito.css" />

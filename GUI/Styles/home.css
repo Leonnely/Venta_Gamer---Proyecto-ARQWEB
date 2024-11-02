@@ -19,32 +19,32 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    }
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
 
-    /* Imagen del producto (si es que lo agregamos a la clase producto) */
-    .product-card img {
-        max-width: 100%;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
+/* Imagen del producto (si es que lo agregamos a la clase producto) */
+.product-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
 
-    /* Nombre del producto */
-    .product-card h3 {
-        font-size: 18px;
-        font-weight: bold;
-        margin: 10px 0;
-        color: #333;
-    }
+/* Nombre del producto */
+.product-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
 
-    /* Precio del producto */
-    .product-card p {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 15px;
-    }
+/* Precio del producto */
+.product-card p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+}
 
 /* Categoría del producto */
 .product-category {
