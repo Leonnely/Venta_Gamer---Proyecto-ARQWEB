@@ -87,10 +87,10 @@ namespace GUI.WebForms.Pages
                 if (Session["role"] == null) //Si no hay sesión agregamos botón de inicio e iniciar sesion
                 {
                     var navbarItems = new List<NavbarItem>
-            {
-                new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Home"), TextKey = "Home", Url = "~/WebForms/Pages/home.aspx" },
-                new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Iniciar sesión"), TextKey = "Iniciar sesión", Url = "~/WebForms/Session/login.aspx" }
-            };
+                    {
+                        new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Home"), TextKey = "Home", Url = "~/WebForms/Pages/home.aspx" },
+                        new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Iniciar sesión"), TextKey = "Iniciar sesión", Url = "~/WebForms/Session/login.aspx" }
+                    };
                     GenerateNavbar(navbarItems);
                 }
                 else

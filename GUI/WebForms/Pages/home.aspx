@@ -1,17 +1,46 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/WebForms/Pages/MasterPage.master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.Pages.home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="products-container">
+    <style>
+    .img-placeholder {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* Aspect ratio de 16:9 (ajústalo según necesites) */
+        background-image: url('ruta-imagen-alternativa.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .img-placeholder img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    </style>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 w-100 m-auto">
         <asp:Repeater ID="ProductRepeater" runat="server">
             <ItemTemplate>
-                <div class="product-card">
-                    <p class="product-category"><%# Eval("Category") %></p>
-                    <h3><%# Eval("Title") %></h3>
-                    <p>Precio: $<%# Eval("Price") %></p>
-                    <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" 
-                                CommandArgument='<%# Eval("Title") %>' 
-                                OnClick="btnAgregarCarrito_Click" 
-                                CssClass="btn-agregar-carrito" />
+                <div class="col">
+                    <div class="card h-100 d-flex flex-column">
+                        <figure class="card-img-top img-placeholder">
+                            <img src="...." alt="Agreguen imagenes 🤯🤯🤯🤯🤯" class="img-fluid">
+                        </figure>
+                        <div class="card-body flex-grow-1">
+                            <p class="product-category"><%# Eval("Category") %></p>
+                            <h3 class="card-title"><%# Eval("Title") %></h3>
+                            <p>Precio: $<%# Eval("Price") %></p>
+                        </div>
+                        <div class="card-footer mt-auto">
+                            <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" 
+                                        CommandArgument='<%# Eval("Title") %>' 
+                                        OnClick="btnAgregarCarrito_Click" 
+                                        CssClass="btn-agregar-carrito" />
+                        </div>
+                    </div>
                 </div>
             </ItemTemplate>
         </asp:Repeater>

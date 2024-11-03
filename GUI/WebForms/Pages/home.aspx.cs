@@ -19,7 +19,7 @@ namespace GUI.WebForms.Pages
                 {
                     // Cargar productos solo si no es postback
                     int pageNumber = 1;
-                    int pageSize = 25; 
+                    int pageSize = 16; 
                     LoadProducts(pageNumber,pageSize);
                    
                     if (this.Master is MasterPage masterPage)
@@ -37,7 +37,7 @@ namespace GUI.WebForms.Pages
         }
 
 
-        private void LoadProducts(int pageNumber = 1, int pageSize = 10)
+        private void LoadProducts(int pageNumber = 1, int pageSize = 16)
         {
             ProductsService service = new ProductsService();
             List<Productos> products = service.GetProductsByPagination(pageNumber, pageSize);
@@ -49,16 +49,14 @@ namespace GUI.WebForms.Pages
             int totalPages = (int)Math.Ceiling((double)totalProducts / pageSize);
 
             // Calcular el rango de páginas a mostrar
-            int startPage = Math.Max(1, pageNumber - 5); // Asegurarse de que no sea menor que 1
-            int endPage = Math.Min(totalPages, startPage + 9); // Limitar a 10 páginas
+            int startPage = Math.Max(1, pageNumber - 5);
+            int endPage = Math.Min(totalPages, startPage + 9);
 
-            // Ajustar el rango si estamos cerca del final
             if (endPage - startPage < 9)
             {
                 startPage = Math.Max(1, endPage - 9);
             }
 
-            // Crear la lista de páginas a mostrar
             List<int> pagesToShow = Enumerable.Range(startPage, endPage - startPage + 1).ToList();
 
             PaginationRepeater.DataSource = pagesToShow.Select(p => new { PageNumber = p });
@@ -70,7 +68,13 @@ namespace GUI.WebForms.Pages
         {
             LinkButton lnkButton = (LinkButton)sender;
             int pageNumber = int.Parse(lnkButton.CommandArgument);
-            LoadProducts(pageNumber, 10); // Cargar la página seleccionada
+            LoadProducts(pageNumber, 16);
+            //Llamo la funcion del master xq el navbar no se muestra si cambia de pagina nose q le pasa
+            MasterPage miMaster = this.Master as MasterPage; 
+            if (miMaster != null)
+            {
+                miMaster.ConfigurarNavbarEIdioma();
+            }
         }
 
 
