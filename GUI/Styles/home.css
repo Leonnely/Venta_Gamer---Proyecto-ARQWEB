@@ -5,6 +5,7 @@
     justify-content: space-around;
     margin: 20px;
     gap: 20px;
+    height:100%;
 }
 
 /* Tarjetas de productos */
@@ -66,6 +67,10 @@
     transition: background-color 0.3s ease;
 }
 
-    .btn-agregar-carrito:hover {
-        background-color: #2980b9;
-    }
+.btn-agregar-carrito:hover {
+    background-color: #2980b9;
+}
+
+.pagination-container {
+    margin: 5px auto;
+}

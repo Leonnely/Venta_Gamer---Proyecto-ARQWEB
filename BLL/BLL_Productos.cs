@@ -23,5 +23,16 @@ namespace BLL
         {
             return productos.GetAllProducts();
         }
+
+        public List<Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        {
+            return productos.GetProductsByPagination(pageNumber,pageSize);
+
+        }
+
+        public int GetTotalProductsCount()
+        {
+            return productos.GetTotalProductsCount();
+        }
     }
 }

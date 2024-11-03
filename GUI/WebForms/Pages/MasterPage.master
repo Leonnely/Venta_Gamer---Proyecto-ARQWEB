@@ -9,14 +9,83 @@
     <link rel="stylesheet" type="text/css" href="~/Styles/nav.css" />
     <link rel="stylesheet" type="text/css" href="~/Styles/home.css" />
     <link rel="stylesheet" type="text/css" href="~/Styles/carrito.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css"/>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+    <style>
+        /* Asegura que el contenedor ocupe al menos toda la altura de la pantalla */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .flex-grow-1 {
+            flex-grow: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #343a40;
+            color: #f8f9fa;
+            padding: 20px 0;
+        }
+
+        .footer h5 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #f8f9fa;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #ced4da;
+        }
+
+        .footer-links {
+            display:flex;
+            justify-content:space-around;
+            align-self: flex-end;
+        }
+
+        .footer-links a {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-rights p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #ced4da;
+        }
+
+
+    </style>
 </head>
+    
 <body>
     <form id="form1" runat="server">
         <!-- Navbar -->
-        <div id="navbar" runat="server" class="navbar">
+        <div id="navbar" runat="server" class="navbar1">
             <!-- Sección izquierda del navbar -->
-            <div class="navbar--left" runat="server" id="navbarLeft">
+            <div class="navbar--left d-flex gap-2 ms-2" runat="server" id="navbarLeft">
                 <!-- Los enlaces se generarán acá dinámicamente -->
             </div>
 
@@ -31,6 +100,30 @@
 
         <!-- Contenido principal -->
         <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        <footer class="footer mt-auto p-4">
+            <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <!-- Información de la tienda -->
+                <div class="footer-info mb-3 mb-md-0">
+                    <h5>Venta Gamer</h5>
+                    <p>Tu tienda de confianza en componentes electrónicos y accesorios de PC.</p>
+                </div>
+
+                <!-- Enlaces rápidos -->
+                <div class="footer-links">
+                    <div class=" d-flex flex-column flex-md-row gap-3">
+                        <a href="#">Sobre Nosotros</a>
+                        <a href="#">Contacto</a>
+                        <a href="#">Términos y Condiciones</a>
+                        <a href="#">Política de Privacidad</a>
+                    </div>
+
+                    <!-- Derechos reservados -->
+                    <div class="text-center text-md-right">
+                        <p>&copy; <%= DateTime.Now.Year %> Venta Gamer.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </form>
 </body>
 

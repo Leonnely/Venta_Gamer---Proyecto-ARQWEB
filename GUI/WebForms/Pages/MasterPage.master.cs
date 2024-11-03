@@ -136,7 +136,7 @@ namespace GUI.WebForms.Pages
                     InnerText = SERVICES.IdiomaSubject.GetTexto(item.Name),
                     HRef = ResolveUrl(item.Url)
                 };
-                link.Attributes["class"] = "nav-link";
+                link.Attributes["class"] = "ps-2 pe-2 nav-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";
                 navbarLeft.Controls.Add(link);
             }
         }

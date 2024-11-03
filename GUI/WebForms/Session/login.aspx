@@ -6,6 +6,7 @@
 
 <head runat="server">
     <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <title>Pantalla de Login</title>
     <style>
         #wfrmLogin{
@@ -61,9 +62,6 @@
 </head>
 <body>
     <form id="wfrmLogin" runat="server">
-        <%@ Register Src="../Models/ModalGeneral.ascx" TagName="MiModal" TagPrefix="uc" %>
-        <uc:MiModal runat="server" />
-
         <div class="main_container">
             <div>
                 <img  src="../../Assets/logo.jpeg"/>
@@ -79,13 +77,11 @@
                 <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/WebForms/Session/PasswordReset.aspx">Olvide mi contraseña</asp:HyperLink>
                 <asp:RequiredFieldValidator ID="rfvPassword" Class="validators" runat="server" ControlToValidate="txtPassword" ErrorMessage="Contraseña es un campo obligatorio."></asp:RequiredFieldValidator>
                 
-
                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
-                <button type="button" onclick="abrirModal('Confirmación', '¿Está seguro que desea continuar?')">Abrir Modal</button>
 
             </div>
         </div>
     </form>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

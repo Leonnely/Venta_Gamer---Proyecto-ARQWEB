@@ -16,6 +16,18 @@
             </ItemTemplate>
         </asp:Repeater>
     </div>
+    <div class="pagination-container pagination pagination-sm">
+        <asp:Repeater ID="PaginationRepeater" runat="server">
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkPage" runat="server" 
+                                Text='<%# Eval("PageNumber") %>' 
+                                CommandArgument='<%# Eval("PageNumber") %>' 
+                                OnClick="lnkPage_Click" 
+                                CssClass="page-link" />
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+
 </asp:Content>
 
 
