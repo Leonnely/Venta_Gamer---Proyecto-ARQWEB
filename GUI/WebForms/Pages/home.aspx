@@ -21,7 +21,7 @@
     }
 
     </style>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 w-100 m-auto">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 w-100 m-auto" style="max-width:1200px">
         <asp:Repeater ID="ProductRepeater" runat="server">
             <ItemTemplate>
                 <div class="col">
