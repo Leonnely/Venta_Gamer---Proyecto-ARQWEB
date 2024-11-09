@@ -6,6 +6,8 @@
 <head runat="server">
     <title></title>    <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
     <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css"/>
+    
     <style>
 
         .main-content{
@@ -83,25 +85,37 @@
             font-size: 16px;
             color: #333;
         }
+
+
     </style>
 </head>
     
 <body>
     <form id="frmBackup" runat="server">
         <section class="main-content">
-            <div>
-                <h2>SE HA ENCONTRADO UNA INCONGRUENCIA EN LA BASE DE DATOS.</h2>
-                <p>Tablas afectadas:</p>
-                <ul id="listTablas" runat="server" style="padding:10px;">
-                    
-                </ul>
+            <!-- Header de advertencia -->
+            <div class="alert alert-danger mb-4 p-4 text-center">
+                <h2 class="m-0">¡Inconsistencia detectada en la base de datos!</h2>
+                <p class="m-0">Las siguientes tablas se ven afectadas:</p>
+            </div>
+            
+            <!-- Lista de tablas afectadas -->
+            <ul id="listTablas" runat="server" class="list-group mb-4 px-4">
+                <!-- Items de las tablas se agregarán aquí -->
+            </ul>
+            
+            <!-- Botones de acción -->
+            <div class="d-flex gap-2">
+                <asp:Button ID="btnRecalcularDV" runat="server" Text="Recalcular Dígito Verificador" 
+                            OnClick="btnRecalcularDV_Click" CssClass="btn btn-warning" />
+                
+                <asp:Button ID="btnLogin" runat="server" Text="Volver al Login" 
+                            OnClick="btnLogin_Click" CssClass="btn btn-secondary" />
             </div>
 
-            <asp:Button ID="btnRecalcularDV" runat="server" Text="Recalcular Digito Verificador" OnClick="btnRecalcularDV_Click" CssClass="btn-restore" />
-            <asp:Button ID="btnLogin" runat="server" Text="Volver al Login" OnClick="btnLogin_Click" CssClass="btn-restore" />
-
-            <div styles="margin-left:5px;">
-                <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+            <!-- Mensaje de estado -->
+            <div class="mt-3 text-center">
+                <asp:Label ID="lblMessage" runat="server" CssClass="text-info" Text=""></asp:Label>
             </div>
             <div class="container_grid">
                 <asp:GridView ID="gvBackups" runat="server" AutoGenerateColumns="false" CssClass="gridview-backups">
@@ -110,8 +124,19 @@
                         <asp:BoundField DataField="CreationDate" HeaderText="Fecha de creación" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
                         <asp:TemplateField HeaderText="Acciones">
                             <ItemTemplate>
-                                <asp:Button ID="btnRestore" runat="server" Text="Restaurar" CommandArgument='<%# Eval("FilePath") %>' OnClick="btnRestore_Click" CssClass="btn-restore" />
-                                <asp:Button ID="btnDownload" runat="server" Text="Descargar" CommandArgument='<%# Eval("FilePath") %>' OnClick="btnDownload_Click" CssClass="btn-download" />
+                                <!-- Botón Restaurar con confirmación -->
+                                <asp:Button ID="btnRestore" runat="server" Text="Restaurar" 
+                                    CommandArgument='<%# Eval("FilePath") %>' 
+                                    OnClick="btnRestore_Click" 
+                                    OnClientClick="return confirm('¿Estás seguro de que quieres restaurar este archivo?');" 
+                                    CssClass="btn btn-warning" />
+
+                                <!-- Botón Descargar con confirmación -->
+                                <asp:Button ID="btnDownload" runat="server" Text="Descargar" 
+                                    CommandArgument='<%# Eval("FilePath") %>' 
+                                    OnClick="btnDownload_Click" 
+                                    OnClientClick="return confirm('¿Estás seguro de que quieres descargar este archivo?');" 
+                                    CssClass="btn btn-primary" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

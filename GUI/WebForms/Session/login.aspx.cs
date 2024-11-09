@@ -76,10 +76,14 @@ namespace GUI.WebForms.Session
                         //obtener la sesion y meter en el if
                         if (username == "WebMaster")
                         {
-                            HttpContext.Current.Session["ListTables"] = listTables;
+                            // Este script abrirá un confirm y, si el usuario acepta, redirigirá
+                            string script = @"
+                                if (confirm('Se ha encontrado una inconsistencia en la base de datos, ¿Desea ingresar a la gestion de DB?')) {
+                                    window.location.href = '" + ResolveUrl("~/WebForms/Pages/backupDV.aspx") + @"';
+                                }";
 
-                            //webmaster
-                            Response.Redirect("~/WebForms/Pages/backupDV.aspx");
+                            ClientScript.RegisterStartupScript(this.GetType(), "confirmRedirect", script, true);
+                            HttpContext.Current.Session["ListTables"] = listTables;
                         }
                         else
                         {

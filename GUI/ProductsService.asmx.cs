@@ -19,6 +19,21 @@ namespace GUI
             BLL_Productos productService = new BLL_Productos();
             return productService.GetProducts();
         }
+
+        [WebMethod]
+        public List<Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        {
+            BLL_Productos productService = new BLL_Productos();
+            return productService.GetProductsByPagination(pageNumber, pageSize);
+        }
+
+        [WebMethod]
+        public int GetTotalProductsCount()
+        {
+            BLL_Productos productService = new BLL_Productos();
+            return productService.GetTotalProductsCount();
+        }
+
     }
 
 }
