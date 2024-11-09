@@ -111,6 +111,10 @@ namespace GUI.WebForms.Pages
             lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
 
+
+        protected void gvBackups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
         protected void btnDownload_Click(object sender, EventArgs e)
         {
             Button btnDownload = (Button)sender;
@@ -136,27 +140,6 @@ namespace GUI.WebForms.Pages
                 Response.Write("<script>alert('El archivo no existe.');</script>");
             }
 
-        }
-
-        protected void btnRecalcularDV_Click(object sender, EventArgs e)
-        {
-            bool IntegridadBBDD = true;
-            List<DataTable> listTables = _digitoManager.CheckIntegrity();
-
-            if (listTables.Count > 0)
-            {
-                IntegridadBBDD = false;
-            }
-
-            if (IntegridadBBDD)
-            {
-                var ul = new System.Text.StringBuilder();
-                ul.Append("Sin tablas afectadas!.");
-                listTablas.InnerHtml = ul.ToString();
-                
-                Session["ListTables"] = null;
-            }
-        }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
