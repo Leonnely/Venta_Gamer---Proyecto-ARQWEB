@@ -19,17 +19,17 @@ namespace BLL
             productos = new DAL_Productos(); 
         }
 
-        public List<BEProductos> GetProducts()
+        public List<BE_Productos> GetProducts()
         {
             return productos.GetAllProducts();
         }
 
-        public void AddProduct(BEProductos product)
+        public void AddProduct(BE_Productos product)
         {
             productos.AddProduct(product);
         }
 
-        public List<Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        public List<BE_Productos> GetProductsByPagination(int pageNumber, int pageSize)
         {
             return productos.GetProductsByPagination(pageNumber,pageSize);
 

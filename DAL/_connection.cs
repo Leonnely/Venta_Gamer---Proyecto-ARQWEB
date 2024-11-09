@@ -11,17 +11,9 @@ namespace DAL
     {
         private static readonly string _connectionString;
 
-        //awawa esto es para que me deje commitear
-
-        // Constructor estático: inicializa la cadena de conexión
         static _connection()
         {
-            //DESCOMENTAR LA LINEA DE ABAJO PARA Q LES ANDE Y COMENTAR LA DEL EXPRESS
             _connectionString = @"Data Source=localhost;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False";
-
-
-            //COMENTEN LA LINEA DE ABAJO, XQ EN EL SQL EXPRESS ME ANDA CON ESTO NOMAS - LEO
-            //_connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=VentaGamer;Integrated Security=True";
         }
 
         public static SqlConnection GetConnection()

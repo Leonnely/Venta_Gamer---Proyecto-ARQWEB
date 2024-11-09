@@ -121,6 +121,9 @@ namespace GUI.WebForms.Session
                 }
             }
         }
-          
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/WebForms/Session/Registro.aspx");
+        }
     }
 }

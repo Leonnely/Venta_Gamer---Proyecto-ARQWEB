@@ -145,6 +145,7 @@
     <Content Include="WebForms\Session\login.aspx" />
     <Content Include="WebForms\Session\PasswordReset.aspx" />
     <Content Include="ProductsService.asmx" />
+    <Content Include="WebForms\Session\Registro.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -240,6 +241,13 @@
     <Compile Include="ProductsService.asmx.cs">
       <DependentUpon>ProductsService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebForms\Session\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Session\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

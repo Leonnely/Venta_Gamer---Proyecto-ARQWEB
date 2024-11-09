@@ -43,7 +43,7 @@ namespace GUI.WebForms.Pages
             }
 
 
-            BEProductos productos = new BEProductos();
+            BE_Productos productos = new BE_Productos();
             productos.Price = price;
             productos.Category= ddlCategory.SelectedItem.Text;
             productos.Title = txtTitle.Text;

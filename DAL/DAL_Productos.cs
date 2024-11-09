@@ -11,9 +11,9 @@ namespace DAL
     public class DAL_Productos
     {
 
-        public List<BEProductos> GetAllProducts()
+        public List<BE_Productos> GetAllProducts()
         {
-            List<BEProductos> products = new List<BEProductos>();
+            List<BE_Productos> products = new List<BE_Productos>();
 
 
             // Abre la conexión utilizando la instrucción using para asegurar que se cierra automáticamente
@@ -28,7 +28,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            BEProductos product = new BEProductos
+                            BE_Productos product = new BE_Productos
                             {
                                 Category = reader["Category"].ToString(),
                                 Title = reader["Title"].ToString(),
@@ -43,7 +43,7 @@ namespace DAL
 
         }
 
-        public void AddProduct(BEProductos product)
+        public void AddProduct(BE_Productos product)
         {
             using (SqlConnection connection = _connection.GetConnection())
             {
@@ -58,9 +58,11 @@ namespace DAL
                     command.ExecuteNonQuery();
                 }
             }
-        public List<Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        }
+
+        public List<BE_Productos> GetProductsByPagination(int pageNumber, int pageSize)
         {
-            List<Productos> products = new List<Productos>();
+            List<BE_Productos> products = new List<BE_Productos>();
             int offset = (pageNumber - 1) * pageSize;
             using (SqlConnection connection = _connection.GetConnection())
             {
@@ -81,7 +83,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            Productos product = new Productos
+                            BE_Productos product = new BE_Productos
                             {
                                 Category = reader["Category"].ToString(),
                                 Title = reader["Title"].ToString(),
