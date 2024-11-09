@@ -103,8 +103,8 @@ namespace GUI.WebForms.Session
                         {
                             lblMessage.Text = ("Usuario bloqueado, contacte con un administrador");
                         }
-                    }
                 }
+            }
                 else     //SI EXISTE SESION O CONTRASEÑA INCORRECTA
                 {
                     lblMessage.Text = "Error al iniciar sesion";

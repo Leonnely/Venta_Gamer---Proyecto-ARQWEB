@@ -15,7 +15,7 @@ namespace GUI.WebForms.Pages
     public partial class backupDV : System.Web.UI.Page
     {
         private readonly DVManager _digitoManager;
-        public backupDV() 
+        public backupDV()
         {
             _digitoManager = new DVManager();
         }
@@ -34,10 +34,10 @@ namespace GUI.WebForms.Pages
 
                     foreach (var table in listTables)
                     {
-                        ul.Append($"<li> <strong>{table.TableName}</strong></li>"); 
+                        ul.Append($"<li> <strong>{table.TableName}</strong></li>");
                     }
 
-                    listTablas.InnerHtml = ul.ToString(); 
+                    listTablas.InnerHtml = ul.ToString();
                 }
                 else
                 {
@@ -141,9 +141,10 @@ namespace GUI.WebForms.Pages
             }
 
 
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/WebForms/Session/login.aspx");
+            //protected void btnLogin_Click(object sender, EventArgs e)
+            //{
+            //    Response.Redirect("~/WebForms/Session/login.aspx");
+            //}
         }
     }
-}
+} 

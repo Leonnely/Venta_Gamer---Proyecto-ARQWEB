@@ -11,6 +11,8 @@ namespace DAL
     {
         private static readonly string _connectionString;
 
+        //awawa esto es para que me deje commitear
+
         // Constructor estático: inicializa la cadena de conexión
         static _connection()
         {
