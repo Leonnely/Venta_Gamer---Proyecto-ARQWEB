@@ -111,23 +111,56 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo.jpeg" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Styles\carrito.css" />
     <Content Include="Styles\General.css" />
+    <Content Include="Styles\home.css" />
     <Content Include="Styles\nav.css" />
     <Content Include="web.config" />
+    <Content Include="WebForms\Pages\Ayuda.aspx" />
     <Content Include="WebForms\Pages\backup.aspx" />
     <Content Include="WebForms\Pages\backupDV.aspx" />
     <Content Include="WebForms\Pages\bitacora.aspx" />
+    <Content Include="WebForms\Pages\carrito.aspx" />
+    <Content Include="WebForms\Pages\Configuracion.aspx" />
     <Content Include="WebForms\Pages\ErrorPage.aspx" />
     <Content Include="WebForms\Pages\home.aspx" />
+    <Content Include="WebForms\Pages\Productos.aspx" />
     <Content Include="WebForms\Session\login.aspx" />
     <Content Include="WebForms\Session\PasswordReset.aspx" />
+    <Content Include="ProductsService.asmx" />
+    <Content Include="WebForms\Session\Registro.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\Models\NavbarItem.cs" />
+    <Compile Include="WebForms\Models\RoleBasedNavbar.cs" />
+    <Compile Include="WebForms\Pages\Ayuda.aspx.cs">
+      <DependentUpon>Ayuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\Ayuda.aspx.designer.cs">
+      <DependentUpon>Ayuda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Pages\backup.aspx.cs">
       <DependentUpon>backup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +182,20 @@
     <Compile Include="WebForms\Pages\bitacora.aspx.designer.cs">
       <DependentUpon>bitacora.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\Pages\carrito.aspx.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\carrito.aspx.designer.cs">
+      <DependentUpon>carrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Pages\Configuracion.aspx.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\Configuracion.aspx.designer.cs">
+      <DependentUpon>Configuracion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Pages\ErrorPage.aspx.cs">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -162,6 +209,19 @@
     </Compile>
     <Compile Include="WebForms\Pages\home.aspx.designer.cs">
       <DependentUpon>home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Pages\MasterPage.master.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Pages\MasterPage.master.designer.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Pages\Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Pages\Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Session\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -177,8 +237,35 @@
     <Compile Include="WebForms\Session\PasswordReset.aspx.designer.cs">
       <DependentUpon>PasswordReset.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ProductsService.asmx.cs">
+      <DependentUpon>ProductsService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebForms\Session\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\Session\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="libman.json" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
@@ -186,6 +273,7 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+    <Content Include="WebForms\Pages\MasterPage.master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
@@ -200,13 +288,16 @@
       <Project>{d19b4340-262d-4fc2-aea2-30ef32a9a7fa}</Project>
       <Name>SECURITY</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\SERVICES.csproj">
       <Project>{180f93d8-1e32-4e7e-af1f-b5fabea74312}</Project>
-      <Name>Services</Name>
+      <Name>SERVICES</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
