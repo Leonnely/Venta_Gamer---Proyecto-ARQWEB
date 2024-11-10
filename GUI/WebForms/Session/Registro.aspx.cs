@@ -30,7 +30,7 @@ namespace GUI.WebForms.Session
 
             LoginManager loginManager = new LoginManager();
 
-            bool success = loginManager.Register(username, password, role: 2);
+            bool success = loginManager.Register(username, password, role: 4);
 
             if (success)
             {
