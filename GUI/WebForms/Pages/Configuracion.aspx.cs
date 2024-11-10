@@ -15,8 +15,12 @@ namespace GUI.WebForms.Pages
        
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Llama al método ConfigurarNavbarEIdioma de la MasterPage
+            if (this.Master is MasterPage masterPage)
+            {
+                masterPage.ConfigurarNavbarEIdioma();
+            }
 
-          
             LabelUser.Text = "Usuario: " + Session["user"];
             LabelIdioma.Text = "Idioma: " + Session["language"];
           

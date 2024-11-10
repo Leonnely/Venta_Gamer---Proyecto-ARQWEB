@@ -1,16 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Ayuda.aspx.cs" Inherits="GUI.WebForms.Pages.Ayuda" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/Pages/MasterPage.master" AutoEventWireup="true" CodeBehind="Ayuda.aspx.cs" Inherits="GUI.WebForms.Pages.Ayuda" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        /* Estilos específicos para la página de ayuda */
+        .ayuda-page {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-           <h1>Esta es una pagina de ayuda</h1> 
-        </div>
-    </form>
-</body>
-</html>
+        .ayuda-page h1 {
+            color: #007bff;
+        }
+    </style>
+
+    <!-- Contenedor principal de la página de ayuda -->
+    <div class="ayuda-page">
+        <h1>Esta es una página de ayuda</h1>
+    </div>
+</asp:Content>
+
