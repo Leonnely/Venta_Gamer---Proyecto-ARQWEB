@@ -51,7 +51,7 @@ namespace DAL
                     {
                         fa = cmd.ExecuteNonQuery();
                     }
-                    catch (Exception)
+                    catch (Exception) 
                     {
                         fa = -1;
                     }

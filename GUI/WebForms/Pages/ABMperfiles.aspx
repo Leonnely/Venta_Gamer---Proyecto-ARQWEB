@@ -14,13 +14,13 @@
             <br />
             <asp:Label ID="lblFamilia" runat="server" Text="Familia"></asp:Label>
             <br />
-            <asp:DropDownList ID="DDLFamilia" runat="server" Height="16px" Width="140px" OnSelectedIndexChanged="DDLFamilia_SelectedIndexChanged">
+            <asp:DropDownList ID="DDLFamilia" runat="server" Height="16px" Width="140px" AutoPostBack="true" OnSelectedIndexChanged="DDLFamilia_SelectedIndexChanged">
             </asp:DropDownList>
             <br />
             <br />
             <asp:Label ID="LblPermisosFamilia" runat="server" Text="Permisos Familia"></asp:Label>
             <br />
-            <asp:ListBox ID="LBPermisosFamilia" runat="server" Height="126px" Width="136px"></asp:ListBox>
+            <asp:ListBox ID="LBPermisosFamilia" runat="server" Height="126px" Width="136px" SelectionMode="Multiple"></asp:ListBox>
             <br />
             <br />
             <asp:Label ID="LblNombrePerfil" runat="server" Text="Nombre Perfil"></asp:Label>
@@ -30,7 +30,7 @@
             <br />
             <asp:Label ID="LblPermisosDisponibles" runat="server" Text="Permisos Disponibles"></asp:Label>
             <br />
-            <asp:ListBox ID="LBPermisosDisponibles" runat="server" Height="129px" Width="133px"></asp:ListBox>
+            <asp:ListBox ID="LBPermisosDisponibles" runat="server" Height="129px" Width="133px" SelectionMode="Multiple" EnableViewState="true"></asp:ListBox>
             <br />
             <br />
             <asp:Label ID="LblMensaje" runat="server" Text="Label"></asp:Label>

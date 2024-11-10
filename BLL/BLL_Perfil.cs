@@ -70,5 +70,10 @@ namespace BLL
             DAL_Perfil dalPerfil = new DAL_Perfil();
             dalPerfil.RemovePermissionsFromRole(roleId, permissionIds);
         }
+        public List<string> ObtenerPermisosPorRol(string rol)
+        {
+            DAL_Perfil dalPerfil = new DAL_Perfil();
+            return dalPerfil.ObtenerPermisosPorRol(rol);
+        }
     }
 }

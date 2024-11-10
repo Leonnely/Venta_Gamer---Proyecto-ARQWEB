@@ -193,5 +193,65 @@ namespace DAL
                 acceso.Write(query, parametros);
             }
         }
+        public List<string> ObtenerPermisosPorRol(string rol)
+        {
+            List<string> permisos = new List<string>();
+
+            try
+            {
+                RecuperarPermisosPorRol(rol, permisos);
+
+                return permisos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los permisos del rol desde la base de datos", ex);
+            }
+        }
+        private void RecuperarPermisosPorRol(string rol, List<string> permisos)
+        {
+            // Consulta SQL para obtener los permisos del rol actual
+            string consulta = @"
+                SELECT P.Descripcion
+                FROM Roles R
+                INNER JOIN RolesPermisos RP ON R.ID = RP.IDRol
+                INNER JOIN Permisos P ON RP.IDPermiso = P.ID
+                WHERE R.Descripcion = @Rol";
+
+            SqlParameter[] parametros = {
+                new SqlParameter("@Rol", SqlDbType.NVarChar, 100) { Value = rol }
+            };
+
+            DataTable tablaPermisos = acceso.Read(consulta, parametros);
+
+            foreach (DataRow fila in tablaPermisos.Rows)
+            {
+                string permiso = fila["Descripcion"].ToString();
+                if (!permisos.Contains(permiso))
+                {
+                    permisos.Add(permiso);
+                }
+            }
+
+            // Consulta SQL para obtener el rol padre, si existe
+            string consultaRolPadre = @"
+        SELECT RPadre.Descripcion AS RolPadre
+        FROM Roles R
+        INNER JOIN RolesJerarquia RJ ON R.ID = RJ.ID_RolHijo
+        INNER JOIN Roles RPadre ON RJ.ID_RolPadre = RPadre.ID
+        WHERE R.Descripcion = @Rol";
+
+            SqlParameter[] parametrosRolPadre = {
+                new SqlParameter("@Rol", SqlDbType.NVarChar, 100) { Value = rol }
+            };
+
+            DataTable tablaRolPadre = acceso.Read(consultaRolPadre, parametrosRolPadre);
+
+            if (tablaRolPadre.Rows.Count > 0)
+            {
+                string rolPadre = tablaRolPadre.Rows[0]["RolPadre"].ToString();
+                RecuperarPermisosPorRol(rolPadre, permisos); // Llamada recursiva para obtener los permisos del rol padre
+            }
+        }
     }
 }
