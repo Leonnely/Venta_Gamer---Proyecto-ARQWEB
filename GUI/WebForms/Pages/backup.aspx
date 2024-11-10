@@ -1,14 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="backup.aspx.cs" Inherits="GUI.WebForms.Pages.backup" %>
+﻿<%@ Page Title="Backup" Language="C#" MasterPageFile="~/WebForms/Pages/MasterPage.master" AutoEventWireup="true" CodeBehind="backup.aspx.cs" Inherits="GUI.WebForms.Pages.backup" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Backup and Restore</title>
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
     <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
     <style>
-
         .main-content{
 
         }
@@ -85,21 +81,6 @@
             color: #333;
         }
     </style>
-</head>
-    
-<body>
-    <form id="frmBackup" runat="server">
-        <nav class="navbar">
-            <div class="navbar--left">
-                <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/WebForms/Pages/home.aspx" CssClass="nav-link">Home</asp:HyperLink>
-                <asp:HyperLink ID="hlBitacora" runat="server" NavigateUrl="~/WebForms/Pages/bitacora.aspx" CssClass="nav-link">Bitacora</asp:HyperLink>
-                <asp:HyperLink ID="hlBackup" runat="server" NavigateUrl="~/WebForms/Pages/backup.aspx" CssClass="nav-link">Gestion DB</asp:HyperLink>
-            </div>
-            <div class="navbar--right">
-                <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-                <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
-            </div>
-        </nav>
         <section class="main-content">
             <div>
                 <asp:Button ID="btnCreateBackup" runat="server"  Text="Crear Backup" OnClick="btnCreateBackup_Click" CssClass="create_backup" />
@@ -123,6 +104,4 @@
                 </asp:GridView>
             </div>
         </section>
-    </form>
-</body>
-</html>
+</asp:Content>

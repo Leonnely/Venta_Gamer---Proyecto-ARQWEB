@@ -62,6 +62,7 @@ namespace GUI.WebForms.Session
                 if (loginManager.login(username, password))     //SI NO EXISTE SESION
                 {
                     //DVManager managerSecurity = new DVManager();
+
                     bool IntegridadBBDD = true;
                     List<DataTable> listTables = _digitoManager.CheckIntegrity();
 
@@ -73,12 +74,16 @@ namespace GUI.WebForms.Session
                     if (!IntegridadBBDD)
                     {
                         //obtener la sesion y meter en el if
-                        if (username=="WebMaster")
+                        if (username == "WebMaster")
                         {
-                            HttpContext.Current.Session["ListTables"] = listTables;
+                            // Este script abrirá un confirm y, si el usuario acepta, redirigirá
+                            string script = @"
+                                if (confirm('Se ha encontrado una inconsistencia en la base de datos, ¿Desea ingresar a la gestion de DB?')) {
+                                    window.location.href = '" + ResolveUrl("~/WebForms/Pages/backupDV.aspx") + @"';
+                                }";
 
-                            //webmaster
-                            Response.Redirect("~/WebForms/Pages/backupDV.aspx");
+                            ClientScript.RegisterStartupScript(this.GetType(), "confirmRedirect", script, true);
+                            HttpContext.Current.Session["ListTables"] = listTables;
                         }
                         else
                         {
@@ -102,8 +107,8 @@ namespace GUI.WebForms.Session
                         {
                             lblMessage.Text = ("Usuario bloqueado, contacte con un administrador");
                         }
-                    }
                 }
+            }
                 else     //SI EXISTE SESION O CONTRASEÑA INCORRECTA
                 {
                     lblMessage.Text = "Error al iniciar sesion";
@@ -116,6 +121,9 @@ namespace GUI.WebForms.Session
                 }
             }
         }
-          
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/WebForms/Session/Registro.aspx");
+        }
     }
 }

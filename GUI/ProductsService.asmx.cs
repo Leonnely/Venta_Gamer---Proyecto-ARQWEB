@@ -14,11 +14,26 @@ namespace GUI
     public class ProductsService : System.Web.Services.WebService
     {
         [WebMethod]
-        public List<Productos> GetProducts()
+        public List<BE_Productos> GetProducts()
         {
             BLL_Productos productService = new BLL_Productos();
             return productService.GetProducts();
         }
+
+        [WebMethod]
+        public List<BE_Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        {
+            BLL_Productos productService = new BLL_Productos();
+            return productService.GetProductsByPagination(pageNumber, pageSize);
+        }
+
+        [WebMethod]
+        public int GetTotalProductsCount()
+        {
+            BLL_Productos productService = new BLL_Productos();
+            return productService.GetTotalProductsCount();
+        }
+
     }
 
 }

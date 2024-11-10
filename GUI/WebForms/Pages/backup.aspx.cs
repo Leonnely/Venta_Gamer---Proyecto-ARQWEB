@@ -18,6 +18,11 @@ namespace GUI.WebForms.Pages
             if (!IsPostBack)
             {
                 LoadBackupFiles();
+
+                if (this.Master is MasterPage masterPage)
+                {
+                    masterPage.ConfigurarNavbarEIdioma();
+                }
             }
         }
 

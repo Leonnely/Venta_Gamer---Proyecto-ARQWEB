@@ -87,10 +87,10 @@ namespace GUI.WebForms.Pages
                 if (Session["role"] == null) //Si no hay sesión agregamos botón de inicio e iniciar sesion
                 {
                     var navbarItems = new List<NavbarItem>
-            {
-                new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Home"), TextKey = "Home", Url = "~/WebForms/Pages/home.aspx" },
-                new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Iniciar sesión"), TextKey = "Iniciar sesión", Url = "~/WebForms/Session/login.aspx" }
-            };
+                    {
+                        new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Home"), TextKey = "Home", Url = "~/WebForms/Pages/home.aspx" },
+                        new NavbarItem { Name = SERVICES.IdiomaSubject.GetTexto("Iniciar sesión"), TextKey = "Iniciar sesión", Url = "~/WebForms/Session/login.aspx" }
+                    };
                     GenerateNavbar(navbarItems);
                 }
                 else
@@ -136,7 +136,7 @@ namespace GUI.WebForms.Pages
                     InnerText = SERVICES.IdiomaSubject.GetTexto(item.Name),
                     HRef = ResolveUrl(item.Url)
                 };
-                link.Attributes["class"] = "nav-link";
+                link.Attributes["class"] = "ps-2 pe-2 nav-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";
                 navbarLeft.Controls.Add(link);
             }
         }
@@ -174,7 +174,7 @@ namespace GUI.WebForms.Pages
             switch (rol)
             {
                 case 0:
-                    return "Administrador";
+                    return "Admin";
                 case 1:
                     return "WebMaster";
                 case 2:
