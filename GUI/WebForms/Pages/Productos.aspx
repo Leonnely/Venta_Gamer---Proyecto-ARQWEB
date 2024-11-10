@@ -17,6 +17,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         .productos-page h2 {
@@ -73,7 +74,7 @@
         }
     </style>
 
-    <!-- Contenedor principal de la página de productos -->
+    <!-- Contenedor para cargar productos -->
     <div class="productos-page">
         <div class="container">
             <h2>Cargar Producto</h2>
@@ -89,6 +90,44 @@
             
             <asp:Button ID="btnSubmit" runat="server" Text="Cargar Producto" CssClass="btn" OnClick="btnSubmit_Click" />
             <asp:Label ID="lblMessage" runat="server" CssClass="message" Text="" />
+        </div>
+    </div>
+
+    <!-- Contenedor para la modificación de productos -->
+    <div class="edit-product-section">
+        <h2>Modificar Producto</h2>
+
+        <label for="ddlEditProduct">Selecciona un Producto:</label>
+        <asp:DropDownList ID="ddlEditProduct" runat="server" OnSelectedIndexChanged="ddlEditProduct_SelectedIndexChanged" AutoPostBack="true">
+            <asp:ListItem Text="Selecciona un producto" Value="0" />
+        </asp:DropDownList>
+
+        <label for="txtEditTitle">Nuevo Título:</label>
+        <asp:TextBox ID="txtEditTitle" runat="server" placeholder="Nuevo título del producto" />
+
+        <label for="txtEditPrice">Nuevo Precio:</label>
+        <asp:TextBox ID="txtEditPrice" runat="server" placeholder="Nuevo precio del producto" />
+
+        <label for="ddlEditCategory">Nueva Categoría:</label>
+        <asp:DropDownList ID="ddlEditCategory" runat="server"></asp:DropDownList>
+            
+            <!-- Añadir más categorías según sea necesario -->
+        </asp:DropDownList>
+
+        <asp:Button ID="btnUpdateProduct" runat="server" Text="Actualizar Producto" CssClass="btn" OnClick="btnUpdateProduct_Click" />
+        <asp:Label ID="lblUpdateMessage" runat="server" CssClass="message" Text="" />
+    </div>
+
+    <!-- Contenedor para eliminar productos -->
+    <div class="productos-page">
+        <div class="container">
+            <h2>Eliminar Producto</h2>
+
+            <label for="ddlProducts">Selecciona el producto a eliminar:</label>
+            <asp:DropDownList ID="ddlProducts" runat="server" OnSelectedIndexChanged="ddlProducts_SelectedIndexChanged" />
+            
+            <asp:Button ID="btnDelete" runat="server" Text="Eliminar Producto" CssClass="btn" OnClick="btnDelete_Click" />
+            <asp:Label ID="lblDeleteMessage" runat="server" CssClass="message" Text="" />
         </div>
     </div>
 </asp:Content>
