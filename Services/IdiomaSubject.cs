@@ -7,45 +7,96 @@ using System.Text;
 using System.Threading.Tasks;
 using BLL;
 
-
-namespace Services
+namespace SERVICES
 {
     public class IdiomaSubject
     {
-        private static List<IIdiomaObserver> _observers = new List<IIdiomaObserver>();
+        private static readonly List<IIdiomaObserver> _observers = new List<IIdiomaObserver>();
+        private static readonly object _lock = new object();
         private readonly BLL_GestionIdioma _idiomaManager;
         private static Dictionary<string, string> _textosActuales = new Dictionary<string, string>();
 
-            public IdiomaSubject()
-            {
-                _idiomaManager = new BLL_GestionIdioma();
-            }
+        // Singleton instance
+        private static IdiomaSubject _instance;
 
-            public void Attach(IIdiomaObserver observer)
+        private IdiomaSubject()
+        {
+            _idiomaManager = new BLL_GestionIdioma();
+        }
+
+        // Método para obtener la instancia única de IdiomaSubject
+        public static IdiomaSubject Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new IdiomaSubject();
+                        }
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        public bool ContieneObservador(IIdiomaObserver observer)
+        {
+            return _observers.Contains(observer);
+        }
+        public void Attach(IIdiomaObserver observer)
+        {
+            if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
+                System.Diagnostics.Debug.WriteLine("Observador registrado correctamente.");
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("El observador ya estaba registrado.");
+            }
+        }
+
+        public void Detach(IIdiomaObserver observer)
+        {
+            _observers.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            System.Diagnostics.Debug.WriteLine("Notificando a los observadores: " + _observers.Count);
+
+            if (_observers.Count == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("No hay observadores registrados.");
+                return; // Evitar seguir si no hay observadores
             }
 
-            public void Detach(IIdiomaObserver observer)
+            foreach (var observer in _observers)
             {
-                _observers.Remove(observer);
+                System.Diagnostics.Debug.WriteLine("Notificando a un observador.");
+                observer.UpdateIdioma(_textosActuales);
             }
+        }
 
-            public void Notify()
-            {
-                Console.WriteLine("Notificando a los observadores: " + _observers.Count);
-                foreach (var observer in _observers)
-                {
-                    Console.WriteLine("Notificando a un observador.");
-                    observer.UpdateIdioma(_textosActuales);
-                }
-            }
+        public void CambiarIdiomaDesdeDB(string idioma)
+        {
+            System.Diagnostics.Debug.WriteLine("Cambiando idioma a: " + idioma);
+            _textosActuales = _idiomaManager.ObtenerTextosPorIdioma(idioma);
+            System.Diagnostics.Debug.WriteLine("Textos actuales cargados: " + _textosActuales.Count);
 
-            public void CambiarIdiomaDesdeDB(string idioma)
+            if (_textosActuales.Count > 0)
             {
-                _textosActuales = _idiomaManager.ObtenerTextosPorIdioma(idioma);
-                Notify();
+                Notify(); // Notifica a los observadores del cambio de idioma
             }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("No se encontraron textos para el idioma: " + idioma);
+            }
+        }
 
         public void CambiarIdiomaDesdeDB(int id)
         {
@@ -57,17 +108,17 @@ namespace Services
         {
             return _idiomaManager.ObtenerIdDesdeIdioma(idioma);
         }
-            
 
-            public string ObtenerCodigoDesdeId(int id)
+        public string ObtenerCodigoDesdeId(int id)
         {
             return _idiomaManager.ObtenerCodigoDesdeId(id);
         }
 
         // Método estático para obtener texto traducido
         public static string GetTexto(string key)
-            {
-                return _textosActuales.ContainsKey(key) ? _textosActuales[key] : key;
-            }
+        {
+            return _textosActuales.ContainsKey(key) ? _textosActuales[key] : key;
         }
+    }
 }
+

@@ -18,19 +18,5 @@ namespace WebApplication1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-        //void Application_AuthenticateRequest(Object sender, EventArgs e)
-        //{
-        //    // Verifica si HttpContext y User no son nulos
-        //    if (HttpContext.Current != null && HttpContext.Current.User != null)
-        //    {
-        //        // Verifica si el usuario no está autenticado y si la solicitud no es para la página de login
-        //        if (!HttpContext.Current.User.Identity.IsAuthenticated &&
-        //            !HttpContext.Current.Request.Url.AbsolutePath.EndsWith("/WebForms/Session/login.aspx"))
-        //        {
-        //            HttpContext.Current.Response.Redirect("~/WebForms/Session/login.aspx");
-        //        }
-        //    }
-        //}
     }
 }

@@ -117,5 +117,32 @@ namespace DAL
                 connection.Close();
             }
         }
+
+        public bool Register(string username, string password, int role)
+        {
+            try
+            {
+                using (SqlConnection connection = _connection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO USUARIOS (USERNAME, PASSWORD, ROL, LanguageID, IsBlock) VALUES (@Username, @Password, @Role, @LanguageID, @IsBlock)", connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@Role", role);
+                        cmd.Parameters.AddWithValue("@LanguageID", 1);
+                        cmd.Parameters.AddWithValue("@IsBlock", false);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0; // Retorna true si la inserción fue exitosa
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false; // Retorna false si ocurre algún error
+            }
+        }
+
     }
 }

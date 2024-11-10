@@ -6,12 +6,14 @@
 
 <head runat="server">
     <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <title>Pantalla de Login</title>
     <style>
         #wfrmLogin{
             height: 100dvh;
             display: flex;
             align-items: center;
+            background-color: #2c3e50;
         }
         div img {
             width: 300px;
@@ -24,8 +26,8 @@
             width: max-content;
             padding: 20px;
             margin: auto;
-            box-shadow:  20px 20px 60px #bebebe,
-                            -20px -20px 60px #ffffff;
+            background-color: white;
+            box-shadow: 10px 10px 0px #ff29b3, -10px -10px 0px #1a0064;
         }
         .login-container {
             width: 100%;
@@ -75,11 +77,12 @@
                 <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/WebForms/Session/PasswordReset.aspx">Olvide mi contraseña</asp:HyperLink>
                 <asp:RequiredFieldValidator ID="rfvPassword" Class="validators" runat="server" ControlToValidate="txtPassword" ErrorMessage="Contraseña es un campo obligatorio."></asp:RequiredFieldValidator>
                 
-
                 <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
-                
+                <asp:Button ID="btnRegister" runat="server" Text="Registrarse como cliente" OnClick="btnRegister_Click" />
+
             </div>
         </div>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

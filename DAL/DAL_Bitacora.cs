@@ -17,81 +17,77 @@ namespace DAL
         //ESCRITURA EN BITACORA
         public void BitacoraRegister(BE_RegistroBitacora registroBitacora)
         {
-
-            SqlConnection connection = _connection.GetConnection();
-
-            try
+            using (SqlConnection connection = _connection.GetConnection())
             {
                 connection.Open();
-
-                
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO BITACORA_REGISTROS (FECHA, MENSAJE, MODULO, ID_AUTOR) values (@Fecha, @mensaje, @Modulo, @ID)", connection))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO BITACORA_REGISTROS (FECHA, MENSAJE, MODULO, ID_AUTOR) VALUES (@Fecha, @Mensaje, @Modulo, @ID)", connection))
                 {
-                   
-                    cmd.Parameters.AddWithValue("@Fecha", registroBitacora.Fecha);
-                    cmd.Parameters.AddWithValue("@mensaje", registroBitacora.Mensaje);
-                    cmd.Parameters.AddWithValue("@Modulo", registroBitacora.Modulo);
-                    cmd.Parameters.AddWithValue("@ID", registroBitacora.Autor);
+                    cmd.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.DateTime) { Value = registroBitacora.Fecha });
+                    cmd.Parameters.Add(new SqlParameter("@Mensaje", SqlDbType.NVarChar, 255) { Value = registroBitacora.Mensaje });
+                    cmd.Parameters.Add(new SqlParameter("@Modulo", SqlDbType.NVarChar, 100) { Value = registroBitacora.Modulo });
+                    cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int) { Value = registroBitacora.Autor });
 
-                    
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
-            {
-                
-                throw new Exception("Error al registrar en la bitácora: " + ex.Message, ex);
-            }
-            finally
-            {
-                
-                if (connection.State == ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
         }
+
 
         //LECTURA DE BITACORA
         public List<BE_RegistroBitacora> getAll()
         {
-            _connection.GetConnection().Open();
-            DataSet Ds = new DataSet();
-            SqlDataAdapter Da = new SqlDataAdapter("Select * from BITACORA_REGISTROS", _connection.GetConnection());
-            Da.Fill(Ds);
-            _connection.GetConnection().Close();
-            DataTable dt = Ds.Tables[0];
-            BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora();
             List<BE_RegistroBitacora> bitacora = new List<BE_RegistroBitacora>();
-            foreach (DataRow dr in dt.Rows)
+
+            using (SqlConnection conn = _connection.GetConnection())
             {
+                conn.Open();
+                using (SqlDataAdapter Da = new SqlDataAdapter("SELECT * FROM BITACORA_REGISTROS", conn))
+                {
+                    DataSet Ds = new DataSet();
+                    Da.Fill(Ds);
+                    DataTable dt = Ds.Tables[0];
 
-                registroBitacora.Mensaje= dr["MENSAJE"].ToString();
-                registroBitacora.Autor = int.Parse(dr["ID_AUTOR"].ToString());
-                registroBitacora.Modulo = dr["MODULO"].ToString();
-                registroBitacora.Fecha = DateTime.Parse(dr["FECHA"].ToString());
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        BE_RegistroBitacora registroBitacora = new BE_RegistroBitacora
+                        {
+                            Mensaje = dr["MENSAJE"].ToString(),
+                            Autor = int.Parse(dr["ID_AUTOR"].ToString()),
+                            Modulo = dr["MODULO"].ToString(),
+                            Fecha = DateTime.Parse(dr["FECHA"].ToString())
+                        };
 
-                registroBitacora.user = GetUserBitacora(registroBitacora.Autor);
-
-                bitacora.Add(registroBitacora);
+                        registroBitacora.user = GetUserBitacora(registroBitacora.Autor);
+                        bitacora.Add(registroBitacora);
+                    }
+                }
             }
-            
+
             return bitacora;
-            //return zDatos.Bitacora;
         }
+
 
 
         //OBTENCION DE USERNAME POR ID DE BITACORA
         public string GetUserBitacora(int id)
         {
-            _connection.GetConnection().Open();
-            SqlCommand cmd = new SqlCommand("Select USERNAME from USUARIOS where ID=@id", _connection.GetConnection());
-            cmd.Parameters.AddWithValue("@id", id);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            _connection.GetConnection().Close();
-            return dt.Rows[0]["USERNAME"].ToString();
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand("SELECT USERNAME FROM USUARIOS WHERE ID = @id", connection))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt.Rows.Count > 0 ? dt.Rows[0]["USERNAME"].ToString() : string.Empty;
+                    }
+                }
+            }
         }
+
     }
 }

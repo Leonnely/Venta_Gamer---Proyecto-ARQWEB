@@ -1,7 +1,9 @@
 ﻿using BE;
 using BLL;
+using SECURITY;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,12 +14,39 @@ namespace GUI.WebForms.Pages
 {
     public partial class backupDV : System.Web.UI.Page
     {
+        private readonly DVManager _digitoManager;
+        public backupDV()
+        {
+            _digitoManager = new DVManager();
+        }
+
         BLL_GestionDb gestionDB = new BLL_GestionDb();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadBackupFiles();
+
+                if (Session["ListTables"] != null)
+                {
+                    List<DataTable> listTables = (List<DataTable>)Session["ListTables"];
+                    var ul = new System.Text.StringBuilder();
+
+                    foreach (var table in listTables)
+                    {
+                        ul.Append($"<li> <strong>{table.TableName}</strong></li>");
+                    }
+
+                    listTablas.InnerHtml = ul.ToString();
+                }
+                else
+                {
+                    var ul = new System.Text.StringBuilder();
+                    ul.Append("Sin tablas afectadas!.");
+                    listTablas.InnerHtml = ul.ToString();
+
+                    Session["ListTables"] = null;
+                }
             }
         }
 
@@ -82,6 +111,10 @@ namespace GUI.WebForms.Pages
             lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
 
+
+        protected void gvBackups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
         protected void btnDownload_Click(object sender, EventArgs e)
         {
             Button btnDownload = (Button)sender;
@@ -107,6 +140,11 @@ namespace GUI.WebForms.Pages
                 Response.Write("<script>alert('El archivo no existe.');</script>");
             }
 
+
+            //protected void btnLogin_Click(object sender, EventArgs e)
+            //{
+            //    Response.Redirect("~/WebForms/Session/login.aspx");
+            //}
         }
     }
-}
+} 

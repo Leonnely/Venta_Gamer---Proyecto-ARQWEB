@@ -36,7 +36,7 @@ namespace SECURITY
             {
                 // Ejecuta ValidarDVH y obtiene el DataTable
                 DataTable dt = this.ValidarDVH(tableName);
-
+                dt.TableName = tableName;
                 // Solo agrega el DataTable a la lista si contiene discrepancias
                 if (dt != null && dt.Rows.Count > 0)
                 {

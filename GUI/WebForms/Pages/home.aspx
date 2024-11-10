@@ -1,22 +1,65 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.Pages.home" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/WebForms/Pages/MasterPage.master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="GUI.WebForms.Pages.home" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        /* Estilo para el contenedor de la imagen */
+        .img-placeholder {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* Mantiene un aspecto 16:9 */
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra para resaltar */
+        }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <link href="../../Styles/General.css" rel="stylesheet" type="text/css" />
-    <link href="../../Styles/nav.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="navbar" runat="server" id="navbar">
+        /* Estilo para la imagen */
+        .img-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 w-100 m-auto" style="max-width:1200px">
+        <asp:Repeater ID="ProductRepeater" runat="server">
+            <ItemTemplate>
+                <div class="col">
+                    <div class="card h-100 d-flex flex-column">
+                        <figure class="card-img-top img-placeholder">
+                            <!-- URL de imagen fija para todos los productos -->
+                            <img src="../../Assets/Componente.png"/ alt="Imagen de producto" class="img-fluid" />
+                        </figure>
+                        <div class="card-body flex-grow-1">
+                            <p class="product-category"><%# Eval("Category") %></p>
+                            <h3 class="card-title"><%# Eval("Title") %></h3>
+                            <p>Precio: $<%# Eval("Price") %></p>
+                        </div>
+                        <div class="card-footer mt-auto">
+                            <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" 
+                                        CommandArgument='<%# Eval("Title") %>' 
+                                        OnClick="btnAgregarCarrito_Click" 
+                                        CssClass="btn-agregar-carrito" />
+                        </div>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+    <div class="pagination-container pagination pagination-sm">
+        <asp:Repeater ID="PaginationRepeater" runat="server">
+            <ItemTemplate>
+                <asp:LinkButton ID="lnkPage" runat="server" 
+                                Text='<%# Eval("PageNumber") %>' 
+                                CommandArgument='<%# Eval("PageNumber") %>' 
+                                OnClick="lnkPage_Click" 
+                                CssClass="page-link" />
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
 
-        </div>
-    </form>
-</body>
-</html>
-
+</asp:Content>
 
 
 

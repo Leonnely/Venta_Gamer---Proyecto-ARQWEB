@@ -1,0 +1,166 @@
+[1mdiff --git a/GUI/GUI.csproj b/GUI/GUI.csproj[m
+[1mindex 907e4f5..fe7ad2e 100644[m
+[1m--- a/GUI/GUI.csproj[m
+[1m+++ b/GUI/GUI.csproj[m
+[36m@@ -111,23 +111,56 @@[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <Content Include="Assets\logo.jpeg" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.rtl.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.rtl.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.rtl.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.rtl.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.rtl.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.rtl.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.min.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.rtl.css" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.rtl.min.css" />[m
+     <Content Include="Scripts\jquery-3.7.1.min.js" />[m
+[32m+[m[32m    <Content Include="Styles\carrito.css" />[m
+     <Content Include="Styles\General.css" />[m
+[32m+[m[32m    <Content Include="Styles\home.css" />[m
+     <Content Include="Styles\nav.css" />[m
+     <Content Include="web.config" />[m
+[32m+[m[32m    <Content Include="WebForms\Pages\Ayuda.aspx" />[m
+     <Content Include="WebForms\Pages\backup.aspx" />[m
+     <Content Include="WebForms\Pages\backupDV.aspx" />[m
+     <Content Include="WebForms\Pages\bitacora.aspx" />[m
+[32m+[m[32m    <Content Include="WebForms\Pages\carrito.aspx" />[m
+[32m+[m[32m    <Content Include="WebForms\Pages\Configuracion.aspx" />[m
+     <Content Include="WebForms\Pages\ErrorPage.aspx" />[m
+     <Content Include="WebForms\Pages\home.aspx" />[m
+[32m+[m[32m    <Content Include="WebForms\Pages\Productos.aspx" />[m
+     <Content Include="WebForms\Session\login.aspx" />[m
+     <Content Include="WebForms\Session\PasswordReset.aspx" />[m
+[32m+[m[32m    <Content Include="ProductsService.asmx" />[m
+[32m+[m[32m    <Content Include="WebForms\Session\Registro.aspx" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <Compile Include="App_Start\BundleConfig.cs" />[m
+     <Compile Include="App_Start\RouteConfig.cs" />[m
+     <Compile Include="Global.asax.cs" />[m
+     <Compile Include="Properties\AssemblyInfo.cs" />[m
+[32m+[m[32m    <Compile Include="WebForms\Models\NavbarItem.cs" />[m
+[32m+[m[32m    <Compile Include="WebForms\Models\RoleBasedNavbar.cs" />[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\Ayuda.aspx.cs">[m
+[32m+[m[32m      <DependentUpon>Ayuda.aspx</DependentUpon>[m
+[32m+[m[32m      <SubType>ASPXCodeBehind</SubType>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\Ayuda.aspx.designer.cs">[m
+[32m+[m[32m      <DependentUpon>Ayuda.aspx</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+     <Compile Include="WebForms\Pages\backup.aspx.cs">[m
+       <DependentUpon>backup.aspx</DependentUpon>[m
+       <SubType>ASPXCodeBehind</SubType>[m
+[36m@@ -149,6 +182,20 @@[m
+     <Compile Include="WebForms\Pages\bitacora.aspx.designer.cs">[m
+       <DependentUpon>bitacora.aspx</DependentUpon>[m
+     </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\carrito.aspx.cs">[m
+[32m+[m[32m      <DependentUpon>carrito.aspx</DependentUpon>[m
+[32m+[m[32m      <SubType>ASPXCodeBehind</SubType>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\carrito.aspx.designer.cs">[m
+[32m+[m[32m      <DependentUpon>carrito.aspx</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\Configuracion.aspx.cs">[m
+[32m+[m[32m      <DependentUpon>Configuracion.aspx</DependentUpon>[m
+[32m+[m[32m      <SubType>ASPXCodeBehind</SubType>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\Configuracion.aspx.designer.cs">[m
+[32m+[m[32m      <DependentUpon>Configuracion.aspx</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+     <Compile Include="WebForms\Pages\ErrorPage.aspx.cs">[m
+       <DependentUpon>ErrorPage.aspx</DependentUpon>[m
+       <SubType>ASPXCodeBehind</SubType>[m
+[36m@@ -163,6 +210,19 @@[m
+     <Compile Include="WebForms\Pages\home.aspx.designer.cs">[m
+       <DependentUpon>home.aspx</DependentUpon>[m
+     </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\MasterPage.master.cs">[m
+[32m+[m[32m      <DependentUpon>MasterPage.master</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\MasterPage.master.designer.cs">[m
+[32m+[m[32m      <DependentUpon>MasterPage.master</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\Productos.aspx.cs">[m
+[32m+[m[32m      <DependentUpon>Productos.aspx</DependentUpon>[m
+[32m+[m[32m      <SubType>ASPXCodeBehind</SubType>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Pages\Productos.aspx.designer.cs">[m
+[32m+[m[32m      <DependentUpon>Productos.aspx</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+     <Compile Include="WebForms\Session\login.aspx.cs">[m
+       <DependentUpon>login.aspx</DependentUpon>[m
+       <SubType>ASPXCodeBehind</SubType>[m
+[36m@@ -177,8 +237,35 @@[m
+     <Compile Include="WebForms\Session\PasswordReset.aspx.designer.cs">[m
+       <DependentUpon>PasswordReset.aspx</DependentUpon>[m
+     </Compile>[m
+[32m+[m[32m    <Compile Include="ProductsService.asmx.cs">[m
+[32m+[m[32m      <DependentUpon>ProductsService.asmx</DependentUpon>[m
+[32m+[m[32m      <SubType>Component</SubType>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Session\Registro.aspx.cs">[m
+[32m+[m[32m      <DependentUpon>Registro.aspx</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+[32m+[m[32m    <Compile Include="WebForms\Session\Registro.aspx.designer.cs">[m
+[32m+[m[32m      <DependentUpon>Registro.aspx</DependentUpon>[m
+[32m+[m[32m    </Compile>[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+[32m+[m[32m    <Content Include="libman.json" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.rtl.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.rtl.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.rtl.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-utilities.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.rtl.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-reboot.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.rtl.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.min.css.map" />[m
+[32m+[m[32m    <Content Include="Content\bootstrap-grid.css.map" />[m
+     <None Include="packages.config" />[m
+     <None Include="web.Debug.config">[m
+       <DependentUpon>web.config</DependentUpon>[m
+[36m@@ -186,6 +273,7 @@[m
+     <None Include="web.Release.config">[m
+       <DependentUpon>web.config</DependentUpon>[m
+     </None>[m
+[32m+[m[32m    <Content Include="WebForms\Pages\MasterPage.master" />[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <ProjectReference Include="..\BE\BE.csproj">[m
+[36m@@ -200,14 +288,17 @@[m
+       <Project>{d19b4340-262d-4fc2-aea2-30ef32a9a7fa}</Project>[m
+       <Name>SECURITY</Name>[m
+     </ProjectReference>[m
+[31m-    <ProjectReference Include="..\Services\Services.csproj">[m
+[32m+[m[32m    <ProjectReference Include="..\Services\SERVICES.csproj">[m
+       <Project>{180f93d8-1e32-4e7e-af1f-b5fabea74312}</Project>[m
+[31m-      <Name>Services</Name>[m
+[32m+[m[32m      <Name>SERVICES</Name>[m
+     </ProjectReference>[m
+   </ItemGroup>[m
+   <ItemGroup>[m
+     <Folder Include="App_Data\" />[m
+   </ItemGroup>[m
+[32m+[m[32m  <ItemGroup>[m
+[32m+[m[32m    <WCFMetadata Include="Connected Services\" />[m
+[32m+[m[32m  </ItemGroup>[m
+   <PropertyGroup>[m
+     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>[m
+     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>[m

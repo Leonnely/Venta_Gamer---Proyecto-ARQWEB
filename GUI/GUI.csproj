@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="WebForms\Pages\MasterPage.master.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\Pages\MasterPage.master.designer.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
@@ -243,6 +244,7 @@
     </Compile>
     <Compile Include="WebForms\Session\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\Session\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>

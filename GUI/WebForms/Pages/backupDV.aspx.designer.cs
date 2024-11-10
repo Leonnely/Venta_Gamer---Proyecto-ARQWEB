@@ -24,6 +24,33 @@ namespace GUI.WebForms.Pages
         protected global::System.Web.UI.HtmlControls.HtmlForm frmBackup;
 
         /// <summary>
+        /// listTablas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl listTablas;
+
+        /// <summary>
+        /// btnRecalcularDV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRecalcularDV;
+
+        /// <summary>
+        /// btnLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogin;
+
+        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>
