@@ -11,9 +11,9 @@ namespace DAL
     public class DAL_Productos
     {
 
-        public List<Productos> GetAllProducts()
+        public List<BE_Productos> GetAllProducts()
         {
-            List<Productos> products = new List<Productos>();
+            List<BE_Productos> products = new List<BE_Productos>();
 
 
             // Abre la conexión utilizando la instrucción using para asegurar que se cierra automáticamente
@@ -28,7 +28,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            Productos product = new Productos
+                            BE_Productos product = new BE_Productos
                             {
                                 Category = reader["Category"].ToString(),
                                 Title = reader["Title"].ToString(),
@@ -43,9 +43,26 @@ namespace DAL
 
         }
 
-        public List<Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        public void AddProduct(BE_Productos product)
         {
-            List<Productos> products = new List<Productos>();
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+                string query = "INSERT INTO Products (Category, Title, Price) VALUES (@Category, @Title, @Price)";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Category", product.Category);
+                    command.Parameters.AddWithValue("@Title", product.Title);
+                    command.Parameters.AddWithValue("@Price", product.Price);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<BE_Productos> GetProductsByPagination(int pageNumber, int pageSize)
+        {
+            List<BE_Productos> products = new List<BE_Productos>();
             int offset = (pageNumber - 1) * pageSize;
             using (SqlConnection connection = _connection.GetConnection())
             {
@@ -66,7 +83,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            Productos product = new Productos
+                            BE_Productos product = new BE_Productos
                             {
                                 Category = reader["Category"].ToString(),
                                 Title = reader["Title"].ToString(),

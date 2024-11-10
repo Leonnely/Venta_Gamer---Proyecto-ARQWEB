@@ -11,7 +11,6 @@ namespace DAL
     {
         private static readonly string _connectionString;
 
-        // Constructor estático: inicializa la cadena de conexión
         static _connection()
         {
             _connectionString = @"Data Source=DESKTOP-P9QCU60\MSSQLSERVER01;Initial Catalog=VentaGamer;Integrated Security=True";

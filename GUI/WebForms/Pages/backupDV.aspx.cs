@@ -15,7 +15,7 @@ namespace GUI.WebForms.Pages
     public partial class backupDV : System.Web.UI.Page
     {
         private readonly DVManager _digitoManager;
-        public backupDV() 
+        public backupDV()
         {
             _digitoManager = new DVManager();
         }
@@ -34,10 +34,10 @@ namespace GUI.WebForms.Pages
 
                     foreach (var table in listTables)
                     {
-                        ul.Append($"<li> <strong>{table.TableName}</strong></li>"); 
+                        ul.Append($"<li> <strong>{table.TableName}</strong></li>");
                     }
 
-                    listTablas.InnerHtml = ul.ToString(); 
+                    listTablas.InnerHtml = ul.ToString();
                 }
                 else
                 {
@@ -111,6 +111,10 @@ namespace GUI.WebForms.Pages
             lblMessage.Text = "Backup restaurado desde: " + filePath;
         }
 
+
+        protected void gvBackups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
         protected void btnDownload_Click(object sender, EventArgs e)
         {
             Button btnDownload = (Button)sender;
@@ -136,31 +140,11 @@ namespace GUI.WebForms.Pages
                 Response.Write("<script>alert('El archivo no existe.');</script>");
             }
 
-        }
 
-        protected void btnRecalcularDV_Click(object sender, EventArgs e)
-        {
-            bool IntegridadBBDD = true;
-            List<DataTable> listTables = _digitoManager.CheckIntegrity();
-
-            if (listTables.Count > 0)
-            {
-                IntegridadBBDD = false;
-            }
-
-            if (IntegridadBBDD)
-            {
-                var ul = new System.Text.StringBuilder();
-                ul.Append("Sin tablas afectadas!.");
-                listTablas.InnerHtml = ul.ToString();
-                
-                Session["ListTables"] = null;
-            }
-        }
-
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/WebForms/Session/login.aspx");
+            //protected void btnLogin_Click(object sender, EventArgs e)
+            //{
+            //    Response.Redirect("~/WebForms/Session/login.aspx");
+            //}
         }
     }
-}
+} 

@@ -40,7 +40,7 @@ namespace GUI.WebForms.Pages
         private void LoadProducts(int pageNumber = 1, int pageSize = 16)
         {
             ProductsService service = new ProductsService();
-            List<Productos> products = service.GetProductsByPagination(pageNumber, pageSize);
+            List<BE_Productos> products = service.GetProductsByPagination(pageNumber, pageSize);
             ProductRepeater.DataSource = products;
             ProductRepeater.DataBind();
 

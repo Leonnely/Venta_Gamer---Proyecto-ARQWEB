@@ -83,5 +83,11 @@ namespace SECURITY
             _digitoManager.ActualizarTablaDVH("USUARIOS");
 
         }
+
+        public bool Register(string username, string password, int role)
+        {
+            string hashedpass = CryptoManager.HashPassword(password);
+            return user.Register(username, hashedpass, role);
+        }
     }
 }

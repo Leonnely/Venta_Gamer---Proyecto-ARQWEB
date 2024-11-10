@@ -174,7 +174,7 @@ namespace GUI.WebForms.Pages
             switch (rol)
             {
                 case 0:
-                    return "Administrador";
+                    return "Admin";
                 case 1:
                     return "WebMaster";
                 case 2:
