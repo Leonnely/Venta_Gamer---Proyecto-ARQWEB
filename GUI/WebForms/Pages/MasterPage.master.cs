@@ -179,6 +179,8 @@ namespace GUI.WebForms.Pages
                     return "WebMaster";
                 case 2:
                     return "User";
+                case 4:
+                    return "Tester";
                 default:
                     return "A";
             }

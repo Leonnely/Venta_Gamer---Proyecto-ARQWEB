@@ -64,9 +64,9 @@ namespace GUI.WebForms.Pages
         {
             if (!IsPostBack)
             {
-                //string rolenum = GetUserRole((int)Session["role"]);
-                //permisosUsuario = bllPerfil.ObtenerPermisosPorRol(rolenum);
-                //ConfigurarForm(permisosUsuario);
+                string rolenum = GetUserRole((int)Session["role"]);
+                permisosUsuario = bllPerfil.ObtenerPermisosPorRol(rolenum);
+                ConfigurarForm(permisosUsuario);
                 InicializarFormulario();
             }
 
@@ -89,43 +89,43 @@ namespace GUI.WebForms.Pages
                     return "A";
             }
         }
-        //private void ConfigurarForm(List<string> permisos)
-        //{
-        //    BtnAñadirPerfil.Visible = false;
-        //    BtnEliminarPerfil.Visible = false;
-        //    BtnModificarPerfil.Visible = false;
-        //    BtnEliminarPermiso.Visible = false;
-        //    BtnAñadirPermiso.Visible = false;
-        //    BtnAplicar.Visible = false;
-        //    BtnCancelar.Visible = false;
+        private void ConfigurarForm(List<string> permisos)
+        {
+            BtnAñadirPerfil.Visible = false;
+            BtnEliminarPerfil.Visible = false;
+            BtnModificarPerfil.Visible = false;
+            BtnEliminarPermiso.Visible = false;
+            BtnAñadirPermiso.Visible = false;
+            BtnAplicar.Visible = false;
+            BtnCancelar.Visible = false;
 
-        //    foreach (string permiso in permisos)
-        //    {
-        //        switch (permiso)
-        //        {
-        //            case "Permisos Agregar":
-        //                BtnAñadirPerfil.Visible = true;
-        //                BtnAplicar.Visible = true;
-        //                BtnCancelar.Visible = true;
-        //                break;
-        //            case "Permisos Eliminar":
-        //                BtnEliminarPerfil.Visible = true;
-        //                BtnAplicar.Visible = true;
-        //                BtnCancelar.Visible = true;
-        //                break;
-        //            case "Permisos Modificar":
-        //    BtnModificarPerfil.Visible = true;
-        //    BtnEliminarPermiso.Visible = true;
-        //    BtnAñadirPermiso.Visible = true;
-        //    BtnAplicar.Visible = true;
-        //    BtnCancelar.Visible = true;
-        //                break;
-        //            // Agregar más casos según los permisos definidos en tu sistema
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //}
+            foreach (string permiso in permisos)
+            {
+                switch (permiso)
+                {
+                    case "Permisos Agregar":
+                        BtnAñadirPerfil.Visible = true;
+                        BtnAplicar.Visible = true;
+                        BtnCancelar.Visible = true;
+                        break;
+                    case "Permisos Eliminar":
+                        BtnEliminarPerfil.Visible = true;
+                        BtnAplicar.Visible = true;
+                        BtnCancelar.Visible = true;
+                        break;
+                    case "Permisos Modificar":
+                        BtnModificarPerfil.Visible = true;
+                        BtnEliminarPermiso.Visible = true;
+                        BtnAñadirPermiso.Visible = true;
+                        BtnAplicar.Visible = true;
+                        BtnCancelar.Visible = true;
+                        break;
+                    // Agregar más casos según los permisos definidos en tu sistema
+                    default:
+                        break;
+                }
+            }
+        }
         protected void BtnAñadirPerfil_Click(object sender, EventArgs e)
         {
             LblMensaje.Text = "Modo Añadir";
