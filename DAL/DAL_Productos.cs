@@ -20,7 +20,7 @@ namespace DAL
             using (SqlConnection connection = _connection.GetConnection())
             {
                 connection.Open();
-                string query = "SELECT Category, Title, Price FROM Products";
+                string query = "SELECT ProductId, Category, Title, Price FROM Products";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -30,6 +30,7 @@ namespace DAL
                         {
                             BE_Productos product = new BE_Productos
                             {
+                                Id = Convert.ToInt32(reader["ProductId"]),
                                 Category = reader["Category"].ToString(),
                                 Title = reader["Title"].ToString(),
                                 Price = Convert.ToDecimal(reader["Price"])
@@ -113,6 +114,40 @@ namespace DAL
             }
 
             return count;
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+                string query = "DELETE FROM Products WHERE ProductId = @ProductID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductID", productId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateProduct(BE_Productos product)
+        {
+            using (SqlConnection connection = _connection.GetConnection())
+            {
+                connection.Open();
+                string query = "UPDATE Products SET Category = @Category, Title = @Title, Price = @Price WHERE ProductId = @Id";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", product.Id);
+                    command.Parameters.AddWithValue("@Category", product.Category);
+                    command.Parameters.AddWithValue("@Title", product.Title);
+                    command.Parameters.AddWithValue("@Price", product.Price);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
     }

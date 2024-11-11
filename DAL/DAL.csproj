@@ -49,9 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acceso.cs" />
     <Compile Include="DALDVManager.cs" />
     <Compile Include="DAL_Bitacora.cs" />
     <Compile Include="DAL_GestionDB.cs" />
+    <Compile Include="DAL_Perfil.cs" />
     <Compile Include="DAL_GestionIdioma.cs" />
     <Compile Include="DAL_Productos.cs" />
     <Compile Include="DAL_Usuario.cs" />

@@ -21,7 +21,7 @@ namespace GUI.WebForms.Pages
                     int pageNumber = 1;
                     int pageSize = 16; 
                     LoadProducts(pageNumber,pageSize);
-                   
+
                     if (this.Master is MasterPage masterPage)
                     {
                         masterPage.ConfigurarNavbarEIdioma();
