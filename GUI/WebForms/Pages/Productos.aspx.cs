@@ -20,7 +20,7 @@ namespace GUI.WebForms.Pages
             {
                 masterPage.ConfigurarNavbarEIdioma();
             }
-
+                
             // Añadir categorías al DropDownList
             if (!IsPostBack)  // Verifica que solo se ejecute una vez al cargar la página
             {

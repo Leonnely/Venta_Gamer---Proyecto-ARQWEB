@@ -220,4 +220,33 @@
       <Total>143412.78</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-10 22:51:13</Fecha>
+    <TotalCompra>373481.34</TotalCompra>
+    <Item>
+      <Producto>Acer Iconia Tab A1-810</Producto>
+      <Cantidad>4</Cantidad>
+      <Precio>57041.15</Precio>
+      <Total>228164.60</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid Jade</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>47804.26</Precio>
+      <Total>47804.26</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid M220</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>87410.10</Precio>
+      <Total>87410.10</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid C1</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>3367.46</Precio>
+      <Total>10102.38</Total>
+    </Item>
+  </Venta>
 </Ventas>
