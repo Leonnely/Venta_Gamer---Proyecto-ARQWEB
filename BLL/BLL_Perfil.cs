@@ -75,5 +75,18 @@ namespace BLL
             DAL_Perfil dalPerfil = new DAL_Perfil();
             return dalPerfil.ObtenerPermisosPorRol(rol);
         }
+        public List<string> ObtenerDescripcionesRoles()
+        {
+            try
+            {
+                DAL_Perfil dalPerfil = new DAL_Perfil();
+                return dalPerfil.ObtenerDescripcionesRoles();
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores o logging
+                throw new Exception("Error al obtener las descripciones de roles", ex);
+            }
+        }
     }
 }

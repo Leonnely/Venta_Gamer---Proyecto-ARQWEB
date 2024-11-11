@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ventas>
+  <Venta>
+    <UsuarioID />
+    <Fecha>2024-11-10 19:45:43</Fecha>
+    <TotalCompra>1000.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>1000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID />
+    <Fecha>2024-11-10 19:50:04</Fecha>
+    <TotalCompra>500000.00</TotalCompra>
+    <Item>
+      <Producto>AMD Ryzen 9 7600G</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>500000.00</Precio>
+      <Total>500000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID />
+    <Fecha>2024-11-10 19:50:49</Fecha>
+    <TotalCompra>2103000.00</TotalCompra>
+    <Item>
+      <Producto>AMD Ryzen 9 7600G</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>500000.00</Precio>
+      <Total>500000.00</Total>
+    </Item>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>1000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Nvidia RTX 4090</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1500000.00</Precio>
+      <Total>1500000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Intel i9 - 11700K</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>102000.00</Precio>
+      <Total>102000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID />
+    <Fecha>2024-11-10 19:51:21</Fecha>
+    <TotalCompra>1500000.00</TotalCompra>
+    <Item>
+      <Producto>Nvidia RTX 4090</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1500000.00</Precio>
+      <Total>1500000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 19:52:53</Fecha>
+    <TotalCompra>2000.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>2000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 19:53:29</Fecha>
+    <TotalCompra>5000000.00</TotalCompra>
+    <Item>
+      <Producto>AMD Ryzen 9 7600G</Producto>
+      <Cantidad>10</Cantidad>
+      <Precio>500000.00</Precio>
+      <Total>5000000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 20:15:09</Fecha>
+    <TotalCompra>4500000.00</TotalCompra>
+    <Item>
+      <Producto>Nvidia RTX 4090</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>1500000.00</Precio>
+      <Total>4500000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 20:16:07</Fecha>
+    <TotalCompra>5120.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>5</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>5000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Intel I9</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>120.00</Precio>
+      <Total>120.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 20:18:08</Fecha>
+    <TotalCompra>306000.00</TotalCompra>
+    <Item>
+      <Producto>Intel i9 - 11700K</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>102000.00</Precio>
+      <Total>306000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 20:19:29</Fecha>
+    <TotalCompra>2001000.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>1000.00</Total>
+    </Item>
+    <Item>
+      <Producto>AMD Ryzen 9 7600G</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>500000.00</Precio>
+      <Total>500000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Nvidia RTX 4090</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1500000.00</Precio>
+      <Total>1500000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 21:10:12</Fecha>
+    <TotalCompra>1001240.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>1000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Intel I9</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>120.00</Precio>
+      <Total>240.00</Total>
+    </Item>
+    <Item>
+      <Producto>AMD Ryzen 9 7600G</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>500000.00</Precio>
+      <Total>1000000.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 21:11:52</Fecha>
+    <TotalCompra>1001000.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>1000.00</Total>
+    </Item>
+    <Item>
+      <Producto>AMD Ryzen 9 7600G</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>500000.00</Precio>
+      <Total>1000000.00</Total>
+    </Item>
+  </Venta>
+</Ventas>

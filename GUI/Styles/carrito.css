@@ -1,4 +1,10 @@
-﻿/* Estilos generales para el carrito */
+﻿/* General */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
 h1 {
     font-size: 24px;
     color: #333;
@@ -6,41 +12,88 @@ h1 {
     margin-bottom: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-th {
-    background-color: #f8f8f8;
-    color: #333;
-    font-weight: bold;
-}
-
-td {
+/* Carrito */
+.cart-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
     background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-    td input[type="text"] {
-        width: 50px;
+    .cart-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .cart-container th, .cart-container td {
+        padding: 15px;
+        border: 1px solid #ddd;
         text-align: center;
     }
 
-    td input[type="button"], td input[type="submit"] {
-        background-color: #3498db;
+    .cart-container th {
+        background-color: #4CAF50;
         color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
+        font-weight: bold;
     }
 
-        td input[type="button"]:hover, td input[type="submit"]:hover {
-            background-color: #2980b9;
-        }
+    .cart-container td {
+        background-color: #f9f9f9;
+    }
+
+    .cart-container .product-image {
+        width: 50px;
+        height: auto;
+        display: inline-block;
+    }
+
+/* Total y Confirmar Compra */
+.lbl-total-compra {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-confirmar-compra {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+    .btn-confirmar-compra:hover {
+        background-color: #45a049;
+    }
+
+/* Botones Actualizar y Eliminar */
+.btn-accion {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+    .btn-accion:hover {
+        background-color: #2980b9;
+    }

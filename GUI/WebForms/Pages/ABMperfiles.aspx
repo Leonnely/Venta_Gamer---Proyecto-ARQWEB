@@ -1,53 +1,53 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ABMperfiles.aspx.cs" Inherits="GUI.WebForms.Pages.ABMperfiles" %>
+﻿<%@ Page Title="Gestión de Perfiles" Language="C#" MasterPageFile="~/WebForms/Pages/MasterPage.master" AutoEventWireup="true" CodeBehind="ABMperfiles.aspx.cs" Inherits="GUI.WebForms.Pages.ABMperfiles" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            Gestion de perfiles<br />
-            <br />
-            <asp:Label ID="lblFamilia" runat="server" Text="Familia"></asp:Label>
-            <br />
-            <asp:DropDownList ID="DDLFamilia" runat="server" Height="16px" Width="140px" AutoPostBack="true" OnSelectedIndexChanged="DDLFamilia_SelectedIndexChanged">
-            </asp:DropDownList>
-            <br />
-            <br />
-            <asp:Label ID="LblPermisosFamilia" runat="server" Text="Permisos Familia"></asp:Label>
-            <br />
-            <asp:ListBox ID="LBPermisosFamilia" runat="server" Height="126px" Width="136px" SelectionMode="Multiple"></asp:ListBox>
-            <br />
-            <br />
-            <asp:Label ID="LblNombrePerfil" runat="server" Text="Nombre Perfil"></asp:Label>
-            <br />
-            <asp:TextBox ID="txtNombrePerfil" runat="server"></asp:TextBox>
-            <br />
-            <br />
-            <asp:Label ID="LblPermisosDisponibles" runat="server" Text="Permisos Disponibles"></asp:Label>
-            <br />
-            <asp:ListBox ID="LBPermisosDisponibles" runat="server" Height="129px" Width="133px" SelectionMode="Multiple" EnableViewState="true"></asp:ListBox>
-            <br />
-            <br />
-            <asp:Label ID="LblMensaje" runat="server" Text="Label"></asp:Label>
-            <br />
-            <br />
-            <asp:Button ID="BtnAñadirPerfil" runat="server" Text="Añadir Perfil" OnClick="BtnAñadirPerfil_Click" />
-            <asp:Button ID="BtnModificarPerfil" runat="server" Text="Modificar Perfil" OnClick="BtnModificarPerfil_Click" />
-            <asp:Button ID="BtnEliminarPerfil" runat="server" Text="Eliminar Perfil" OnClick="BtnEliminarPerfil_Click" />
-            <br />
-            <br />
-            <asp:Button ID="BtnAñadirPermiso" runat="server" Text="Añadir Permiso" OnClick="BtnAñadirPermiso_Click" />
-            <asp:Button ID="BtnEliminarPermiso" runat="server" Text="Eliminar Permiso" OnClick="BtnEliminarPermiso_Click" />
-            <br />
-            <br />
-            <asp:Button ID="BtnAplicar" runat="server" Text="Aplicar" OnClick="BtnAplicar_Click" />
-            <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" />
+<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container mt-4 overflow-auto" style="max-height: 80vh;">
+        
+        <div class="d-flex justify-content-between">
+            <h2 class="mb-4">Gestión de Perfiles</h2>
+            <asp:Label ID="LblMensaje" runat="server" CssClass="text-danger"></asp:Label>
         </div>
-    </form>
-</body>
-</html>
+
+        <div class="mb-1">
+            <asp:Button ID="BtnModificarPerfil" runat="server" Text="Modificar Perfil" CssClass="btn btn-warning me-2" OnClick="BtnModificarPerfil_Click" />
+        </div>
+        <div class="mb-2">
+            <asp:Label ID="lblFamilia" runat="server" Text="Familia" CssClass="form-label"></asp:Label>
+            <asp:DropDownList ID="DDLFamilia" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="DDLFamilia_SelectedIndexChanged"></asp:DropDownList>
+        </div>
+
+        <div class="mb-2">
+            <asp:Button ID="BtnAñadirPermiso" runat="server" Text="Añadir Permiso" CssClass="btn btn-success me-2" OnClick="BtnAñadirPermiso_Click" />
+            <asp:Button ID="BtnEliminarPermiso" runat="server" Text="Eliminar Permiso" CssClass="btn btn-secondary me-2" OnClick="BtnEliminarPermiso_Click" />
+        </div>
+
+        <div class="mb-2">
+            <asp:Label ID="LblPermisosFamilia" runat="server" Text="Permisos Familia" CssClass="form-label"></asp:Label>
+            <asp:ListBox ID="LBPermisosFamilia" runat="server" CssClass="form-control" SelectionMode="Multiple" Rows="5"></asp:ListBox>
+        </div>
+
+        <hr />
+
+        <div class="mb-1">
+            <asp:Button ID="BtnAñadirPerfil" runat="server" Text="Añadir Perfil" CssClass="btn btn-primary me-2" OnClick="BtnAñadirPerfil_Click" />
+            <asp:Button ID="BtnEliminarPerfil" runat="server" Text="Eliminar Perfil" CssClass="btn btn-danger me-2" OnClick="BtnEliminarPerfil_Click" />
+        </div>
+
+        <div class="mb-2">
+            <asp:Label ID="LblNombrePerfil" runat="server" Text="Nombre Perfil" CssClass="form-label"></asp:Label>
+            <asp:TextBox ID="txtNombrePerfil" runat="server" CssClass="form-control"></asp:TextBox>
+        </div>
+
+        <div class="mb-2">
+            <asp:Label ID="LblPermisosDisponibles" runat="server" Text="Permisos Disponibles" CssClass="form-label"></asp:Label>
+            <asp:ListBox ID="LBPermisosDisponibles" runat="server" CssClass="form-control" SelectionMode="Multiple" Rows="5" EnableViewState="true"></asp:ListBox>
+        </div>
+
+
+        <div class="mb-2 d-flex justify-content-end">
+            <asp:Button ID="BtnAplicar" runat="server" Text="Aplicar" CssClass="btn btn-success me-2" OnClick="BtnAplicar_Click" />
+            <asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-outline-secondary" OnClick="BtnCancelar_Click" />
+        </div>
+
+    </div>
+</asp:Content>

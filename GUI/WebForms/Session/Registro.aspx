@@ -11,7 +11,10 @@
             <h2>Registro de Usuario</h2>
             <asp:Label ID="lblUsername" runat="server" Text="Nombre de usuario:" />
             <asp:TextBox ID="txtUsername" runat="server" />
-            <br /><br />
+            <br />Rol:
+            <asp:DropDownList ID="DDLrol" runat="server">
+            </asp:DropDownList>
+            <br />
             <asp:Label ID="lblPassword" runat="server" Text="Contraseña:" />
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
             <br /><br />

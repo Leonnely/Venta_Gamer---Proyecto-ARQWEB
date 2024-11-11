@@ -15,14 +15,14 @@ namespace GUI.WebForms.Pages
         BLL_GestionDb gestionDB = new BLL_GestionDb();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.Master is MasterPage masterPage)
+            {
+                masterPage.ConfigurarNavbarEIdioma();
+            }
+
             if (!IsPostBack)
             {
                 LoadBackupFiles();
-
-                if (this.Master is MasterPage masterPage)
-                {
-                    masterPage.ConfigurarNavbarEIdioma();
-                }
             }
         }
 
