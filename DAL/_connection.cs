@@ -13,7 +13,9 @@ namespace DAL
 
         static _connection()
         {
-            _connectionString = @"Data Source=DESKTOP-P9QCU60\MSSQLSERVER01;Initial Catalog=VentaGamer;Integrated Security=True";
+            //_connectionString = @"Data Source=DESKTOP-P9QCU60\MSSQLSERVER01;Initial Catalog=VentaGamer;Integrated Security=True";
+
+            _connectionString = @"Data Source=Brian;Initial Catalog=VentaGamer;Integrated Security=True;Encrypt=False";
         }
 
         public static SqlConnection GetConnection()

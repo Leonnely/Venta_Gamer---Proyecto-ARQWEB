@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SERVICES; 
+using System.Xml;
+using System.Xml.Linq;
+using BE;
+using SERVICES;
 
 namespace GUI.WebForms.Pages
 {
@@ -61,7 +65,6 @@ namespace GUI.WebForms.Pages
             }
         }
 
-
         private void CargarCarrito()
         {
             // Obtener el carrito de la sesión
@@ -69,18 +72,43 @@ namespace GUI.WebForms.Pages
                 ? (Dictionary<string, int>)Session["Carrito"]
                 : new Dictionary<string, int>();
 
-            // objetos anónimos para mostrar en el Repeater
-            var productosCarrito = carrito.Select(item => new
+            // Llamada al servicio para obtener los productos con sus precios
+            ProductsService productService = new ProductsService();
+            List<BE_Productos> productosDisponibles = productService.GetProducts();
+
+            // Crear lista de productos en el carrito con sus precios y calcular el total
+            decimal totalCompra = 0;
+
+            // Crear lista de productos en el carrito con sus precios
+            var productosCarrito = carrito.Select(item =>
             {
-                Producto = item.Key,
-                Cantidad = item.Value,
-                Precio = 100, //Falta ajustar en base al valor del product
-                Total = 100 * item.Value // Precio * Cantidad
+                // Buscar el producto en la lista obtenida del servicio
+                var producto = productosDisponibles.FirstOrDefault(p => p.Title == item.Key);
+
+                // Asignar el precio si el producto existe; de lo contrario, usar 0 como valor por defecto
+                decimal precio = producto != null ? producto.Price : 0;
+                decimal totalProducto = precio * item.Value;
+
+                totalCompra += totalProducto;
+
+                return new
+                {
+                    Producto = item.Key,
+                    Cantidad = item.Value,
+                    Precio = precio,
+                    Total = precio * item.Value
+                };
             }).ToList();
 
             // Asignar la lista de productos al Repeater
             rptCarrito.DataSource = productosCarrito;
             rptCarrito.DataBind();
+
+            // Mostrar el total de la compra en la etiqueta
+            lblTotalCompra.Text = $"Total: ${totalCompra}";
+
+            // Mostrar el botón de confirmación solo si el total es mayor a 0
+            btnConfirmarCompra.Visible = totalCompra > 0;
         }
 
         protected void btnActualizar_Click(object sender, EventArgs e)
@@ -130,5 +158,82 @@ namespace GUI.WebForms.Pages
             // Recargar el carrito
             CargarCarrito();
         }
+
+        protected void btnConfirmarCompra_Click(object sender, EventArgs e)
+        {
+            // Obtener el carrito y el total para guardarlo en la sesión
+            Dictionary<string, int> carrito = (Dictionary<string, int>)Session["Carrito"];
+            ProductsService productService = new ProductsService();
+            List<BE_Productos> productosDisponibles = productService.GetProducts();
+
+            // Generar la lista de detalles de la compra y calcular el total
+            List<BE_DetalleCompra> detallesCompra = carrito.Select(item =>
+            {
+                var producto = productosDisponibles.FirstOrDefault(p => p.Title == item.Key);
+                decimal precio = producto != null ? producto.Price : 0;
+                decimal total = precio * item.Value;
+
+                return new BE_DetalleCompra
+                {
+                    Producto = item.Key,
+                    Cantidad = item.Value,
+                    Precio = precio,
+                    Total = total
+                };
+            }).ToList();
+
+            decimal totalCompra = detallesCompra.Sum(d => d.Total);
+
+            // Guardar detalles de la compra en el XML
+            GuardarDetalleCompraXML(totalCompra, detallesCompra);
+
+            // Guardar los detalles en la sesión para usarlos en DetalleCompra.aspx
+            Session["DetallesCompra"] = detallesCompra;
+
+            // Redirigir a DetalleCompra.aspx para mostrar el resumen
+            Response.Redirect("DetalleCompra.aspx");
+        }
+
+        private void GuardarDetalleCompraXML(decimal totalCompra, List<BE_DetalleCompra> detallesCompra)
+        {
+            // Crear o actualizar el archivo XML
+            string filePath = Server.MapPath("../../App_Data/Ventas.xml");
+            XDocument doc;
+
+            try
+            {
+                if (File.Exists(filePath) && new FileInfo(filePath).Length > 0)
+                {
+                    doc = XDocument.Load(filePath);
+                }
+                else
+                {
+                    doc = new XDocument(new XElement("Ventas"));
+                }
+            }
+            catch (XmlException)
+            {
+                doc = new XDocument(new XElement("Ventas"));
+            }
+
+            XElement venta = new XElement("Venta",
+                new XElement("UsuarioID", Session["id"]),
+                new XElement("Fecha", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
+                new XElement("TotalCompra", totalCompra)
+            );
+
+            foreach (var detalle in detallesCompra)
+            {
+                venta.Add(new XElement("Item",
+                    new XElement("Producto", detalle.Producto),
+                    new XElement("Cantidad", detalle.Cantidad),
+                    new XElement("Precio", detalle.Precio),
+                    new XElement("Total", detalle.Total)
+                ));
+            }
+
+            doc.Element("Ventas").Add(venta);
+            doc.Save(filePath);
+        }   
     }
 }

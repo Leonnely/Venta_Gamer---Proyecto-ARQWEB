@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackupFileInfo.cs" />
+    <Compile Include="BE_DetalleCompra.cs" />
     <Compile Include="BE_Idioma.cs" />
     <Compile Include="BE_RegistroBitacora.cs" />
     <Compile Include="BE_Usuario.cs" />

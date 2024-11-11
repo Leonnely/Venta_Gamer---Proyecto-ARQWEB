@@ -146,5 +146,15 @@ namespace GUI.WebForms.Pages
             //    Response.Redirect("~/WebForms/Session/login.aspx");
             //}
         }
+
+        protected void btnRecalcularDV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 } 
