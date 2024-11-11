@@ -12,7 +12,7 @@ namespace DAL
 {
     public class DAL_Perfil
     {
-        private Acceso acceso = new Acceso();
+        private DAL_Acceso acceso = new DAL_Acceso();
 
         public List<Role> GetRoles()
         {

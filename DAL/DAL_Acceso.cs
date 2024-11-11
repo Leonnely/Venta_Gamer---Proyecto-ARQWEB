@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Acceso
+    public class DAL_Acceso
     {
         // Abre una conexión desde el método estático de _connection
         private SqlConnection GetConnection()

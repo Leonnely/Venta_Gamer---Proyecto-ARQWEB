@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acceso.cs" />
+    <Compile Include="DAL_Acceso.cs" />
     <Compile Include="DALDVManager.cs" />
     <Compile Include="DAL_Bitacora.cs" />
     <Compile Include="DAL_GestionDB.cs" />

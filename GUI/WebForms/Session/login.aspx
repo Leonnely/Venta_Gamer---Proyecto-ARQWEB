@@ -42,7 +42,7 @@
             padding: 10px;
             margin-top:15px;
         }
-        .login-container #btnLogin{
+        /*.login-container #btnLogin{
             margin-top:20px;
             width: 100%;
             padding: 10px;
@@ -53,7 +53,7 @@
         }
         .login-container button:hover {
             background-color: #45a049;
-        }
+        }*/
         .validators{
             color:red;
             font-size:.8rem;
@@ -77,8 +77,8 @@
                 <asp:HyperLink ID="HyperLink1" runat="server" ForeColor="Blue" NavigateUrl="~/WebForms/Session/PasswordReset.aspx">Olvide mi contraseña</asp:HyperLink>
                 <asp:RequiredFieldValidator ID="rfvPassword" Class="validators" runat="server" ControlToValidate="txtPassword" ErrorMessage="Contraseña es un campo obligatorio."></asp:RequiredFieldValidator>
                 
-                <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
-                <asp:Button ID="btnRegister" runat="server" Text="Registrarse como cliente" OnClick="btnRegister_Click" />
+                <asp:Button ID="btnLogin" CssClass="btn btn-outline-primary" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
+                <asp:Button ID="btnRegister" CssClass="btn btn-outline-secondary" runat="server" Text="Registrarse como cliente" OnClick="btnRegister_Click" />
 
             </div>
         </div>
