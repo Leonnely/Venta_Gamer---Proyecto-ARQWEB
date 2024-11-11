@@ -186,4 +186,21 @@
       <Total>1000000.00</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 21:16:46</Fecha>
+    <TotalCompra>2120.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>2000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Intel I9</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>120.00</Precio>
+      <Total>120.00</Total>
+    </Item>
+  </Venta>
 </Ventas>
