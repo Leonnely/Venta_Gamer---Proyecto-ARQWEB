@@ -203,4 +203,21 @@
       <Total>120.00</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-10 22:40:59</Fecha>
+    <TotalCompra>194957.54</TotalCompra>
+    <Item>
+      <Producto>Acer Iconia Tab 10 A3-A40</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>25772.38</Precio>
+      <Total>51544.76</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid Jade</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>47804.26</Precio>
+      <Total>143412.78</Total>
+    </Item>
+  </Venta>
 </Ventas>

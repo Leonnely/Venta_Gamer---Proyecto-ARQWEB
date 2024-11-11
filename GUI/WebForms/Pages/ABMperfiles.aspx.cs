@@ -62,6 +62,11 @@ namespace GUI.WebForms.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.Master is MasterPage masterPage)
+            {
+                masterPage.ConfigurarNavbarEIdioma();
+            }
+
             if (!IsPostBack)
             {
                 string rolenum = GetUserRole((int)Session["role"]);
