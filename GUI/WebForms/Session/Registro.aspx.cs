@@ -1,10 +1,13 @@
-﻿using SECURITY;
+﻿using BE;
+using SECURITY;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BLL;
 
 namespace GUI.WebForms.Session
 {
@@ -12,9 +15,13 @@ namespace GUI.WebForms.Session
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                CargarRoles();
+            }
         }
-
+        private BLL_Perfil BLLPerfi = new BLL_Perfil();
+        private List<string> roles;
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
@@ -27,10 +34,12 @@ namespace GUI.WebForms.Session
                 return;
             }
 
+            int perfil = GetUserRole(DDLrol.Text);
+            
 
             LoginManager loginManager = new LoginManager();
 
-            bool success = loginManager.Register(username, password, role: 4);
+            bool success = loginManager.Register(username, password, perfil);
 
             if (success)
             {
@@ -44,6 +53,27 @@ namespace GUI.WebForms.Session
                 lblMessage.Text = "Error al registrar el usuario.";
             }
 
+        }
+        public int GetUserRole(string rol)
+        {
+            switch (rol)
+            {
+                //Agregar dependiendo los perfiles de la tabla perfiles
+                case "Tester Perfiles":
+                    return 4;
+                case "Tester B":
+                    return 5;
+                default:
+                    return 0;
+            }
+        }
+        private void CargarRoles()
+        {
+            roles = BLLPerfi.ObtenerDescripcionesRoles(); // Método en BLLUsuario que obtiene las descripciones de roles
+            DDLrol.DataSource = roles;
+            //DDLrol.DataTextField = "Descripcion";
+            //DDLrol.DataValueField = "ID";
+            DDLrol.DataBind();
         }
     }
 }

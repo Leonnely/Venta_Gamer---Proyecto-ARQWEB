@@ -297,5 +297,33 @@ namespace DAL
                 //    }
             }
         }
+        public List<string> ObtenerDescripcionesRoles()
+        {
+            List<string> descripciones = new List<string>();
+
+            try
+            {
+                // Consulta SQL para obtener las descripciones de roles
+                string consulta = "SELECT Descripcion FROM Roles ORDER BY Descripcion";
+
+                // Ejecutar la consulta utilizando el método Read de la clase Acceso
+                DataTable tablaRoles = acceso.Read(consulta, null);
+
+                // Recorrer los resultados y agregar las descripciones a la lista
+                foreach (DataRow fila in tablaRoles.Rows)
+                {
+                    string descripcion = fila["Descripcion"].ToString();
+                    descripciones.Add(descripcion);
+                }
+
+                return descripciones;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores o logging
+                throw new Exception("Error al obtener las descripciones de roles desde la base de datos", ex);
+            }
+        }
     }
+
 }

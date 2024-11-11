@@ -39,6 +39,19 @@ namespace BLL
         {
             return productos.GetTotalProductsCount();
         }
+
+        public void DeleteProduct(int productId)
+        {
+            productos.DeleteProduct(productId);
+        }
+
+
+        public void UpdateProduct(BE_Productos product)
+        {
+            productos.UpdateProduct(product);  // Llama al DAL para actualizar el producto
+        }
+
+
     }
 
 }
