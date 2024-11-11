@@ -64,7 +64,7 @@ namespace GUI.WebForms.Session
                 case "Tester B":
                     return 5;
                 default:
-                    return 0;
+                    return 3;
             }
         }
         private void CargarRoles()
