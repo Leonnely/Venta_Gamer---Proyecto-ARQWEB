@@ -249,4 +249,32 @@
       <Total>10102.38</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-11 15:57:03</Fecha>
+    <TotalCompra>21741.89</TotalCompra>
+    <Item>
+      <Producto>Acer beTouch T500</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1548.61</Precio>
+      <Total>1548.61</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Iconia Tab 7 A1-713HD</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>10096.64</Precio>
+      <Total>20193.28</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-24 15:04:12</Fecha>
+    <TotalCompra>1548.61</TotalCompra>
+    <Item>
+      <Producto>Acer beTouch T500</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1548.61</Precio>
+      <Total>1548.61</Total>
+    </Item>
+  </Venta>
 </Ventas>

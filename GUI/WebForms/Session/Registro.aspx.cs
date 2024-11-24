@@ -17,7 +17,22 @@ namespace GUI.WebForms.Session
         {
             if (!IsPostBack)
             {
-                CargarRoles();
+                if (Session["role"] == null)
+                {
+                    DDLrol.Text = "USUARIO";
+                    DDLrol.Enabled = false;
+                }
+                else
+                {
+                    string role = GetUserRole((int)Session["role"]);
+                    if (role == "Admin")
+                    {
+                        DDLrol.Items.Clear();
+                        CargarRoles();
+                        DDLrol.Enabled = true;
+                    }
+                }
+                
             }
         }
         private BLL_Perfil BLLPerfi = new BLL_Perfil();
@@ -58,7 +73,12 @@ namespace GUI.WebForms.Session
         {
             switch (rol)
             {
+
                 //Agregar dependiendo los perfiles de la tabla perfiles
+
+                case "Admin":
+                    return 0;
+                
                 case "Tester Perfiles":
                     return 4;
                 case "Tester B":
@@ -75,5 +95,23 @@ namespace GUI.WebForms.Session
             //DDLrol.DataValueField = "ID";
             DDLrol.DataBind();
         }
+
+        public string GetUserRole(int rol)
+        {
+            switch (rol)
+            {
+                case 0:
+                    return "Admin";
+                case 1:
+                    return "WebMaster";
+                case 2:
+                    return "User";
+                case 4:
+                    return "Tester";
+                default:
+                    return "A";
+            }
+        }
+
     }
 }
