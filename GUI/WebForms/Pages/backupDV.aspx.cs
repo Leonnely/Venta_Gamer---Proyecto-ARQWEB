@@ -29,24 +29,27 @@ namespace GUI.WebForms.Pages
 
                 if (Session["ListTables"] != null)
                 {
-                    List<DataTable> listTables = (List<DataTable>)Session["ListTables"];
-                    var ul = new System.Text.StringBuilder();
+                    DataTable Table = (DataTable)Session["ListTables"];
+                    var ul = new System.Text.StringBuilder("<ul>");
 
-                    foreach (var table in listTables)
+                    
+                    foreach (DataRow row in Table.Rows)
                     {
-                        ul.Append($"<li> <strong>{table.TableName}</strong></li>");
+                        string nombre = row[0].ToString();
+                        string mensaje = row[1].ToString(); // Obtiene el valor de la segunda columna
+                        ul.Append($"<li><strong>{nombre}</strong> <p>{mensaje}</p></li>");
                     }
+                    
 
+                    ul.Append("</ul>");
                     listTablas.InnerHtml = ul.ToString();
                 }
                 else
                 {
-                    var ul = new System.Text.StringBuilder();
-                    ul.Append("Sin tablas afectadas!.");
-                    listTablas.InnerHtml = ul.ToString();
-
+                    listTablas.InnerHtml = "<ul><li>Sin tablas afectadas!</li></ul>";
                     Session["ListTables"] = null;
                 }
+
             }
         }
 

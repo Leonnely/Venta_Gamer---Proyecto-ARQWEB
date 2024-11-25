@@ -64,9 +64,9 @@ namespace GUI.WebForms.Session
                     //DVManager managerSecurity = new DVManager();
 
                     bool IntegridadBBDD = true;
-                    List<DataTable> listTables = _digitoManager.CheckIntegrity();
+                    DataTable listTables = _digitoManager.CalcularDV();
 
-                    if (listTables.Count > 0)
+                    if (listTables.Rows.Count > 0)
                     {
                         IntegridadBBDD = false;
                     }
