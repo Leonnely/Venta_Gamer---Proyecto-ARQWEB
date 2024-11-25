@@ -186,4 +186,117 @@
       <Total>1000000.00</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>3</UsuarioID>
+    <Fecha>2024-11-10 21:16:46</Fecha>
+    <TotalCompra>2120.00</TotalCompra>
+    <Item>
+      <Producto>DDR4 - 8GB</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>1000.00</Precio>
+      <Total>2000.00</Total>
+    </Item>
+    <Item>
+      <Producto>Intel I9</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>120.00</Precio>
+      <Total>120.00</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-10 22:40:59</Fecha>
+    <TotalCompra>194957.54</TotalCompra>
+    <Item>
+      <Producto>Acer Iconia Tab 10 A3-A40</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>25772.38</Precio>
+      <Total>51544.76</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid Jade</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>47804.26</Precio>
+      <Total>143412.78</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-10 22:51:13</Fecha>
+    <TotalCompra>373481.34</TotalCompra>
+    <Item>
+      <Producto>Acer Iconia Tab A1-810</Producto>
+      <Cantidad>4</Cantidad>
+      <Precio>57041.15</Precio>
+      <Total>228164.60</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid Jade</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>47804.26</Precio>
+      <Total>47804.26</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid M220</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>87410.10</Precio>
+      <Total>87410.10</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Liquid C1</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>3367.46</Precio>
+      <Total>10102.38</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-11 15:57:03</Fecha>
+    <TotalCompra>21741.89</TotalCompra>
+    <Item>
+      <Producto>Acer beTouch T500</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1548.61</Precio>
+      <Total>1548.61</Total>
+    </Item>
+    <Item>
+      <Producto>Acer Iconia Tab 7 A1-713HD</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>10096.64</Precio>
+      <Total>20193.28</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-24 15:04:12</Fecha>
+    <TotalCompra>1548.61</TotalCompra>
+    <Item>
+      <Producto>Acer beTouch T500</Producto>
+      <Cantidad>1</Cantidad>
+      <Precio>1548.61</Precio>
+      <Total>1548.61</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-25 09:00:50</Fecha>
+    <TotalCompra>30289.92</TotalCompra>
+    <Item>
+      <Producto>Acer Iconia Tab 7 A1-713HD</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>10096.64</Precio>
+      <Total>30289.92</Total>
+    </Item>
+  </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-25 09:24:08</Fecha>
+    <TotalCompra>3097.22</TotalCompra>
+    <Item>
+      <Producto>Acer beTouch T500</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>1548.61</Precio>
+      <Total>3097.22</Total>
+    </Item>
+  </Venta>
 </Ventas>

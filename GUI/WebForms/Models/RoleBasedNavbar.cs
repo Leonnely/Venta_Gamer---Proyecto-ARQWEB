@@ -13,8 +13,8 @@ namespace GUI.WebForms.Models
             { "Admin", new List<NavbarItem>
             {
                 new NavbarItem { Name = "Home", TextKey = "Home", Url = "~/WebForms/Pages/home.aspx" },
-                new NavbarItem { Name = "Bitacora", TextKey = "Bitacora", Url = "~/WebForms/Pages/bitacora.aspx" },
                 new NavbarItem { Name = "Gestion de perfiles", TextKey = "Gestion de perfiles", Url = "~/WebForms/Pages/ABMperfiles.aspx" },
+                new NavbarItem { Name = "Registro de usuarios", TextKey = "Registro de usuarios", Url = "~/WebForms/Session/Registro.aspx" },
                 new NavbarItem { Name = "Gestion de productos", TextKey = "Gestion de productos", Url = "~/WebForms/Pages/Productos.aspx" },
                 new NavbarItem { Name = "Configuracion", TextKey = "Configuracion", Url = "~/WebForms/Pages/Configuracion.aspx" }
             }
@@ -23,7 +23,6 @@ namespace GUI.WebForms.Models
             {
                 new NavbarItem { Name = "Home", TextKey = "Home", Url = "~/WebForms/Pages/home.aspx" },
                 new NavbarItem { Name = "Carrito", TextKey = "Carrito", Url = "~/WebForms/Pages/carrito.aspx" },
-                new NavbarItem { Name = "Gestion de perfiles", TextKey = "Gestion de perfiles", Url = "~/WebForms/Pages/ABMperfiles.aspx" },
                 new NavbarItem { Name = "Configuracion", TextKey = "Configuracion", Url = "~/WebForms/Pages/Configuracion.aspx" }
             }
         },

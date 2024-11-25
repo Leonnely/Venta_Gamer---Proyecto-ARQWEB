@@ -78,7 +78,7 @@
                 <asp:RequiredFieldValidator ID="rfvPassword" Class="validators" runat="server" ControlToValidate="txtPassword" ErrorMessage="Contraseña es un campo obligatorio."></asp:RequiredFieldValidator>
                 
                 <asp:Button ID="btnLogin" CssClass="btn btn-outline-primary" runat="server" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
-                <asp:Button ID="btnRegister" CssClass="btn btn-outline-secondary" runat="server" Text="Registrarse como cliente" OnClick="btnRegister_Click" />
+                <asp:Button ID="btnRegister" CssClass="btn btn-outline-secondary" runat="server" Text="Registrarse como cliente" OnClick="btnRegister_Click" CausesValidation="false"/>
 
             </div>
         </div>

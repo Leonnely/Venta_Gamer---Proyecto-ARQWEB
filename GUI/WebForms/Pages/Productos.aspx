@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        /* Estilos específicos para la página de productos */
+        /* Estilos generales para toda la página de productos */
         .productos-page {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -10,7 +10,7 @@
             padding: 20px;
         }
         
-        .productos-page .container {
+        .container {
             max-width: 500px;
             margin: auto;
             padding: 20px;
@@ -20,20 +20,20 @@
             margin-bottom: 20px;
         }
 
-        .productos-page h2 {
+        h2 {
             text-align: center;
             color: #333;
         }
 
-        .productos-page label {
+        label {
             font-weight: bold;
             margin-bottom: 5px;
             display: block;
             color: #555;
         }
 
-        .productos-page input[type="text"],
-        .productos-page select {
+        input[type="text"],
+        select {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -42,13 +42,13 @@
             transition: border-color 0.3s;
         }
 
-        .productos-page input[type="text"]:focus,
-        .productos-page select:focus {
+        input[type="text"]:focus,
+        select:focus {
             border-color: #007bff;
             outline: none;
         }
 
-        .productos-page .btn {
+        .btn {
             background-color: #007bff;
             color: white;
             padding: 10px;
@@ -59,17 +59,17 @@
             font-size: 16px;
         }
 
-        .productos-page .btn:hover {
+        .btn:hover {
             background-color: #0056b3;
         }
 
-        .productos-page .message {
+        .message {
             margin-top: 10px;
             text-align: center;
             color: #d9534f;
         }
 
-        .productos-page .success {
+        .success {
             color: #5cb85c; /* Color verde para mensajes de éxito */
         }
     </style>
@@ -78,7 +78,6 @@
     <div class="productos-page">
         <div class="container">
             <h2>Cargar Producto</h2>
-
             <label for="ddlCategory">Categoría:</label>
             <asp:DropDownList ID="ddlCategory" runat="server" />
             
@@ -94,35 +93,32 @@
     </div>
 
     <!-- Contenedor para la modificación de productos -->
-    <div class="edit-product-section">
-        <h2>Modificar Producto</h2>
+    <div class="productos-page">
+        <div class="container">
+            <h2>Modificar Producto</h2>
+            <label for="ddlEditProduct">Selecciona un Producto:</label>
+            <asp:DropDownList ID="ddlEditProduct" runat="server" OnSelectedIndexChanged="ddlEditProduct_SelectedIndexChanged" AutoPostBack="true">
+                <asp:ListItem Text="Selecciona un producto" Value="0" />
+            </asp:DropDownList>
 
-        <label for="ddlEditProduct">Selecciona un Producto:</label>
-        <asp:DropDownList ID="ddlEditProduct" runat="server" OnSelectedIndexChanged="ddlEditProduct_SelectedIndexChanged" AutoPostBack="true">
-            <asp:ListItem Text="Selecciona un producto" Value="0" />
-        </asp:DropDownList>
+            <label for="txtEditTitle">Nuevo Título:</label>
+            <asp:TextBox ID="txtEditTitle" runat="server" placeholder="Nuevo título del producto" />
 
-        <label for="txtEditTitle">Nuevo Título:</label>
-        <asp:TextBox ID="txtEditTitle" runat="server" placeholder="Nuevo título del producto" />
+            <label for="txtEditPrice">Nuevo Precio:</label>
+            <asp:TextBox ID="txtEditPrice" runat="server" placeholder="Nuevo precio del producto" />
 
-        <label for="txtEditPrice">Nuevo Precio:</label>
-        <asp:TextBox ID="txtEditPrice" runat="server" placeholder="Nuevo precio del producto" />
+            <label for="ddlEditCategory">Nueva Categoría:</label>
+            <asp:DropDownList ID="ddlEditCategory" runat="server"></asp:DropDownList>
 
-        <label for="ddlEditCategory">Nueva Categoría:</label>
-        <asp:DropDownList ID="ddlEditCategory" runat="server"></asp:DropDownList>
-            
-            <!-- Añadir más categorías según sea necesario -->
-        </asp:DropDownList>
-
-        <asp:Button ID="btnUpdateProduct" runat="server" Text="Actualizar Producto" CssClass="btn" OnClick="btnUpdateProduct_Click" />
-        <asp:Label ID="lblUpdateMessage" runat="server" CssClass="message" Text="" />
+            <asp:Button ID="btnUpdateProduct" runat="server" Text="Actualizar Producto" CssClass="btn" OnClick="btnUpdateProduct_Click" />
+            <asp:Label ID="lblUpdateMessage" runat="server" CssClass="message" Text="" />
+        </div>
     </div>
 
     <!-- Contenedor para eliminar productos -->
     <div class="productos-page">
         <div class="container">
             <h2>Eliminar Producto</h2>
-
             <label for="ddlProducts">Selecciona el producto a eliminar:</label>
             <asp:DropDownList ID="ddlProducts" runat="server" OnSelectedIndexChanged="ddlProducts_SelectedIndexChanged" />
             

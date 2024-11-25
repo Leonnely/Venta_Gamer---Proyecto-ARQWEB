@@ -20,7 +20,7 @@ namespace GUI.WebForms.Pages
             {
                 masterPage.ConfigurarNavbarEIdioma();
             }
-
+                
             // Añadir categorías al DropDownList
             if (!IsPostBack)  // Verifica que solo se ejecute una vez al cargar la página
             {
@@ -141,8 +141,7 @@ namespace GUI.WebForms.Pages
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            //if (int.TryParse(ddlProducts.SelectedValue, out int productId))
-            //{
+           
                 try
                 {
                 string selectedProduct = Session["ddlSelected"]?.ToString();
@@ -153,7 +152,7 @@ namespace GUI.WebForms.Pages
                 }
 
                 int productId;
-                //int productId;
+               
                 List<BE_Productos> products = bllProductos.GetProducts();
                 foreach (BE_Productos product in products)
                 {
@@ -229,9 +228,6 @@ namespace GUI.WebForms.Pages
             }
         }
 
-        //else
-        //{
-        //    lblDeleteMessage.Text = "Por favor, selecciona un producto válido.";
-        //}
+      
     }
     }
