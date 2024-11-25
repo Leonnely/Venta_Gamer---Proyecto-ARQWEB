@@ -29,6 +29,7 @@ namespace GUI.WebForms.Session
         {
             LoginManager login = new LoginManager();
             login.updatePassword(TextBoxUsername.Text, TextBoxNewPass.Text);
+            Response.Redirect("~/ WebForms / Session / login.aspx")<
 
         }
 

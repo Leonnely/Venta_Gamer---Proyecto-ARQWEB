@@ -288,4 +288,15 @@
       <Total>30289.92</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-25 09:24:08</Fecha>
+    <TotalCompra>3097.22</TotalCompra>
+    <Item>
+      <Producto>Acer beTouch T500</Producto>
+      <Cantidad>2</Cantidad>
+      <Precio>1548.61</Precio>
+      <Total>3097.22</Total>
+    </Item>
+  </Venta>
 </Ventas>
