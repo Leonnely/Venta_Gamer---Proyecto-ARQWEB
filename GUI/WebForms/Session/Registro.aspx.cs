@@ -17,6 +17,13 @@ namespace GUI.WebForms.Session
         {
             if (!IsPostBack)
             {
+                // Configurar navbar y idioma
+                if (this.Master is GUI.WebForms.Pages.MasterPage masterPage)
+                {
+                    masterPage.ConfigurarNavbarEIdioma();
+                }
+
+                // Configurar roles y permisos
                 if (Session["role"] == null)
                 {
                     DDLrol.Text = "USUARIO";
@@ -32,7 +39,6 @@ namespace GUI.WebForms.Session
                         DDLrol.Enabled = true;
                     }
                 }
-                
             }
         }
         private BLL_Perfil BLLPerfi = new BLL_Perfil();

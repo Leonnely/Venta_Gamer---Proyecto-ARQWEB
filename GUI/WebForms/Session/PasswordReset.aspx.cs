@@ -12,6 +12,15 @@ namespace GUI.WebForms.Session
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                // Configurar navbar y idioma
+                if (this.Master is GUI.WebForms.Pages.MasterPage masterPage)
+                {
+                    masterPage.ConfigurarNavbarEIdioma();
+                }
+            }
+
             TextBoxNewPass.Enabled = false;
             ButtonEnviar.Enabled = false;
         }

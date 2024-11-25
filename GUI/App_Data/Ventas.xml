@@ -277,4 +277,15 @@
       <Total>1548.61</Total>
     </Item>
   </Venta>
+  <Venta>
+    <UsuarioID>5</UsuarioID>
+    <Fecha>2024-11-25 09:00:50</Fecha>
+    <TotalCompra>30289.92</TotalCompra>
+    <Item>
+      <Producto>Acer Iconia Tab 7 A1-713HD</Producto>
+      <Cantidad>3</Cantidad>
+      <Precio>10096.64</Precio>
+      <Total>30289.92</Total>
+    </Item>
+  </Venta>
 </Ventas>
