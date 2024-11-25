@@ -70,7 +70,6 @@ namespace SECURITY
                     );
                 }
 
-                // Calcular DV
                 List<DataTable> dt = DAL_DVManager.CalcularDV(tableName);
                 if (dt.Count < 2)
                 {
@@ -96,9 +95,9 @@ namespace SECURITY
                     {
                         mensaje += " Se ha eliminado un registro.";
                     }
-                    else if (dtCalculado.Rows.Count == dtOriginal.Rows.Count) 
+                    else if (dtCalculado.Rows.Count == dtOriginal.Rows.Count)
                     {
-                        mensaje += " Sin certeza de la accion.";
+                        mensaje += " Modificacion.";
                     }
 
                     // Agregar detalles de discrepancias
@@ -107,12 +106,13 @@ namespace SECURITY
                         string[] rowParts = row.Split(',');
                         if (rowParts.Length >= 4 && rowParts[0] == tableName)
                         {
-                            mensaje += $"\nÍndice {rowParts[1]}, valor calculado {rowParts[2]} - valor guardado {rowParts[3]}.";
+                            mensaje += $"Índice {rowParts[1]}, valor calculado {rowParts[2]} - valor guardado {rowParts[3]}.";
                         }
                     }
 
                     resultTable.Rows.Add(tableName, mensaje);
                 }
+                
             }
 
 
